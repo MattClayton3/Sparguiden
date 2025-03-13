@@ -36,6 +36,7 @@ let serafimranta: any;
 let frodaranta: any;
 let northranta: any;
 let multiranta:any;
+let klarnaranta:any;
 
 // Skapar upp dagens datum.
 let date = new Date()
@@ -697,6 +698,29 @@ test('Multitude Bank', async ({ page }) => {
   }
 });
 
+test('Klarna', async ({ page }) => {
+  let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
+  await page.getByRole('button', { name: 'Tillåt alla' }).click();
+  await expect(page.locator('#content-below-header')).toContainText('Fastkonto');
+  await page.getByText('3 månader').click();
+  await page.getByText('2,15%').click();
+  if (klarnaresponse) {
+    let status = klarnaresponse.status();
+    let klarnabody = await klarnaresponse.text();
+    //console.log('Content:', klarnabody);
+    if (klarnabody.includes('Fastkonto')) {
+      let klarnaord = klarnabody.indexOf('">3</span>')
+      let klarnakollen = klarnabody.substring(klarnaord, klarnaord+20)
+      klarnaranta = klarnabody.substring(klarnaord+352, klarnaord+356)
+      //console.log('Content:', klarnabody);
+      //console.log('Index..:', klarnaord);
+      //console.log('Content:', klarnakollen);
+      console.log('Klarna');
+      console.log('Fast 3 månaders ränta:', klarnaranta, '%');
+    }
+  }
+});
+
 test('Sammanställning', async () => {
   //console.log('Sammanställning');
   //console.log('');
@@ -790,6 +814,9 @@ test('Sammanställning', async () => {
   console.log('Multitude Bank');
   console.log('Fast 3 månaders ränta:', multiranta, '%');
   console.log('');
+  console.log('Klarna');
+  console.log('Fast 3 månaders ränta:', klarnaranta, '%');
+  console.log('');
   // ...
 });
 
@@ -825,43 +852,56 @@ test('Sorterat', async () => {
   frodaranta = frodaranta.replace(',', '.');
   northranta = northranta.replace(',', '.');
   multiranta = multiranta.replace(',', '.');
+  klarnaranta = klarnaranta.replace(',', '.');
   
-  const bankarr = [
-    { bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank *(1 mån)</a>', ranta: learanta },
-    { bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
-    { bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
-    { bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank (Erik Penser)</a>', ranta: epranta },
-    // { bank: 'Resurs Bank', ranta: resursranta},
-    { bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska Kreditmarknadsbolaget</a>', ranta: nordiskaranta},
-    { bank: '<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank (coop)</a>', ranta: medranta},
-    { bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
-    { bank: '<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia Bank</a>', ranta: Skandiaranta},
-    { bank: '<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a>', ranta: swedbankranta},
-    { bank: '<a href="https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/placeringskonto-privat" target="_blank">Handelsbanken</a>', ranta: shbranta},
-    { bank: '<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>', ranta: nordearanta},
-    { bank: '<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>', ranta: sebranta},
-    { bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar Bank</a>', ranta: lansfranta},
-    { bank: '<a href="https://www.collector.se/spara-pengar/aktuella-sparrantor/" target="_blank">Collector</a>', ranta: collectorranta},
-    { bank: '<a href="https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/" target="_blank">Marginalen Bank</a>', ranta: marginalranta},
-    { bank: '<a href="https://www.qliro.com/sv-se/spara" target="_blank">Qliro</a>', ranta: qlirokranta},
-    { bank: '<a href="https://coeli.se/spara/" target="_blank">Coeli</a>', ranta: coelikranta},
-    { bank: '<a href="https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto" target="_blank">Svea Bank</a>', ranta: svearanta},
-    { bank: '<a href="https://www.qred.se/sparkonto" target="_blank">Qred Bank</a>', ranta: qredranta},
-    { bank: '<a href="https://se.nstart.com/spara" target="_blank">Nstart</a>', ranta: nstartranta},
-    { bank: '<a href="https://www.sparbankensyd.se/privat/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
-    { bank: '<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>', ranta: borgoranta},
-    { bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a>', ranta: broccranta},
-    { bank: '<a href="https://www.jak.se/vardagstjanster/spara-placera/" target="_blank">JAK Medlemsbank</a>', ranta: jakranta},
-    { bank: '<a href="https://www.aroskapital.se/tjanster/spara/" target="_blank">Aros Kapital</a>', ranta: arosranta},
-    { bank: '<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a>', ranta: serafimranta},
-    { bank: '<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>', ranta: frodaranta},
-    { bank: '<a href="https://www.northmill.com/se/sparkonto/" target="_blank">Northmill Bank</a>', ranta: northranta},
-    { bank: '<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>', ranta: multiranta},
+  interface Banks{
+    banknamn: string;
+    bank: string;
+    ranta: number;
+  }
+
+  const bankarr: Banks[] = [
+    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank *(1 mån)</a>', ranta: learanta },
+    { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
+    { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
+    { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank (Erik Penser)</a>', ranta: epranta },
+    // { banknamn: 'Resurs Bank', bank: 'Resurs Bank', ranta: resursranta},
+    { banknamn: 'Nordiska Kreditmarknadsbolaget', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska Kreditmarknadsbolaget</a>', ranta: nordiskaranta},
+    { banknamn: 'MedMera Bank', bank: '<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank (coop)</a>', ranta: medranta},
+    { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
+    { banknamn: 'Skandia Bank', bank: '<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia Bank</a>', ranta: Skandiaranta},
+    { banknamn: 'Swedban', bank: '<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a>', ranta: swedbankranta},
+    { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/placeringskonto-privat" target="_blank">Handelsbanken</a>', ranta: shbranta},
+    { banknamn: 'Nordea', bank: '<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>', ranta: nordearanta},
+    { banknamn: 'SEB', bank: '<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>', ranta: sebranta},
+    { banknamn: 'Länsförsäkringar Bank', bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar Bank</a>', ranta: lansfranta},
+    { banknamn: 'Collector', bank: '<a href="https://www.collector.se/spara-pengar/aktuella-sparrantor/" target="_blank">Collector</a>', ranta: collectorranta},
+    { banknamn: 'Marginalen Bank', bank: '<a href="https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/" target="_blank">Marginalen Bank</a>', ranta: marginalranta},
+    { banknamn: 'Qliro', bank: '<a href="https://www.qliro.com/sv-se/spara" target="_blank">Qliro</a>', ranta: qlirokranta},
+    { banknamn: 'Coeli', bank: '<a href="https://coeli.se/spara/" target="_blank">Coeli</a>', ranta: coelikranta},
+    { banknamn: 'Svea Bank', bank: '<a href="https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto" target="_blank">Svea Bank</a>', ranta: svearanta},
+    { banknamn: 'Qred Bank', bank: '<a href="https://www.qred.se/sparkonto" target="_blank">Qred Bank</a>', ranta: qredranta},
+    { banknamn: 'Nstart', bank: '<a href="https://se.nstart.com/spara" target="_blank">Nstart</a>', ranta: nstartranta},
+    { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/privat/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
+    { banknamn: 'Borgo', bank: '<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>', ranta: borgoranta},
+    { banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a>', ranta: broccranta},
+    { banknamn: 'JAK Medlemsbank', bank: '<a href="https://www.jak.se/vardagstjanster/spara-placera/" target="_blank">JAK Medlemsbank</a>', ranta: jakranta},
+    { banknamn: 'Aros Kapital', bank: '<a href="https://www.aroskapital.se/tjanster/spara/" target="_blank">Aros Kapital</a>', ranta: arosranta},
+    { banknamn: 'Serafim Finans', bank: '<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a>', ranta: serafimranta},
+    { banknamn: 'Froda', bank: '<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>', ranta: frodaranta},
+    { banknamn: 'Northmill Bank', bank: '<a href="https://www.northmill.com/se/sparkonto/" target="_blank">Northmill Bank</a>', ranta: northranta},
+    { banknamn: 'Multitude Bank', bank: '<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>', ranta: multiranta},
+    { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a>', ranta: klarnaranta},
   ];
   
-  bankarr.sort((a,b) => b.ranta - a.ranta);
-  
-  
+  bankarr.sort((a,b) => {
+    if (b.ranta < a.ranta) return -1;
+    if (b.ranta > a.ranta) return 1;
+    if (a.banknamn < b.banknamn) return -1;
+    if (a.banknamn > b.banknamn) return 1;
+    return 0;
+  });
+
   let antalBanker: any;
   antalBanker = (bankarr.length);
   console.log('Antal:', bankarr.length);
@@ -871,8 +911,8 @@ test('Sorterat', async () => {
 
   console.log(bankarr);
 
-  let exempelBelopp = 50000;
-  let outputFile = `sparguiden_${fullDate}.htm`
+  let exempelBelopp = 100000;
+  let outputFile = `index.html`
   fs.writeFileSync(outputFile, '<!DOCTYPE html>\n');
   fs.appendFileSync(outputFile, '<html>\n');
   fs.appendFileSync(outputFile, '<head>\n');
@@ -887,7 +927,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '}\n');
   fs.appendFileSync(outputFile, 'th, td {\n');
   fs.appendFileSync(outputFile, '  text-align: left;\n');
-  fs.appendFileSync(outputFile, '  padding: 8px;');
+  fs.appendFileSync(outputFile, '  padding: 4px;');
   fs.appendFileSync(outputFile, '}\n');
   fs.appendFileSync(outputFile, 'tr:nth-child(even){background-color: #f2f2f2}\n');
   fs.appendFileSync(outputFile, '</style>\n');
@@ -927,7 +967,7 @@ test('Sorterat', async () => {
       color = 'red';
       position = '&#129317;';
     }
-    let bankStr = `    <td style="color:${color}"> ${banken} ${position} </td>\n`;
+    let bankStr = `    <td style="color:${color}"> <sup>${i+1})</sup> ${banken} ${position} </td>\n`;
     let rantaStr = `    <td style="color:${color}"> ${rantan} </td>\n`;
     let kvartal = (rantan * 0.01) * exempelBelopp / 4;
     let kvartal1 = (Math.round(kvartal * 100) / 100).toFixed(2);
