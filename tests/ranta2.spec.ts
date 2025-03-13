@@ -996,8 +996,8 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
 
-  const execute = utils.promisify(exec);
-  console.log(await execute(outputFile));
+  // const execute = utils.promisify(exec);
+  // console.log(await execute(outputFile));
 });
 
 });
