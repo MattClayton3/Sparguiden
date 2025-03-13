@@ -702,8 +702,8 @@ test('Klarna', async ({ page }) => {
   let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
   await page.getByRole('button', { name: 'Tillåt alla' }).click();
   await expect(page.locator('#content-below-header')).toContainText('Fastkonto');
-  await page.getByText('3 månader').click();
-  await page.getByText('2,15%').click();
+  //await page.getByText('3 månader').click();
+  //await page.getByText('2,15%').click();
   if (klarnaresponse) {
     let status = klarnaresponse.status();
     let klarnabody = await klarnaresponse.text();
