@@ -32,5 +32,14 @@ jobs:
       run: pwd
     - name: List files
       run: ls -R
+    - name: Commit and push index.html
+      run: |
+        git config --global MattClayton3 "github-actions[bot]"
+        git config --global mats.claesson3@gmail.com "github-actions[bot]@users.noreply.github.com"
+        git add index.html
+        git commit -m "Add generated index.html"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
