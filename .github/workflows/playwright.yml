@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
   schedule:
-    - cron: '17 00 * * Mon-Fri'
+    - cron: '10 20 * * Mon-Fri'
 
 jobs:
   test:
@@ -28,10 +28,10 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
-    - name: Print working directory
-      run: pwd
-    - name: List files
-      run: ls -R
+    # - name: Print working directory
+    #   run: pwd
+    # - name: List files
+    #   run: ls -R
     - name: Commit and push index.html
       run: |
         git config --global user.name "github-actions[bot]"
