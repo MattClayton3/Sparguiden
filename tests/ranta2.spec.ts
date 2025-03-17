@@ -912,7 +912,7 @@ test('Sorterat', async () => {
   console.log(bankarr);
 
   let exempelBelopp = 100000;
-  let outputFile = `index2.html`
+  let outputFile = `https://mattclayton3.github.io/Sparguiden/index2.html`
   fs.writeFileSync(outputFile, '<!DOCTYPE html>\n');
   fs.appendFileSync(outputFile, '<html>\n');
   fs.appendFileSync(outputFile, '<head>\n');
