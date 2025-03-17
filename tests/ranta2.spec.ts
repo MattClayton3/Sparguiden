@@ -913,7 +913,7 @@ test('Sorterat', async () => {
   console.log(bankarr);
 
   let exempelBelopp = 100000;
-  let outputFile = 'index333.html';
+  let outputFile = 'index.html';
   fs.writeFileSync(outputFile, '<!DOCTYPE html>\n');
   fs.appendFileSync(outputFile, '<html>\n');
   fs.appendFileSync(outputFile, '<head>\n');
