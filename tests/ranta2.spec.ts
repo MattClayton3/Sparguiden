@@ -722,7 +722,7 @@ test('Multitude Bank', async ({ page }) => {
 // });
 
 test('Sammanställning', async () => {
-  //console.log('Sammanställning');
+  console.log('Sammanställning...');
   //console.log('');
   console.log('Lea Bank');
   console.log('Fast 1 månaders ränta:', learanta, '%');
@@ -821,6 +821,7 @@ test('Sammanställning', async () => {
 });
 
 test('Sorterat', async () => {
+  console.log('Sortering... index.htlm')
 
   learanta = learanta.replace(',', '.');
   moankranta = moankranta.replace(',', '.');
