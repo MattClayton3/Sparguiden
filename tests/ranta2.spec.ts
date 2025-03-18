@@ -918,6 +918,9 @@ test('Sorterat', async () => {
   fs.writeFileSync(outputFile, '<!DOCTYPE html>\n');
   fs.appendFileSync(outputFile, '<html>\n');
   fs.appendFileSync(outputFile, '<head>\n');
+  fs.appendFileSync(outputFile, '<meta name="description" content="Sparguiden Fastränta 3 månader">\n');
+  fs.appendFileSync(outputFile, '<meta name="keywords" content="HTML, Playwright, TypeScript">\n');
+  fs.appendFileSync(outputFile, '<meta name="author" content="Matt Clayton">\n');
   fs.appendFileSync(outputFile, '<meta name="viewport" content="width=device-width, initial-scale=1">\n');
   fs.appendFileSync(outputFile, '<style>\n');
   fs.appendFileSync(outputFile, 'body {font-family: Arial;}\n');
