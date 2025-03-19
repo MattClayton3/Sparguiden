@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { exec } from 'child_process';
 import utils from 'util';
 
-// Testing....
+// Testing.....
 //test.describe.configure({ mode: 'serial' });
 
 test.describe.serial('Fasträntekonto 3 mån', () => {
