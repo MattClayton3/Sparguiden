@@ -28,7 +28,7 @@ let coelikranta: any;
 let svearanta: any;
 let qredranta: any;
 let nstartranta: any;
-//let sparsydranta: any;
+let sparsydranta: any;
 let borgoranta: any;
 let broccranta: any;
 let jakranta: any;
@@ -501,30 +501,31 @@ test('Nstart', async ({ page }) => {
 });
 
 /* 20250319: Denna sida har havererat, den visar bara låneräntor ggr 5 :) plockar bort den så länge. */
-// test('Sparbanken Syd', async ({ page }) => {
-//   let sparsydresponse = await page.goto('https://www.sparbankensyd.se/privat/spara/sparkonto');
-//   //await page.getByRole('button', { name: 'Godkänn alla' }).click();
-//   await expect(page.locator('#c13297')).toContainText('Fasträntekonto');
-//   //await page.locator('#c13301 div').filter({ hasText: 'Fasträntekonto ränta 2024-12-' }).nth(1).click();
-//   let sparsydspecial = await page.locator('#c13301 div').filter({ hasText: 'Fasträntekonto ränta' }).nth(1).textContent();
-//   if (sparsydresponse) {
-//     let status = sparsydresponse.status();
-//     let sparsydbody = await sparsydresponse.text();
-//     //console.log('Content:', resursbody);
-//     if (sparsydbody.includes('Fasträntekonto')) {
-//       let sparsydord = sparsydspecial.indexOf('3 mån')
-//       //let sparsydord2 = sparsydspecial.indexOf('2,70')
-//       let sparsydkollen = sparsydspecial.substring(sparsydord, sparsydord+20)
-//       sparsydranta = sparsydspecial.substring(sparsydord+35, sparsydord+39)
-//       //console.log('Content:', sparsydbody);
-//       //console.log('Index..:', sparsydord);
-//       //console.log('Index2.:', sparsydord2);
-//       //console.log('Content:', sparsydkollen);
-//       console.log('Sparbanken Syd');
-//       console.log('Fast 3 månaders ränta:', sparsydranta, '%');
-//     }
-//   }
-// });
+/* 20250325: Uppdaterad till nya utseendet. */
+test('Sparbanken Syd', async ({ page }) => {
+  let sparsydresponse = await page.goto('https://www.sparbankensyd.se/sv/privat/spara-placera-forsakra/spara/sparkonto');
+  await page.getByRole('button', { name: 'Godkänn alla' }).click();
+  await expect(page.locator('#main-content')).toContainText('Fasträntekonto');
+  //await expect(page.getByRole('rowgroup')).toContainText('2,45');
+  //await expect(page.getByRole('rowgroup')).toMatchAriaSnapshot(`- cell "3 mån"`);
+  if (sparsydresponse) {
+    let status = sparsydresponse.status();
+    let sparsydbody = await sparsydresponse.text();
+    //console.log('Content:', sparsydbody);
+    if (sparsydbody.includes('Fasträntekonto')) {
+      let sparsydord = sparsydbody.indexOf('&nbsp;3 m&aring;n')
+      //let sparsydord2 = sparsydspecial.indexOf('2,70')
+      let sparsydkollen = sparsydbody.substring(sparsydord, sparsydord+20)
+      sparsydranta = sparsydbody.substring(sparsydord+100, sparsydord+104)
+      //console.log('Content:', sparsydbody);
+      //console.log('Index..:', sparsydord);
+      //console.log('Index2.:', sparsydord2);
+      //console.log('Content:', sparsydkollen);
+      console.log('Sparbanken Syd');
+      console.log('Fast 3 månaders ränta:', sparsydranta, '%');
+    }
+  }
+});
 
 test('Borgo', async ({ page }) => {
   let borgoresponse = await page.goto('https://www.borgohypotek.se/sparkonto#privatpersoner');
@@ -656,18 +657,21 @@ test('Froda', async ({ page }) => {
   }
 });
 
+/* 2015-03-25: Uppdaterad till nya utseenset. */
 test('Northmill Bank', async ({ page }) => {
-  let northresonse = await page.goto('https://www.northmill.com/se/sparkonto/');
+  let northresonse = await page.goto('https://www.northmill.com/se/spara/fastrantekonto/');
   await page.getByRole('button', { name: 'Tillåt alla' }).click();
-  await expect(page.getByRole('main')).toContainText('fasträntekonton');
+  await expect(page.locator('h1')).toContainText('Fasträntekonto');
+  //await page.getByText('%').nth(1).click();
+  //await page.getByText('3 månader med fast årsränta').click();
   if (northresonse) {
     let status = northresonse.status();
     let northbody = await northresonse.text();
-    //console.log('Content:', resursbody);
-    if (northbody.includes('Sparkonto')) {
-      let northord = northbody.indexOf('3 månader - ')
+    //console.log('Content:', northbody);
+    if (northbody.includes('Fasträntekonto')) {
+      let northord = northbody.indexOf('3 månader med fast årsränta')
       let northkollen = northbody.substring(northord, northord+20)
-      northranta = northbody.substring(northord+12, northord+16)
+      northranta = northbody.substring(northord+137, northord+141)
       //console.log('Content:', northbody);
       //console.log('Index..:', northord);
       //console.log('Content:', northkollen);
@@ -790,9 +794,9 @@ test('Sammanställning', async () => {
   console.log('Nstart');
   console.log('Fast 3 månaders ränta:', nstartranta, '%');
   console.log('');
-  // console.log('Sparbanken Syd');
-  // console.log('Fast 3 månaders ränta:', sparsydranta, '%');
-  // console.log('');
+  console.log('Sparbanken Syd');
+  console.log('Fast 3 månaders ränta:', sparsydranta, '%');
+  console.log('');
   console.log('Borgo');
   console.log('Fast 3 månaders ränta:', borgoranta, '%');
   console.log('');
@@ -847,7 +851,7 @@ test('Sorterat', async () => {
   svearanta = svearanta.replace(',', '.');
   qredranta = qredranta.replace(',', '.');
   nstartranta = nstartranta.replace(',', '.');
-  // sparsydranta = sparsydranta.replace(',', '.');
+  sparsydranta = sparsydranta.replace(',', '.');
   borgoranta = borgoranta.replace(',', '.');
   broccranta = broccranta.replace(',', '.');
   jakranta = jakranta.replace(',', '.');
@@ -886,14 +890,14 @@ test('Sorterat', async () => {
     { banknamn: 'Svea Bank', bank: '<a href="https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto" target="_blank">Svea Bank</a>', ranta: svearanta},
     { banknamn: 'Qred Bank', bank: '<a href="https://www.qred.se/sparkonto" target="_blank">Qred Bank</a>', ranta: qredranta},
     { banknamn: 'Nstart', bank: '<a href="https://se.nstart.com/spara" target="_blank">Nstart</a>', ranta: nstartranta},
-    // { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/privat/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
+    { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/sv/privat/spara-placera-forsakra/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
     { banknamn: 'Borgo', bank: '<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>', ranta: borgoranta},
     { banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a>', ranta: broccranta},
     { banknamn: 'JAK Medlemsbank', bank: '<a href="https://www.jak.se/vardagstjanster/spara-placera/" target="_blank">JAK Medlemsbank</a>', ranta: jakranta},
     { banknamn: 'Aros Kapital', bank: '<a href="https://www.aroskapital.se/tjanster/spara/" target="_blank">Aros Kapital</a>', ranta: arosranta},
     { banknamn: 'Serafim Finans', bank: '<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a>', ranta: serafimranta},
     { banknamn: 'Froda', bank: '<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>', ranta: frodaranta},
-    { banknamn: 'Northmill Bank', bank: '<a href="https://www.northmill.com/se/sparkonto/" target="_blank">Northmill Bank</a>', ranta: northranta},
+    { banknamn: 'Northmill Bank', bank: '<a href="https://www.northmill.com/se/spara/fastrantekonto/" target="_blank">Northmill Bank</a>', ranta: northranta},
     { banknamn: 'Multitude Bank', bank: '<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>', ranta: multiranta},
     // { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a>', ranta: klarnaranta},
   ];
