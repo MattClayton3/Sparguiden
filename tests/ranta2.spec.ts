@@ -984,18 +984,50 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, `      <th>Netto per dag<br>Ex. ${exempelBelopp} kr</th>\n`);
   fs.appendFileSync(outputFile, '    </tr>\n');
 
+  let counter = 0;
   let i = 0;
   let position: string = '';
   do {
-    if (i == 0){
-      position = '&#129351;';
-    }
-    if (i == 1){
-      position = '&#129352;';
-    }
-    if (i == 2){
-      position = '&#129353;';
-    }
+    if (counter == 3)
+      {
+        if(bankarr[i].ranta == bankarr[i-1].ranta)
+          {
+            position = '&#129353;';
+          }
+          else
+          {
+            counter = 4;
+            position = '';
+          }
+      }
+      if (counter == 2)
+        {
+          if(bankarr[i].ranta == bankarr[i-1].ranta)
+            {
+              position = '&#129352;';
+            }
+            else
+            {
+              counter = 3;
+              position = '&#129353;';
+            }
+        }
+      if (counter == 1)
+        {
+          if(bankarr[i].ranta == bankarr[i-1].ranta)
+            {
+              position = '&#129351;';
+            }
+            else
+            {
+              counter = 2;
+              position = '&#129352;';
+            }
+        }
+        if (i == 0){
+          counter = 1;
+          position = '&#129351;';
+        }
     let color = 'green';
     const banken: string = bankarr[i].bank;
     const rantan: number = bankarr[i].ranta;
