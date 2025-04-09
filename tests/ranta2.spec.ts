@@ -952,7 +952,7 @@ test('Sorterat', async () => {
   fs.writeFileSync(outputFile, '<!DOCTYPE html>\n');
   fs.appendFileSync(outputFile, '<html>\n');
   fs.appendFileSync(outputFile, '<head>\n');
-  fs.appendFileSync(outputFile, '<meta name="description" content="Sparguiden Fastränta 3 månader">\n');
+  fs.appendFileSync(outputFile, '<meta name="description" content="Sparguiden Fasträntekonto 3 månader">\n');
   fs.appendFileSync(outputFile, '<meta name="keywords" content="HTML, Playwright, TypeScript">\n');
   fs.appendFileSync(outputFile, '<meta name="author" content="Matt Clayton">\n');
   fs.appendFileSync(outputFile, '<meta name="viewport" content="width=device-width, initial-scale=1">\n');
@@ -973,6 +973,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '</head>\n');
   fs.appendFileSync(outputFile, '<body>\n');
   fs.appendFileSync(outputFile, `<h2><span style='font-size:30px;'>&#128200;</span> Sparguiden ${fullDate}</h2>\n`);
+  fs.appendFileSync(outputFile, '<p>Bästa fasträntekontot just nu. Listan tas fram 2 gånger per dag, morgon och kväll, måndag - fredag.</p>\n');
   // fs.appendFileSync(outputFile, '<p>Fasträntekonto 1* - 3 mån.</p>\n');
   fs.appendFileSync(outputFile, '<div style="overflow-x:auto;">\n');
   fs.appendFileSync(outputFile, '  <table>\n');
