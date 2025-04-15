@@ -479,23 +479,22 @@ test('Qred Bank', async ({ page }) => {
   }
 });
 
-test('Nstart', async ({ page }) => {
-  let nstartresponse = await page.goto('https://se.nstart.com/spara');
-  await page.getByLabel('Godkänn alla', { exact: true }).click();
-  await expect(page.locator('body')).toContainText('Nstarts sparkonton');
-  //await page.locator('#w-node-_88662bc4-e716-96be-a179-aa2aa6484a59-47314e88').click();
+test('NstartPlus1', async ({ page }) => {
+  let nstartresponse = await page.goto('https://www.plus1.com/');
+  await page.getByRole('button', { name: 'Godkänn alla' }).click();
+  await expect(page.locator('#splide01-slide01')).toContainText('Sparkonto Fast 3 mån');
   if (nstartresponse) {
     let status = nstartresponse.status();
     let nstartbody = await nstartresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', nstartbody);
     if (nstartbody.includes('sparkonton')) {
-      let nstartord = nstartbody.indexOf('Sparkonto Fast 3 månader')
+      let nstartord = nstartbody.indexOf('Sparkonto Fast 3 mån')
       let nstartkollen = nstartbody.substring(nstartord, nstartord+20)
-      nstartranta = nstartbody.substring(nstartord+32, nstartord+36)
+      nstartranta = nstartbody.substring(nstartord+99, nstartord+103)
       //console.log('Content:', nstartbody);
       //console.log('Index..:', nstartord);
       //console.log('Content:', sveakollen);
-      console.log('Nstart');
+      console.log('Plus1 (Nstart)');
       console.log('Fast 3 månaders ränta:', nstartranta, '%');
     }
   }
@@ -916,7 +915,7 @@ test('Sorterat', async () => {
     { banknamn: 'Coeli', bank: '<a href="https://coeli.se/spara/" target="_blank">Coeli</a>', ranta: coelikranta},
     { banknamn: 'Svea Bank', bank: '<a href="https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto" target="_blank">Svea Bank</a>', ranta: svearanta},
     { banknamn: 'Qred Bank', bank: '<a href="https://www.qred.se/sparkonto" target="_blank">Qred Bank</a>', ranta: qredranta},
-    { banknamn: 'Nstart', bank: '<a href="https://se.nstart.com/spara" target="_blank">Nstart</a>', ranta: nstartranta},
+    { banknamn: 'Plus1 (Nstart)', bank: '<a href="https://www.plus1.com/" target="_blank">Plus1 (Nstart)</a>', ranta: nstartranta},
     { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/sv/privat/spara-placera-forsakra/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
     { banknamn: 'Borgo', bank: '<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>', ranta: borgoranta},
     { banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a>', ranta: broccranta},
