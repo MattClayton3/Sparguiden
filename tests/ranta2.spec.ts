@@ -262,11 +262,11 @@ test('Handelsbanken', async ({ page }) => {
   if (shbresponse) {
     let status = shbresponse.status();
     let shbbody = await shbresponse.text();
-    //console.log(medbody)
+    //console.log(shbbody)
     if (shbbody.includes('Placeringskonto')) {
       let shbord = shbbody.indexOf('3 månader med automatisk förlängning')
       let shbkollen = shbbody.substring(shbord, shbord+20)
-      shbranta = shbbody.substring(shbord+248, shbord+252)
+      shbranta = shbbody.substring(shbord+252, shbord+256)
       //console.log('Content:', shbbody);
       //console.log('Index..:', shbord);
       //console.log('Content:', shbkollen);
