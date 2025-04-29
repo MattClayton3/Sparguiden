@@ -1,22 +1,26 @@
 import { test, expect } from '@playwright/test';
 
-test('Danske Bank', async ({ page }) => {
-  let danskresponse = await page.goto('https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering');
-  await page.getByRole('button', { name: 'OK till alla' }).click();
-  await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
-  if (danskresponse) {
-    let status = danskresponse.status();
-    let danskbody = await danskresponse.text();
-    console.log('Content:', danskbody);
-    if (danskbody.includes('>3 månader<')) {
-      let danskord = danskbody.indexOf('>3 månader<')
-      let danskkollen = danskbody.substring(danskord, danskord+20)
-      let danskranta = danskbody.substring(danskord+88, danskord+92)
-      //console.log('Content:', danskbody);
-      //console.log('Index..:', danskord);
-      //console.log('Content:', danskkollen);
-      console.log('Danske Bank');
-      console.log('Fast 3 månaders ränta:', danskranta, '%');
+/* 20250319: Klarna krånglar, plockar bort denna. Sämsta räntan i vilket fall. */
+/* 20250326: Klarna krånglar IGEN, plockar bort denna. Sämsta räntan i vilket fall. */
+test('Klarna', async ({ page }) => {
+  let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
+  await page.getByRole('button', { name: 'Tillåt alla' }).click();
+  await expect(page.locator('#content-below-header')).toContainText('Fastkonto');
+  //await page.getByText('3 månader').click();
+  //await page.getByText('2,15%').click();
+  if (klarnaresponse) {
+    let status = klarnaresponse.status();
+    let klarnabody = await klarnaresponse.text();
+    //console.log('Content:', klarnabody);
+    if (klarnabody.includes('Fastkonto')) {
+      let klarnaord = klarnabody.indexOf('">3</span>')
+      let klarnakollen = klarnabody.substring(klarnaord, klarnaord+20)
+      let klarnaranta = klarnabody.substring(klarnaord+352, klarnaord+353)
+      //console.log('Content:', klarnabody);
+      //console.log('Index..:', klarnaord);
+      //console.log('Content:', klarnakollen);
+      console.log('Klarna');
+      console.log('Fast 3 månaders ränta:', klarnaranta, '%');
     }
   }
 });
