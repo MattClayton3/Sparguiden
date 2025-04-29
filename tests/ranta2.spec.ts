@@ -39,6 +39,7 @@ let northranta: any;
 let multiranta:any;
 //let klarnaranta:any;
 let hoistranta:any;
+let danskranta:any;
 
 // Skapar upp dagens datum.
 let date = new Date()
@@ -750,6 +751,27 @@ test('HoistSpar', async ({ page }) => {
   }
 });
 
+test('Danske Bank', async ({ page }) => {
+  let danskresponse = await page.goto('https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering');
+  await page.getByRole('button', { name: 'OK till alla' }).click();
+  await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  if (danskresponse) {
+    let status = danskresponse.status();
+    let danskbody = await danskresponse.text();
+    console.log('Content:', danskbody);
+    if (danskbody.includes('>3 månader<')) {
+      let danskord = danskbody.indexOf('>3 månader<')
+      let danskkollen = danskbody.substring(danskord, danskord+20)
+      danskranta = danskbody.substring(danskord+88, danskord+92)
+      //console.log('Content:', danskbody);
+      //console.log('Index..:', danskord);
+      //console.log('Content:', danskkollen);
+      console.log('Danske Bank');
+      console.log('Fast 3 månaders ränta:', danskranta, '%');
+    }
+  }
+});
+
 test('Sammanställning', async () => {
   console.log('Sammanställning...');
   //console.log('');
@@ -849,6 +871,9 @@ test('Sammanställning', async () => {
   console.log('HoistSpar');
   console.log('Fast 3 månaders ränta:', hoistranta, '%');
   console.log('');
+  console.log('Danske Bank');
+  console.log('Fast 3 månaders ränta:', danskranta, '%');
+  console.log('');
   // ...
 });
 
@@ -887,6 +912,7 @@ test('Sorterat', async () => {
   multiranta = multiranta.replace(',', '.');
   // klarnaranta = klarnaranta.replace(',', '.');
   hoistranta = hoistranta.replace(',', '.');
+  danskranta = danskranta.replace(',', '.');
   
   interface Banks{
     banknamn: string;
@@ -927,6 +953,7 @@ test('Sorterat', async () => {
     { banknamn: 'Multitude Bank', bank: '<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>', ranta: multiranta},
     //{ banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a>', ranta: klarnaranta},
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
+    { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
   ];
   
   bankarr.sort((a,b) => {
@@ -988,11 +1015,13 @@ test('Sorterat', async () => {
   let i = 0;
   let position: string = '';
   do {
+    let color = 'black';
     if (counter == 3)
       {
         if(bankarr[i].ranta == bankarr[i-1].ranta)
           {
             position = '&#129353;';
+            color = 'green';
           }
           else
           {
@@ -1005,11 +1034,13 @@ test('Sorterat', async () => {
           if(bankarr[i].ranta == bankarr[i-1].ranta)
             {
               position = '&#129352;';
+              color = 'green';
             }
             else
             {
               counter = 3;
               position = '&#129353;';
+              color = 'green';
             }
         }
       if (counter == 1)
@@ -1017,23 +1048,26 @@ test('Sorterat', async () => {
           if(bankarr[i].ranta == bankarr[i-1].ranta)
             {
               position = '&#129351;';
+              color = 'green';
             }
             else
             {
               counter = 2;
               position = '&#129352;';
+              color = 'green';
             }
         }
         if (i == 0){
           counter = 1;
           position = '&#129351;';
+          color = 'green';
         }
-    let color = 'green';
+    //let color = 'green';
     const banken: string = bankarr[i].bank;
     const rantan: number = bankarr[i].ranta;
-    if (rantan < 3.00){
-      color = 'black';
-    }
+    // if (rantan < 3.00){
+    //   color = 'black';
+    // }
     if (rantan < 2.50){
       color = 'red';
       position = '&#129317;';
