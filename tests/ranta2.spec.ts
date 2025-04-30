@@ -708,7 +708,7 @@ test('Multitude Bank', async ({ page }) => {
 /* 20250319: Klarna krånglar, plockar bort denna. Sämsta räntan i vilket fall. */
 /* 20250326: Klarna krånglar IGEN, plockar bort denna. Sämsta räntan i vilket fall. */
 /* 20250429: Provar att lägga tillbaka Klarna. */
-/* 20250430: Klarna krånglar IGEN, plockar bort denna. Fastränte sidan nere... Kör manuellt med 2.00 % */
+/* 20250430: Klarna krånglar IGEN, plockar bort denna. Fastränte sidan nere. Kör manuellt med 2.00 % */
 
 // test('Klarna', async ({ page }) => {
 //   let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
