@@ -37,7 +37,7 @@ let serafimranta: any;
 let frodaranta: any;
 let northranta: any;
 let multiranta:any;
-let klarnaranta:any;
+let klarnaranta = "2.00";
 let hoistranta:any;
 let danskranta:any;
 
@@ -708,28 +708,30 @@ test('Multitude Bank', async ({ page }) => {
 /* 20250319: Klarna krånglar, plockar bort denna. Sämsta räntan i vilket fall. */
 /* 20250326: Klarna krånglar IGEN, plockar bort denna. Sämsta räntan i vilket fall. */
 /* 20250429: Provar att lägga tillbaka Klarna. */
-test('Klarna', async ({ page }) => {
-  let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
-  await page.getByRole('button', { name: 'Tillåt alla' }).click();
-  await expect(page.locator('#content-below-header')).toContainText('Fastkonto');
-  //await page.getByText('3 månader').click();
-  //await page.getByText('2,15%').click();
-  if (klarnaresponse) {
-    let status = klarnaresponse.status();
-    let klarnabody = await klarnaresponse.text();
-    //console.log('Content:', klarnabody);
-    if (klarnabody.includes('Fastkonto')) {
-      let klarnaord = klarnabody.indexOf('">3</span>')
-      let klarnakollen = klarnabody.substring(klarnaord, klarnaord+20)
-      klarnaranta = klarnabody.substring(klarnaord+352, klarnaord+353)
-      //console.log('Content:', klarnabody);
-      //console.log('Index..:', klarnaord);
-      //console.log('Content:', klarnakollen);
-      console.log('Klarna');
-      console.log('Fast 3 månaders ränta:', klarnaranta, '%');
-    }
-  }
-});
+/* 20250430: Klarna krånglar IGEN, plockar bort denna. Fastränte sidan nere... Kör manuellt med 2.00 % */
+
+// test('Klarna', async ({ page }) => {
+//   let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
+//   await page.getByRole('button', { name: 'Tillåt alla' }).click();
+//   await expect(page.locator('#content-below-header')).toContainText('Fastkonto');
+//   //await page.getByText('3 månader').click();
+//   //await page.getByText('2,15%').click();
+//   if (klarnaresponse) {
+//     let status = klarnaresponse.status();
+//     let klarnabody = await klarnaresponse.text();
+//     //console.log('Content:', klarnabody);
+//     if (klarnabody.includes('Fastkonto')) {
+//       let klarnaord = klarnabody.indexOf('">3</span>')
+//       let klarnakollen = klarnabody.substring(klarnaord, klarnaord+20)
+//       klarnaranta = klarnabody.substring(klarnaord+352, klarnaord+353)
+//       //console.log('Content:', klarnabody);
+//       //console.log('Index..:', klarnaord);
+//       //console.log('Content:', klarnakollen);
+//       console.log('Klarna');
+//       console.log('Fast 3 månaders ränta:', klarnaranta, '%');
+//     }
+//   }
+// });
 
 test('HoistSpar', async ({ page }) => {
   let hoistresponse = await page.goto('https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/');
@@ -922,7 +924,7 @@ test('Sorterat', async () => {
   }
 
   const bankarr: Banks[] = [
-    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank *(1 mån)</a>', ranta: learanta },
+    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank</a>', ranta: learanta },
     { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
     { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
@@ -952,7 +954,7 @@ test('Sorterat', async () => {
     { banknamn: 'Froda', bank: '<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>', ranta: frodaranta},
     { banknamn: 'Northmill Bank', bank: '<a href="https://www.northmill.com/se/spara/fastrantekonto/" target="_blank">Northmill Bank</a>', ranta: northranta},
     { banknamn: 'Multitude Bank', bank: '<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>', ranta: multiranta},
-    { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a>', ranta: klarnaranta},
+    { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna !</a>', ranta: klarnaranta},
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
   ];
@@ -1005,7 +1007,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<div style="overflow-x:auto;">\n');
   fs.appendFileSync(outputFile, '  <table>\n');
   fs.appendFileSync(outputFile, '    <tr>\n');
-  fs.appendFileSync(outputFile, '      <th>Bank<br>Fasträntekonto *1 - 3 månader.</th>\n');
+  fs.appendFileSync(outputFile, '      <th>Bank<br>Fasträntekonto 3 månader.</th>\n');
   fs.appendFileSync(outputFile, '      <th>Ränta %</th>\n');
   fs.appendFileSync(outputFile, `      <th>Kvartal<br>Ex. ${exempelBelopp} kr</th>\n`);
   fs.appendFileSync(outputFile, `      <th>Netto kvartal<br>Ex. ${exempelBelopp} kr</th>\n`);
@@ -1099,6 +1101,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '  </table>\n');
   fs.appendFileSync(outputFile, '</div>\n');
   fs.appendFileSync(outputFile, '<br>Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">GitHub</a> &#127917; <a href="https://mgc2.webnode.se/sparguiden/" target="_blank">Webnode</a>\n');
+  fs.appendFileSync(outputFile, '<br>! = Ostabil sida, räntan hårdkodad.\n');
   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
 
