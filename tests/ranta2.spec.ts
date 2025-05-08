@@ -735,7 +735,7 @@ test('Multitude Bank', async ({ page }) => {
 
 test('HoistSpar', async ({ page }) => {
   let hoistresponse = await page.goto('https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/');
-  await page.getByRole('button', { name: 'Accept & Close' }).click();
+  //await page.getByRole('button', { name: 'Accept & Close' }).click();
   await expect(page.getByRole('rowgroup')).toContainText('Sparkonto Fast');
   if (hoistresponse) {
     let status = hoistresponse.status();
