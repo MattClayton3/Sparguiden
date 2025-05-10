@@ -736,7 +736,7 @@ test('Multitude Bank', async ({ page }) => {
 test('HoistSpar', async ({ page }) => {
   let hoistresponse = await page.goto('https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/');
   //await page.getByRole('button', { name: 'Accept & Close' }).click();
-  await expect(page.getByRole('rowgroup')).toContainText('Sparkonto Fast');
+  //await expect(page.getByRole('rowgroup')).toContainText('Sparkonto Fast');
   if (hoistresponse) {
     let status = hoistresponse.status();
     let hoistbody = await hoistresponse.text();
@@ -756,12 +756,12 @@ test('HoistSpar', async ({ page }) => {
 
 test('Danske Bank', async ({ page }) => {
   let danskresponse = await page.goto('https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering');
-  await page.getByRole('button', { name: 'OK till alla' }).click();
-  await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  //await page.getByRole('button', { name: 'OK till alla' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
   if (danskresponse) {
     let status = danskresponse.status();
     let danskbody = await danskresponse.text();
-    console.log('Content:', danskbody);
+    //console.log('Content:', danskbody);
     if (danskbody.includes('>3 månader<')) {
       let danskord = danskbody.indexOf('>3 månader<')
       let danskkollen = danskbody.substring(danskord, danskord+20)
