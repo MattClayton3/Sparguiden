@@ -418,11 +418,11 @@ test('Coeli', async ({ page }) => {
   if (coeliresponse) {
     let status = coeliresponse.status();
     let coelibody = await coeliresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', coelibody);
     if (coelibody.includes('sparkonto')) {
-      let coelikord = coelibody.indexOf('Sparkonto 3 månader: från')
+      let coelikord = coelibody.indexOf('Sparkonto 3 månader:')
       let coelikollen = coelibody.substring(coelikord, coelikord+20)
-      coelikranta = coelibody.substring(coelikord+26, coelikord+30)
+      coelikranta = coelibody.substring(coelikord+21, coelikord+25)
       //console.log('Content:', coelibody);
       //console.log('Index..:', qlirokord);
       //console.log('Content:', qlirokollen);
@@ -491,7 +491,7 @@ test('NstartPlus1', async ({ page }) => {
     if (nstartbody.includes('sparkonton')) {
       let nstartord = nstartbody.indexOf('Sparkonto Fast 3 mån')
       let nstartkollen = nstartbody.substring(nstartord, nstartord+20)
-      nstartranta = nstartbody.substring(nstartord+99, nstartord+103)
+      nstartranta = nstartbody.substring(nstartord+83, nstartord+87)
       //console.log('Content:', nstartbody);
       //console.log('Index..:', nstartord);
       //console.log('Content:', sveakollen);
