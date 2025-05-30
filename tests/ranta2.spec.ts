@@ -189,7 +189,7 @@ test('MedMera Bank', async ({ page }) => {
     let status = medresponse.status();
     let medbody = await medresponse.text();
     //console.log(medbody)
-    if (medbody.includes('Räntor för fasträntekonto')) {
+    if (medbody.includes('Fasträntekonto')) {
       let medord = medbody.indexOf('just nu upp till')
       let medkollen = medbody.substring(medord, medord+20)
       medranta = medbody.substring(medord+17, medord+21)
