@@ -221,7 +221,7 @@ test('Skandia Bank', async ({ page }) => {
   if (skandiaresponse) {
     let status = skandiaresponse.status();
     let skandiabody = await skandiaresponse.text();
-    //console.log(medbody)
+    //console.log(skandiabody)
     if (skandiabody.includes('Fasträntekonto')) {
       let skandiabord = skandiabody.indexOf('3 m&aring;nader')
       let shbkollen = skandiabody.substring(skandiabord, skandiabord+20)
@@ -740,7 +740,7 @@ test('HoistSpar', async ({ page }) => {
   if (hoistresponse) {
     let status = hoistresponse.status();
     let hoistbody = await hoistresponse.text();
-    console.log('Content:', hoistbody);
+    //console.log('Content:', hoistbody);
     if (hoistbody.includes('Sparkonto Fast')) {
       let hoisthord = hoistbody.indexOf('>3 m&#229;nader<')
       let hoistkollen = hoistbody.substring(hoisthord, hoisthord+20)
