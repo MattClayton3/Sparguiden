@@ -221,11 +221,11 @@ test('Skandia Bank', async ({ page }) => {
   if (skandiaresponse) {
     let status = skandiaresponse.status();
     let skandiabody = await skandiaresponse.text();
-    //console.log(skandiabody)
+    console.log(skandiabody)
     if (skandiabody.includes('Fasträntekonto')) {
-      let skandiabord = skandiabody.indexOf('3 m&aring;nader')
+      let skandiabord = skandiabody.indexOf('"cellHeader": "Fast ränta",')
       let shbkollen = skandiabody.substring(skandiabord, skandiabord+20)
-      Skandiaranta = skandiabody.substring(skandiabord+64, skandiabord+68)
+      Skandiaranta = skandiabody.substring(skandiabord+83, skandiabord+87)
       //console.log('Content:', skandiabody);
       //console.log('Index..:', skandiabord);
       //console.log('Content:', shbkollen);
