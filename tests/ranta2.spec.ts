@@ -936,7 +936,7 @@ test('Sorterat', async () => {
     { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
     { banknamn: 'Skandia Bank', bank: '<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia Bank</a>', ranta: Skandiaranta},
     { banknamn: 'Swedban', bank: '<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a>', ranta: swedbankranta},
-    { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/placeringskonto-privat" target="_blank">Handelsbanken</a>', ranta: shbranta},
+    { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/placeringskonto-privat" target="_blank">Handelsbanken !</a>', ranta: shbranta},
     { banknamn: 'Nordea', bank: '<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>', ranta: nordearanta},
     { banknamn: 'SEB', bank: '<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>', ranta: sebranta},
     { banknamn: 'Länsförsäkringar Bank', bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar Bank</a>', ranta: lansfranta},
@@ -1103,7 +1103,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '  </table>\n');
   fs.appendFileSync(outputFile, '</div>\n');
   fs.appendFileSync(outputFile, '<br>Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">GitHub</a> &#127917; <a href="https://mgc2.webnode.se/sparguiden/" target="_blank">Webnode</a>\n');
-  fs.appendFileSync(outputFile, '<br>! = Ostabil sida, räntan hårdkodad.\n');
+  fs.appendFileSync(outputFile, '<br>! = Räntan hårdkodad.\n');
   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
 
