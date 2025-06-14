@@ -12,7 +12,7 @@ let blueranta: any;
 let medranta: any;
 let sbabranta: any;
 let Skandiaranta: any;
-let shbranta: any;
+let shbranta = "2.10";
 let nordiskaranta: any;
 let epranta: any;
 let learanta: any;
@@ -224,11 +224,11 @@ test('Skandia Bank', async ({ page }) => {
     //console.log(skandiabody)
     if (skandiabody.includes('Fasträntekonto')) {
       let skandiabord = skandiabody.indexOf('"cellHeader": "Fast ränta",')
-      let shbkollen = skandiabody.substring(skandiabord, skandiabord+20)
+      let skandiakollen = skandiabody.substring(skandiabord, skandiabord+20)
       Skandiaranta = skandiabody.substring(skandiabord+83, skandiabord+87)
       //console.log('Content:', skandiabody);
       //console.log('Index..:', skandiabord);
-      //console.log('Content:', shbkollen);
+      //console.log('Content:', skandiakollen);
       console.log('Skandia Bank');
       console.log('Fast 3 månaders ränta:', Skandiaranta, '%');
     }
@@ -256,26 +256,28 @@ test('Swedbank', async ({ page }) => {
   }
 });
 
-test('Handelsbanken', async ({ page }) => {
-  let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/placeringskonto-privat');
-  await page.getByTestId('CookieConsent__acceptButton').click();
-  await expect(page.locator('[data-test-id="shb-hero-headline"]')).toContainText('Placeringskonto');
-  if (shbresponse) {
-    let status = shbresponse.status();
-    let shbbody = await shbresponse.text();
-    //console.log(shbbody)
-    if (shbbody.includes('Placeringskonto')) {
-      let shbord = shbbody.indexOf('3 månader med automatisk förlängning')
-      let shbkollen = shbbody.substring(shbord, shbord+20)
-      shbranta = shbbody.substring(shbord+252, shbord+256)
-      //console.log('Content:', shbbody);
-      //console.log('Index..:', shbord);
-      //console.log('Content:', shbkollen);
-      console.log('Handelsbanken');
-      console.log('Fast 3 månaders ränta:', shbranta, '%');
-    }
-  }
-});
+/* Plockar bort SHB en stund. Sätter räntan fast så länge. */
+
+// test('Handelsbanken', async ({ page }) => {
+//   let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/rantor-privatpersoner');
+//   await page.getByTestId('CookieConsent__acceptButton').click();
+//   //await expect(page.locator('[data-test-id="shb-hero-headline"]')).toContainText('Placeringskonto');
+//   if (shbresponse) {
+//     let status = shbresponse.status();
+//     let shbbody = await shbresponse.text();
+//     //console.log(shbbody)
+//     //if (shbbody.includes('Placeringskonto')) {
+//       let shbord = shbbody.indexOf('3 månader med automatisk förlängning')
+//       let shbkollen = shbbody.substring(shbord, shbord+20)
+//       shbranta = shbbody.substring(shbord+252, shbord+256)
+//       //console.log('Content:', shbbody);
+//       //console.log('Index..:', shbord);
+//       //console.log('Content:', shbkollen);
+//       console.log('Handelsbanken');
+//       console.log('Fast 3 månaders ränta:', shbranta, '%');
+//     //}
+//   }
+// });
 
 test('Nordea', async ({ page }) => {
   let nordearesponse = await page.goto('https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html');
