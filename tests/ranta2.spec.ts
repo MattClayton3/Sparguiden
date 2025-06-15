@@ -8,7 +8,7 @@ import utils from 'util';
 
 test.describe.serial('Fasträntekonto 3 mån', () => {
 let blueranta: any;
-// let resursranta: any;
+let resursranta: any;
 let medranta: any;
 let sbabranta: any;
 let Skandiaranta: any;
@@ -58,7 +58,7 @@ test('Lea Bank', async ({ page }) => {
   if (learesponse) {
     let status = learesponse.status();
     let leabody = await learesponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', leabody);
     if (leabody.includes('Sparkonto Plus')) {
       let leaord = leabody.indexOf('närvarande är')
       let leakakollen = leabody.substring(leaord, leaord+20)
@@ -79,7 +79,7 @@ test('Moank', async ({ page }) => {
   if (moankresponse) {
     let status = moankresponse.status();
     let moankbody = await moankresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', moankbody);
     if (moankbody.includes('Spara med fast ränta')) {
       let moankord = moankbody.indexOf('Fast 90 dagar')
       let lmoankkollen = moankbody.substring(moankord, moankord+20)
@@ -120,7 +120,7 @@ test('EP Bank (Erik Penser)', async ({ page }) => {
   if (epresponse) {
     let status = epresponse.status();
     let epbody = await epresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', epbody);
     if (epbody.includes('fasträntekonto')) {
       let epord = epbody.indexOf('3 månaders löptid')
       let epkollen = epbody.substring(epord, epord+20)
@@ -134,29 +134,27 @@ test('EP Bank (Erik Penser)', async ({ page }) => {
   }
 });
 
-/* Resurs bank har inte längre fastränta 3 mån. */
-
-// test('Resurs Bank', async ({ page }) => {
-//   let resursresponse = await page.goto('https://www.resursbank.se/sparkonto/fastrantekonto');
-//   await page.getByRole('button', { name: 'Acceptera cookies' }).click();
-//   expect(page.getByRole('main')).toContainText('Fasträntekontot omfattas av insättningsgarantin');
-//   //await page.locator('strong').filter({ hasText: '%' }).click();
-//   if (resursresponse) {
-//     let status = resursresponse.status();
-//     let resursbody = await resursresponse.text();
-//     //console.log('Content:', resursbody);
-//     if (resursbody.includes('Fasträntekontot')) {
-//       let resursord = resursbody.indexOf('\nDu får')
-//       let resurskollen = resursbody.substring(resursord, resursord+20)
-//       resursranta = resursbody.substring(resursord+8, resursord+12)
-//       //console.log('Content:', resursbody);
-//       //console.log('Index..:', resursord);
-//       //console.log('Content:', resurskollen);
-//       console.log('Resurs Bank');
-//       console.log('Fast 3 månaders ränta:', resursranta, '%');
-//     }
-//   }
-// });
+test('Resurs', async ({ page }) => {
+  let resursresponse = await page.goto('https://www.resursbank.se/sparkonto');
+  await page.getByRole('button', { name: 'Acceptera cookies' }).click();
+  //await page.locator('span').filter({ hasText: '%' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Våra sparkonton');
+  if (resursresponse) {
+    let status = resursresponse.status();
+    let resursbody = await resursresponse.text();
+    //console.log('Content:', resursbody);
+    if (resursbody.includes('sparkonto')) {
+      let resursord = resursbody.indexOf('Ränta <span class="resurs')
+      let resurskollen = resursbody.substring(resursord, resursord+20)
+      resursranta = resursbody.substring(resursord+45, resursord+49)
+      //console.log('Content:', resursbody);
+      //console.log('Index..:', resursord);
+      //console.log('Content:', resurskollen);
+      console.log('Resurs Bank');
+      console.log('Sparkonto Max ränta:', resursranta, '%');
+    }
+  }
+});
 
 test('Nordiska Kreditmarknadsbolaget', async ({ page }) => {
   let nordiskaresponse = await page.goto('https://www.nordiska.se/spara/');
@@ -167,7 +165,7 @@ test('Nordiska Kreditmarknadsbolaget', async ({ page }) => {
   if (nordiskaresponse) {
     let status = nordiskaresponse.status();
     let nordiskabody = await nordiskaresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', nordiskabody);
     if (nordiskabody.includes('sparformer')) {
       let nordriskaord = nordiskabody.indexOf('<div>90 dagar</div>')
       let nordiskakollen = nordiskabody.substring(nordriskaord, nordriskaord+20)
@@ -242,7 +240,7 @@ test('Swedbank', async ({ page }) => {
   if (swedbankresponse) {
     let status = swedbankresponse.status();
     let swedbankbody = await swedbankresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', swedbankbody);
     if (swedbankbody.includes('fasträntekonto')) {
       let swedbaknord = swedbankbody.indexOf('>3 mån<')
       let swedbankkollen = swedbankbody.substring(swedbaknord, swedbaknord+20)
@@ -286,7 +284,7 @@ test('Nordea', async ({ page }) => {
   if (nordearesponse) {
     let status = nordearesponse.status();
     let nordeabody = await nordearesponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', nordeabody);
     if (nordeabody.includes('fasträntekonto')) {
       let nordeaord = nordeabody.indexOf('left">3 månader')
       let nordeakollen = nordeabody.substring(nordeaord, nordeaord+20)
@@ -307,7 +305,7 @@ test('SEB', async ({ page }) => {
   if (sebrespones) {
     let status = sebrespones.status();
     let sebbody = await sebrespones.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', sebbody);
     if (sebbody.includes('fasträntekonto')) {
       let sebord = sebbody.indexOf('>3 månader<')
       let sebkollen = sebbody.substring(sebord, sebord+20)
@@ -399,7 +397,7 @@ test('Qliro', async ({ page }) => {
   if (qliroresponse) {
     let status = qliroresponse.status();
     let qlirobody = await qliroresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', qlirobody);
     if (qlirobody.includes('sparkonto')) {
       let qlirokord = qlirospecial.indexOf('Fastsparkonto3månaderVårt')
       let qlirokollen = qlirospecial.substring(qlirokord, qlirokord+20)
@@ -447,7 +445,7 @@ test('Svea Bank', async ({ page }) => {
   if (svearesponse) {
     let status = svearesponse.status();
     let sveabody = await svearesponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', sveabody);
     if (sveabody.includes('Fasträntekonto')) {
       let sveaord = sveabody.indexOf('3 månader')
       let sveakollen = sveabody.substring(sveaord, sveaord+20)
@@ -471,7 +469,7 @@ test('Qred Bank', async ({ page }) => {
   if (qredresponse) {
     let status = qredresponse.status();
     let qredbody = await qredresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', qredbody);
     if (qredbody.includes('Sparkonto Fast')) {
       let qredord = qredbody.indexOf('>3 mån</div>')
       let qredkollen = qredbody.substring(qredord, qredord+20)
@@ -539,7 +537,7 @@ test('Borgo', async ({ page }) => {
   if (borgoresponse) {
     let status = borgoresponse.status();
     let borgobody = await borgoresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', borgobody);
     if (borgobody.includes('Borgos sparräntor')) {
       let borgoord = borgobody.indexOf('fixed_3_months')
       let borgokollen = borgobody.substring(borgoord, borgoord+20)
@@ -560,7 +558,7 @@ test('Brocc', async ({ page }) => {
   if (broccresponse) {
     let status = broccresponse.status();
     let broccbody = await broccresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', broccbody);
     if (broccbody.includes('Brocc Tillväxt')) {
       let broccord = broccbody.indexOf('>Brocc Tillväxt')
       let brocckollen = broccbody.substring(broccord, broccord+20)
@@ -581,7 +579,7 @@ test('JAK Medlemsbank', async ({ page }) => {
   if (jakresponse) {
     let status = jakresponse.status();
     let jakbody = await jakresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', jakbody);
     if (jakbody.includes('Spara')) {
       let jakord = jakbody.indexOf('Fasträntekonto för privatpersoner')
       //let jakord2 = jakbody.indexOf('3 %*')
@@ -606,7 +604,7 @@ test('Aros Kapital', async ({ page }) => {
   if (arosresponse) {
     let status = arosresponse.status();
     let arosbody = await arosresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', arosbody);
     if (arosbody.includes('Spara')) {
       let arosord = arosbody.indexOf('>– 3 månader fn ')
       let aroskollen = arosbody.substring(arosord, arosord+20)
@@ -627,7 +625,7 @@ test('Serafim Finans', async ({ page }) => {
   if (serafimresponse) {
     let status = serafimresponse.status();
     let serafimbody = await serafimresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', serafimbody);
     if (serafimbody.includes('sparkonto')) {
       let serafimord = serafimbody.indexOf('>SeraFast Privat 3 mån - ')
       let serafimkollen = serafimbody.substring(serafimord, serafimord+20)
@@ -649,7 +647,7 @@ test('Froda', async ({ page }) => {
   if (frodaresponse) {
     let status = frodaresponse.status();
     let frodabody = await frodaresponse.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', frodabody);
     if (frodabody.includes('Sparkonto')) {
       let frodaord = frodabody.indexOf('>Ränta -  3 mån')
       let frodakollen = frodabody.substring(frodaord, frodaord+20)
@@ -696,7 +694,7 @@ test('Multitude Bank', async ({ page }) => {
   if (multirespons) {
     let status = multirespons.status();
     let multihbody = await multirespons.text();
-    //console.log('Content:', resursbody);
+    //console.log('Content:', multihbody);
     if (multihbody.includes('Sparkonto')) {
       let multihord = multihbody.indexOf('<td>Fast 3 m&aring;nader</td>')
       let multikollen = multihbody.substring(multihord, multihord+20)
@@ -795,9 +793,9 @@ test('Sammanställning', async () => {
   console.log('EP Bank (Erik Penser)');
   console.log('Fast 3 månaders ränta:', epranta, '%');
   console.log('');
-  // console.log('Resurs Bank');
-  // console.log('Fast 3 månaders ränta:', resursranta, '%');
-  // console.log('');
+  console.log('Resurs Bank');
+  console.log('Sparkont Max ränta:', resursranta, '%');
+  console.log('');
   console.log('Nordiska Kreditmarknadsbolaget');
   console.log('Fast 3 månaders ränta:', nordiskaranta, '%');
   console.log('');
@@ -892,7 +890,7 @@ test('Sorterat', async () => {
   moankranta = moankranta.replace(',', '.');
   blueranta = blueranta.replace(',', '.');
   epranta = epranta.replace(',', '.');
-  //resursranta = resursranta.replace(',', '.');
+  resursranta = resursranta.replace(',', '.');
   nordiskaranta = nordiskaranta.replace(',', '.');
   medranta = medranta.replace(',', '.');
   sbabranta = sbabranta.replace(',', '.');
@@ -933,7 +931,7 @@ test('Sorterat', async () => {
     { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
     { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
-    // { banknamn: 'Resurs Bank', bank: 'Resurs Bank', ranta: resursranta},
+    { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto" target="_blank">Resurs (Sparkonto)</a>', ranta: resursranta},
     { banknamn: 'Nordiska', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>', ranta: nordiskaranta},
     { banknamn: 'MedMera Bank', bank: '<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>', ranta: medranta},
     { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
@@ -942,7 +940,7 @@ test('Sorterat', async () => {
     { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/placeringskonto-privat" target="_blank">Handelsbanken !</a>', ranta: shbranta},
     { banknamn: 'Nordea', bank: '<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>', ranta: nordearanta},
     { banknamn: 'SEB', bank: '<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>', ranta: sebranta},
-    { banknamn: 'Länsförsäkringar Bank', bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/" target="_blank">Länsförsäkringar Bank</a>', ranta: lansfranta},
+    { banknamn: 'Länsförsäkringar Bank', bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/" target="_blank">Länsförsäkringar Bank !</a>', ranta: lansfranta},
     { banknamn: 'Collector', bank: '<a href="https://www.collector.se/spara-pengar/aktuella-sparrantor/" target="_blank">Collector</a>', ranta: collectorranta},
     { banknamn: 'Marginalen Bank', bank: '<a href="https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/" target="_blank">Marginalen Bank</a>', ranta: marginalranta},
     { banknamn: 'Qliro', bank: '<a href="https://www.qliro.com/sv-se/spara" target="_blank">Qliro</a>', ranta: qlirokranta},
