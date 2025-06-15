@@ -321,18 +321,19 @@ test('SEB', async ({ page }) => {
   }  
 });
 
-test('Länsförsäkringar Bank', async ({ page }) => {
-  let lansfresponse = await page.goto('https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/');
+test('Lansforsakringar', async ({ page }) => {
+  let lansfresponse = await page.goto('https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/');
+  //await page.getByRole('button', { name: 'Tillåt alla' }).click();
   //await page.getByRole('button', { name: 'Tillåt alla' }).click();
   //await expect(page.locator('h1')).toContainText('Fasträntekonto');
   if (lansfresponse) {
     let status = lansfresponse.status();
     let lansfbody = await lansfresponse.text();
     //console.log('Content:', lansfbody);
-    if (lansfbody.includes('Fasträntekonto')) {
-      let lansford = lansfbody.indexOf('>3 m&aring;nader<')
+    if (lansfbody.includes('konto')) {
+      let lansford = lansfbody.indexOf('</a>&nbsp;3 m&aring;nader<')
       let lansfkollen = lansfbody.substring(lansford, lansford+20)
-      lansfranta = lansfbody.substring(lansford+65, lansford+69)
+      lansfranta = lansfbody.substring(lansford+66, lansford+70)
       //console.log('Content:', lansfbody);
       //console.log('Index..:', lansford);
       //console.log('Content:', lansfkollen);
