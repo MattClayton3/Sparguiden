@@ -225,7 +225,7 @@ test('Skandia Bank', async ({ page }) => {
     if (skandiabody.includes('Fasträntekonto')) {
       let skandiabord = skandiabody.indexOf('"cellHeader": "Fast ränta",')
       let skandiakollen = skandiabody.substring(skandiabord, skandiabord+20)
-      Skandiaranta = skandiabody.substring(skandiabord+83, skandiabord+87)
+      Skandiaranta = skandiabody.substring(skandiabord+80, skandiabord+84)
       //console.log('Content:', skandiabody);
       //console.log('Index..:', skandiabord);
       //console.log('Content:', skandiakollen);
