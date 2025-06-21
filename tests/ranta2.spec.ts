@@ -12,7 +12,7 @@ let resursranta: any;
 let medranta: any;
 let sbabranta: any;
 let Skandiaranta: any;
-let shbranta = "2.10";
+let shbranta = "1.90";
 let nordiskaranta: any;
 let epranta: any;
 let learanta: any;
@@ -321,27 +321,27 @@ test('SEB', async ({ page }) => {
 
 /* 2025-06-15 Går inte att komma åt ifrån GitHub??? Plockar bort Länsförsäkringar så länge... Sätter fastränta. */
 
-// test('Lansforsakringar', async ({ page }) => {
-//   let lansfresponse = await page.goto('https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/');
-//   //await page.getByRole('button', { name: 'Tillåt alla' }).click();
-//   //await page.getByRole('button', { name: 'Tillåt alla' }).click();
-//   //await expect(page.locator('h1')).toContainText('Fasträntekonto');
-//   if (lansfresponse) {
-//     let status = lansfresponse.status();
-//     let lansfbody = await lansfresponse.text();
-//     //console.log('Content:', lansfbody);
-//     if (lansfbody.includes('konto')) {
-//       let lansford = lansfbody.indexOf('</a>&nbsp;3 m&aring;nader<')
-//       let lansfkollen = lansfbody.substring(lansford, lansford+20)
-//       lansfranta = lansfbody.substring(lansford+66, lansford+70)
-//       //console.log('Content:', lansfbody);
-//       //console.log('Index..:', lansford);
-//       //console.log('Content:', lansfkollen);
-//       console.log('Länsförsäkringar Bank');
-//       console.log('Fast 3 månaders ränta:', lansfranta, '%');
-//     }
-//   }
-// });
+test('Lansforsakringar', async ({ page }) => {
+  let lansfresponse = await page.goto('https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/');
+  //await page.getByRole('button', { name: 'Tillåt alla' }).click();
+  //await page.getByRole('button', { name: 'Tillåt alla' }).click();
+  //await expect(page.locator('h1')).toContainText('Fasträntekonto');
+  if (lansfresponse) {
+    let status = lansfresponse.status();
+    let lansfbody = await lansfresponse.text();
+    //console.log('Content:', lansfbody);
+    if (lansfbody.includes('konto')) {
+      let lansford = lansfbody.indexOf('</a>&nbsp;3 m&aring;nader<')
+      let lansfkollen = lansfbody.substring(lansford, lansford+20)
+      lansfranta = lansfbody.substring(lansford+66, lansford+70)
+      //console.log('Content:', lansfbody);
+      //console.log('Index..:', lansford);
+      //console.log('Content:', lansfkollen);
+      console.log('Länsförsäkringar Bank');
+      console.log('Fast 3 månaders ränta:', lansfranta, '%');
+    }
+  }
+});
 
 test('Collector', async ({ page }) => {
   let collectorresponse = await page.goto('https://www.collector.se/spara-pengar/aktuella-sparrantor/');
