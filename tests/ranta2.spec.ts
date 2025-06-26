@@ -392,16 +392,16 @@ test('Marginalen Bank', async ({ page }) => {
 test('Qliro', async ({ page }) => {
   let qliroresponse = await page.goto('https://www.qliro.com/sv-se/spara');
   await page.getByRole('button', { name: 'Acceptera alla cookies' }).click();
-  await expect(page.getByRole('main')).toContainText('Fast');
-  let qlirospecial = await (page.locator('div').filter({ hasText: '%2,40RörligtsparkontoVårt' }).nth(1)).textContent();
+  //await expect(page.getByRole('main')).toContainText('Fast');
+  //let qlirospecial = await (page.locator('div').filter({ hasText: '%2,60RörligtsparkontoVå' }).nth(1)).textContent();
   if (qliroresponse) {
     let status = qliroresponse.status();
     let qlirobody = await qliroresponse.text();
     //console.log('Content:', qlirobody);
     if (qlirobody.includes('sparkonto')) {
-      let qlirokord = qlirospecial.indexOf('Fastsparkonto3månaderVårt')
-      let qlirokollen = qlirospecial.substring(qlirokord, qlirokord+20)
-      qlirokranta = qlirospecial.substring(qlirokord, qlirokord-4)
+      let qlirokord = qlirobody.indexOf('med</span><span class="StyledTitle_part__9uu2C StyledTitle_highlight__Yag_6 StyledTitle_last-in-segment__M8d15 StyledTitle_green___0HF9">')
+      let qlirokollen = qlirobody.substring(qlirokord, qlirokord+20)
+      qlirokranta = qlirobody.substring(qlirokord+137, qlirokord+141)
       //console.log('Content:', qlirobody);
       //console.log('Index..:', qlirokord);
       //console.log('Content:', qlirokollen);
