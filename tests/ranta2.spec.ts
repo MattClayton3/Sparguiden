@@ -1085,7 +1085,7 @@ test('Sorterat', async () => {
     // if (rantan < 3.00){
     //   color = 'black';
     // }
-    if (rantan < 2.50){
+    if (rantan < 2.40){
       color = 'red';
       position = '&#129317;';
     }
