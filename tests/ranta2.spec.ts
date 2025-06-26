@@ -12,7 +12,7 @@ let resursranta: any;
 let medranta: any;
 let sbabranta: any;
 let Skandiaranta: any;
-let shbranta = "1.90";
+let shbranta = "1.85";
 let nordiskaranta: any;
 let epranta: any;
 let learanta: any;
@@ -255,27 +255,33 @@ test('Swedbank', async ({ page }) => {
 });
 
 /* 2025-06-14 Plockar bort SHB en stund. Allt har blivit en SVG bild?!?!? Sätter räntan fast så länge. */
+/* 2025-06-26 SHB fakead men ändå med ett klick på rätt ränta. För att ha lite koll. */
 
-// test('Handelsbanken', async ({ page }) => {
-//   let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/rantor-privatpersoner');
-//   await page.getByTestId('CookieConsent__acceptButton').click();
-//   //await expect(page.locator('[data-test-id="shb-hero-headline"]')).toContainText('Placeringskonto');
-//   if (shbresponse) {
-//     let status = shbresponse.status();
-//     let shbbody = await shbresponse.text();
-//     //console.log(shbbody)
-//     //if (shbbody.includes('Placeringskonto')) {
-//       let shbord = shbbody.indexOf('3 månader med automatisk förlängning')
-//       let shbkollen = shbbody.substring(shbord, shbord+20)
-//       shbranta = shbbody.substring(shbord+252, shbord+256)
-//       //console.log('Content:', shbbody);
-//       //console.log('Index..:', shbord);
-//       //console.log('Content:', shbkollen);
-//       console.log('Handelsbanken');
-//       console.log('Fast 3 månaders ränta:', shbranta, '%');
-//     //}
-//   }
-// });
+test('Handelsbanken', async ({ page }) => {
+  let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/rantor-privatpersoner');
+  await page.getByTestId('CookieConsent__acceptButton').click();
+  //await expect(page.locator('[data-test-id="shb-hero-headline"]')).toContainText('Placeringskonto');
+  await page.getByRole('cell', { name: '1,85 %' }).click();
+
+  // if (shbresponse) {
+  //   let status = shbresponse.status();
+  //   let shbbody = await shbresponse.text();
+  //   //console.log(shbbody)
+  //   //if (shbbody.includes('Placeringskonto')) {
+  //     let shbord = shbbody.indexOf('3 månader med automatisk förlängning')
+  //     let shbkollen = shbbody.substring(shbord, shbord+20)
+  //     shbranta = shbbody.substring(shbord+252, shbord+256)
+  //     //console.log('Content:', shbbody);
+  //     //console.log('Index..:', shbord);
+  //     //console.log('Content:', shbkollen);
+  //     console.log('Handelsbanken');
+  //     console.log('Fast 3 månaders ränta:', shbranta, '%');
+  //   //}
+  // }
+       console.log('Handelsbanken');
+       console.log('Fast 3 månaders ränta:', shbranta, '%');
+
+});
 
 test('Nordea', async ({ page }) => {
   let nordearesponse = await page.goto('https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html');
@@ -712,29 +718,34 @@ test('Multitude Bank', async ({ page }) => {
 /* 20250326: Klarna krånglar IGEN, plockar bort denna. Sämsta räntan i vilket fall. */
 /* 20250429: Provar att lägga tillbaka Klarna. */
 /* 20250430: Klarna krånglar IGEN, plockar bort denna. Fastränte sidan nere. Kör manuellt med 2.00 % */
+/* 20250626: Fakead ränta, men med ett klick på räntan. För att ha lita koll. */
 
-// test('Klarna', async ({ page }) => {
-//   let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
-//   await page.getByRole('button', { name: 'Tillåt alla' }).click();
-//   await expect(page.locator('#content-below-header')).toContainText('Fastkonto');
-//   //await page.getByText('3 månader').click();
-//   //await page.getByText('2,15%').click();
-//   if (klarnaresponse) {
-//     let status = klarnaresponse.status();
-//     let klarnabody = await klarnaresponse.text();
-//     //console.log('Content:', klarnabody);
-//     if (klarnabody.includes('Fastkonto')) {
-//       let klarnaord = klarnabody.indexOf('">3</span>')
-//       let klarnakollen = klarnabody.substring(klarnaord, klarnaord+20)
-//       klarnaranta = klarnabody.substring(klarnaord+352, klarnaord+353)
-//       //console.log('Content:', klarnabody);
-//       //console.log('Index..:', klarnaord);
-//       //console.log('Content:', klarnakollen);
-//       console.log('Klarna');
-//       console.log('Fast 3 månaders ränta:', klarnaranta, '%');
-//     }
-//   }
-// });
+test('Klarna', async ({ page }) => {
+  let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
+  await page.getByRole('button', { name: 'Tillåt alla' }).click();
+  //await expect(page.locator('#content-below-header')).toContainText('Fastkonto');
+  await page.getByRole('cell', { name: '2% på årsbasis' }).first().click();
+
+  //await page.getByText('3 månader').click();
+  //await page.getByText('2,15%').click();
+  // if (klarnaresponse) {
+  //   let status = klarnaresponse.status();
+  //   let klarnabody = await klarnaresponse.text();
+  //   //console.log('Content:', klarnabody);
+  //   if (klarnabody.includes('Fastkonto')) {
+  //     let klarnaord = klarnabody.indexOf('">3</span>')
+  //     let klarnakollen = klarnabody.substring(klarnaord, klarnaord+20)
+  //     klarnaranta = klarnabody.substring(klarnaord+352, klarnaord+353)
+  //     //console.log('Content:', klarnabody);
+  //     //console.log('Index..:', klarnaord);
+  //     //console.log('Content:', klarnakollen);
+  //     console.log('Klarna');
+  //     console.log('Fast 3 månaders ränta:', klarnaranta, '%');
+  //   }
+  // }
+       console.log('Klarna');
+       console.log('Fast 3 månaders ränta:', klarnaranta, '%');
+});
 
 test('HoistSpar', async ({ page }) => {
   let hoistresponse = await page.goto('https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/');
@@ -931,13 +942,13 @@ test('Sorterat', async () => {
     { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
     { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
-    { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto" target="_blank">Resurs (Sparkonto Max)</a>', ranta: resursranta},
+    { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto" target="_blank">Resurs &#128176;</a>', ranta: resursranta},
     { banknamn: 'Nordiska', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>', ranta: nordiskaranta},
     { banknamn: 'MedMera Bank', bank: '<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>', ranta: medranta},
     { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
     { banknamn: 'Skandia Bank', bank: '<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia Bank</a>', ranta: Skandiaranta},
     { banknamn: 'Swedban', bank: '<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a>', ranta: swedbankranta},
-    { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/placeringskonto-privat" target="_blank">Handelsbanken !</a>', ranta: shbranta},
+    { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/placeringskonto-privat" target="_blank">Handelsbanken</a>', ranta: shbranta},
     { banknamn: 'Nordea', bank: '<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>', ranta: nordearanta},
     { banknamn: 'SEB', bank: '<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>', ranta: sebranta},
     { banknamn: 'Länsförsäkringar Bank', bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/" target="_blank">Länsförsäkringar Bank</a>', ranta: lansfranta},
@@ -957,7 +968,7 @@ test('Sorterat', async () => {
     { banknamn: 'Froda', bank: '<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>', ranta: frodaranta},
     { banknamn: 'Northmill Bank', bank: '<a href="https://www.northmill.com/se/spara/fastrantekonto/" target="_blank">Northmill Bank</a>', ranta: northranta},
     { banknamn: 'Multitude Bank', bank: '<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>', ranta: multiranta},
-    { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna !</a>', ranta: klarnaranta},
+    { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a>', ranta: klarnaranta},
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
   ];
@@ -1105,6 +1116,9 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '</div>\n');
   fs.appendFileSync(outputFile, '<br>Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">GitHub</a> &#127917; <a href="https://mgc2.webnode.se/sparguiden/" target="_blank">Webnode</a>\n');
   fs.appendFileSync(outputFile, '<br>! = Räntan hårdkodad.\n');
+  fs.appendFileSync(outputFile, '<br>&#128176; = Vanligt sparkonto.\n');
+
+  
   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
 
