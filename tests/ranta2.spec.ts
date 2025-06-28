@@ -938,7 +938,7 @@ test('Sorterat', async () => {
   }
 
   const bankarr: Banks[] = [
-    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank</a>', ranta: learanta },
+    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank </a>&#128182;', ranta: learanta },
     { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
     { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
@@ -1021,7 +1021,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<div style="overflow-x:auto;">\n');
   fs.appendFileSync(outputFile, '  <table>\n');
   fs.appendFileSync(outputFile, '    <tr>\n');
-  fs.appendFileSync(outputFile, '      <th>Bank<br>Fasträntekonto 3 månader.</th>\n');
+  fs.appendFileSync(outputFile, '      <th>Bank &#127974;<br>Fasträntekonto 3 månader.</th>\n');
   fs.appendFileSync(outputFile, '      <th>Ränta %</th>\n');
   fs.appendFileSync(outputFile, `      <th>Kvartal<br>Ex. ${exempelBelopp} kr</th>\n`);
   fs.appendFileSync(outputFile, `      <th>Netto kvartal<br>Ex. ${exempelBelopp} kr</th>\n`);
@@ -1085,9 +1085,13 @@ test('Sorterat', async () => {
     // if (rantan < 3.00){
     //   color = 'black';
     // }
-    if (rantan < 2.40){
+    if (rantan < 2.20){
       color = 'red';
       position = '&#129317;';
+    }
+        if (rantan < 2.00){
+      color = 'red';
+      position = '&#128184;';
     }
     let bankStr = `    <td style="color:${color}"> <sup>${i+1})</sup> ${banken} ${position} </td>\n`;
     let rantaStr = `    <td style="color:${color}"> ${rantan} </td>\n`;
@@ -1115,7 +1119,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '  </table>\n');
   fs.appendFileSync(outputFile, '</div>\n');
   fs.appendFileSync(outputFile, '<br>Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">GitHub</a> &#127917; <a href="https://mgc2.webnode.se/sparguiden/" target="_blank">Webnode</a>\n');
-  fs.appendFileSync(outputFile, '<br>&#128274; = Räntan hårdkodad.\n');
+  fs.appendFileSync(outputFile, '<br>&#128182; = Räntan betalas ut varje månad. Utbetalning 31 dagar från begäran.\n');
   fs.appendFileSync(outputFile, '<br>&#128176; = Vanligt sparkonto.\n');
 
   
