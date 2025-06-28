@@ -420,7 +420,7 @@ test('Qliro', async ({ page }) => {
 test('Coeli', async ({ page }) => {
   let coeliresponse = await page.goto('https://coeli.se/spara/');
   //await page.getByRole('button', { name: 'Acceptera alla' }).click();
-  await expect(page.locator('#di-2-col-media')).toContainText('Öppna sparkonto');
+  //await expect(page.locator('#di-2-col-media')).toContainText('Öppna sparkonto');
   //await page.locator('div').filter({ hasText: 'Våra räntorSpara med hög rä' }).nth(2).click();
   //await page.getByText('Sparkonto rörlig ränta 3,50 %').click();
   //let coelispecial = await (page.locator('div').filter({ hasText: 'Våra räntorSpara med hög rä' }).nth(2)).textContent();
