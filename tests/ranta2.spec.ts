@@ -1087,11 +1087,11 @@ test('Sorterat', async () => {
     // }
     if (rantan < 2.20){
       color = 'red';
-      position = '&#129317;';
+      position = '&#129300;';
     }
         if (rantan < 2.00){
       color = 'red';
-      position = '&#128184;';
+      position = '&#128542;';
     }
     let bankStr = `    <td style="color:${color}"> <sup>${i+1})</sup> ${banken} ${position} </td>\n`;
     let rantaStr = `    <td style="color:${color}"> ${rantan} </td>\n`;
