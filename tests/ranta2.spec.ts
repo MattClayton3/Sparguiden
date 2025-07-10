@@ -451,11 +451,11 @@ test('Svea Bank', async ({ page }) => {
   if (svearesponse) {
     let status = svearesponse.status();
     let sveabody = await svearesponse.text();
-    //console.log('Content:', sveabody);
+    console.log('Content:', sveabody);
     if (sveabody.includes('Fasträntekonto')) {
       let sveaord = sveabody.indexOf('3 månader')
       let sveakollen = sveabody.substring(sveaord, sveaord+20)
-      svearanta = sveabody.substring(sveaord+246, sveaord+250)
+      svearanta = sveabody.substring(sveaord+253, sveaord+257)
       //console.log('Content:', sveabody);
       //console.log('Index..:', sveakord);
       //console.log('Content:', sveakollen);
@@ -681,7 +681,7 @@ test('Northmill Bank', async ({ page }) => {
     if (northbody.includes('Fasträntekonto')) {
       let northord = northbody.indexOf('3 månader med fast årsränta')
       let northkollen = northbody.substring(northord, northord+20)
-      northranta = northbody.substring(northord+137, northord+141)
+      northranta = northbody.substring(northord+138, northord+142)
       //console.log('Content:', northbody);
       //console.log('Index..:', northord);
       //console.log('Content:', northkollen);
