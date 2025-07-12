@@ -962,7 +962,7 @@ test('Sorterat', async () => {
     { banknamn: 'Coeli', bank: '<a href="https://coeli.se/spara/" target="_blank">Coeli</a>', ranta: coelikranta},
     { banknamn: 'Svea Bank', bank: '<a href="https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto" target="_blank">Svea Bank</a>', ranta: svearanta},
     { banknamn: 'Qred Bank', bank: '<a href="https://www.qred.se/sparkonto" target="_blank">Qred Bank</a>', ranta: qredranta},
-    { banknamn: 'Plus1 (Nstart)', bank: '<a href="https://www.plus1.com/" target="_blank">Plus1 (Nstart)</a>', ranta: nstartranta},
+    { banknamn: 'Plus1 (Nstart)', bank: '<a href="https://www.plus1.com/" target="_blank">Plus1</a>', ranta: nstartranta},
     { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/sv/privat/spara-placera-forsakra/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
     { banknamn: 'Borgo', bank: '<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>', ranta: borgoranta},
     { banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a>', ranta: broccranta},
