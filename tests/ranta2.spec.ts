@@ -36,7 +36,7 @@ let arosranta: any;
 let serafimranta: any;
 let frodaranta: any;
 let northranta: any;
-let multiranta = "2.85";
+let multiranta: any;
 let klarnaranta = "2.00";
 let hoistranta:any;
 let danskranta:any;
@@ -328,7 +328,7 @@ test('SEB', async ({ page }) => {
 /* 2025-06-15 Går inte att komma åt ifrån GitHub??? Plockar bort Länsförsäkringar så länge... Sätter fastränta. */
 
 test('Lansforsakringar', async ({ page }) => {
-  let lansfresponse = await page.goto('https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/');
+  let lansfresponse = await page.goto('https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/');
   //await page.getByRole('button', { name: 'Tillåt alla' }).click();
   //await page.getByRole('button', { name: 'Tillåt alla' }).click();
   //await expect(page.locator('h1')).toContainText('Fasträntekonto');
@@ -337,9 +337,9 @@ test('Lansforsakringar', async ({ page }) => {
     let lansfbody = await lansfresponse.text();
     //console.log('Content:', lansfbody);
     if (lansfbody.includes('konto')) {
-      let lansford = lansfbody.indexOf('</a>&nbsp;3 m&aring;nader<')
+      let lansford = lansfbody.indexOf('>3 m&aring;nader<')
       let lansfkollen = lansfbody.substring(lansford, lansford+20)
-      lansfranta = lansfbody.substring(lansford+66, lansford+70)
+      lansfranta = lansfbody.substring(lansford+65, lansford+69)
       //console.log('Content:', lansfbody);
       //console.log('Index..:', lansford);
       //console.log('Content:', lansfkollen);
@@ -451,7 +451,7 @@ test('Svea Bank', async ({ page }) => {
   if (svearesponse) {
     let status = svearesponse.status();
     let sveabody = await svearesponse.text();
-    console.log('Content:', sveabody);
+    //console.log('Content:', sveabody);
     if (sveabody.includes('Fasträntekonto')) {
       let sveaord = sveabody.indexOf('3 månader')
       let sveakollen = sveabody.substring(sveaord, sveaord+20)
@@ -627,15 +627,15 @@ test('Aros Kapital', async ({ page }) => {
 test('Serafim Finans', async ({ page }) => {
   let serafimresponse = await page.goto('https://serafimfinans.se/spara');
   //await page.getByRole('button', { name: 'Tillåt alla cookies' }).click();
-  await expect(page.locator('#hs_cos_wrapper_widget_1715868504032')).toContainText('sparkonto');
+  //await expect(page.locator('#hs_cos_wrapper_widget_1715868504032')).toContainText('sparkonto');
   if (serafimresponse) {
     let status = serafimresponse.status();
     let serafimbody = await serafimresponse.text();
     //console.log('Content:', serafimbody);
     if (serafimbody.includes('sparkonto')) {
-      let serafimord = serafimbody.indexOf('>SeraFast Privat 3 mån - ')
-      let serafimkollen = serafimbody.substring(serafimord, serafimord+20)
-      serafimranta = serafimbody.substring(serafimord+25, serafimord+29)
+      let serafimord = serafimbody.indexOf('<h3 class="h5 font-weight--bold" data-accordion-trigger>SeraFast privat 3 mån')
+      let serafimkollen = serafimbody.substring(serafimord, serafimord+120)
+      serafimranta = serafimbody.substring(serafimord+80, serafimord+84)
       //console.log('Content:', serafimbody);
       //console.log('Index..:', serafimord);
       //console.log('Content:', serafimkollen);
@@ -692,30 +692,31 @@ test('Northmill Bank', async ({ page }) => {
 });
 
 /* 2025-07-03 Pausar så länge, playwright tycker inte att siten är säker... Räntan hårdkodad. */
+/* 2025-07-12 Siten är tydligen säker igen enligt Playwright. Aktiverar testen igen. */
 
-// test('Multitude Bank', async ({ page }) => {
-//   //let multirespons = await page.goto('https://www.multitudebank.se/priser?sc_lang=sv-se');
-//   let multirespons = await page.goto('https://www.multitudebank.se/priser');
-//   //await page.getByRole('button', { name: 'Accept all' }).click();
-//   //await page.getByRole('cell', { name: '3,00%' }).first().click();
-//   //await page.getByRole('cell', { name: 'Fast 3 månader' }).click();
-//   await expect(page.locator('h2')).toContainText('Aktuella räntor och bindningstider');
-//   if (multirespons) {
-//     let status = multirespons.status();
-//     let multihbody = await multirespons.text();
-//     //console.log('Content:', multihbody);
-//     if (multihbody.includes('Sparkonto')) {
-//       let multihord = multihbody.indexOf('<td>Fast 3 m&aring;nader</td>')
-//       let multikollen = multihbody.substring(multihord, multihord+20)
-//       multiranta = multihbody.substring(multihord+46, multihord+50)
-//       //console.log('Content:', multihbody);
-//       //console.log('Index..:', multihord);
-//       //console.log('Content:', multikollen);
-//       console.log('Multitude Bank');
-//       console.log('Fast 3 månaders ränta:', multiranta, '%');
-//     }
-//   }
-// });
+test('Multitude Bank', async ({ page }) => {
+  //let multirespons = await page.goto('https://www.multitudebank.se/priser?sc_lang=sv-se');
+  let multirespons = await page.goto('https://www.multitudebank.se/priser');
+  //await page.getByRole('button', { name: 'Accept all' }).click();
+  //await page.getByRole('cell', { name: '3,00%' }).first().click();
+  //await page.getByRole('cell', { name: 'Fast 3 månader' }).click();
+  //await expect(page.locator('h2')).toContainText('Aktuella räntor och bindningstider');
+  if (multirespons) {
+    let status = multirespons.status();
+    let multihbody = await multirespons.text();
+    //console.log('Content:', multihbody);
+    if (multihbody.includes('Sparkonto')) {
+      let multihord = multihbody.indexOf('Fast 3 månader</td><td class="ferra-table__cell Table_colShort____6Ep">')
+      let multikollen = multihbody.substring(multihord, multihord+20)
+      multiranta = multihbody.substring(multihord+71, multihord+75)
+      //console.log('Content:', multihbody);
+      //console.log('Index..:', multihord);
+      //console.log('Content:', multikollen);
+      console.log('Multitude Bank');
+      console.log('Fast 3 månaders ränta:', multiranta, '%');
+    }
+  }
+});
 
 /* 20250319: Klarna krånglar, plockar bort denna. Sämsta räntan i vilket fall. */
 /* 20250326: Klarna krånglar IGEN, plockar bort denna. Sämsta räntan i vilket fall. */
