@@ -723,12 +723,14 @@ test('Multitude Bank', async ({ page }) => {
 /* 20250429: Provar att lägga tillbaka Klarna. */
 /* 20250430: Klarna krånglar IGEN, plockar bort denna. Fastränte sidan nere. Kör manuellt med 2.00 % */
 /* 20250626: Fakead ränta, men med ett klick på räntan. För att ha lita koll... */
+/* 29250722: Time'ar ut. plockar bort denna för ett tag. */
 
 test('Klarna', async ({ page }) => {
-  let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
-  await page.getByRole('button', { name: 'Tillåt alla' }).click();
-  //await expect(page.locator('#content-below-header')).toContainText('Fastkonto');
-  await page.getByRole('cell', { name: '2% på årsbasis' }).first().click();
+  // let klarnaresponse = await page.goto('https://www.klarna.com/se/fastkonto/');
+  // await page.getByRole('button', { name: 'Acceptera' }).click();
+  // //await page.getByRole('button', { name: 'Tillåt alla' }).click();
+  // //await expect(page.locator('#content-below-header')).toContainText('Fastkonto');
+  // await page.getByRole('cell', { name: '2% på årsbasis' }).first().click();
 
   //await page.getByText('3 månader').click();
   //await page.getByText('2,15%').click();
