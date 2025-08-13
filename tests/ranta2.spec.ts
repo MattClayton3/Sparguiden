@@ -261,7 +261,7 @@ test('Handelsbanken', async ({ page }) => {
   let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/rantor-privatpersoner');
   await page.getByTestId('CookieConsent__acceptButton').click();
 
-  await page.getByText('1,85 %').nth(1).click();
+  await page.getByRole('cell', { name: '1,85 %' }).locator('div').click();
 
   // if (shbresponse) {
   //   let status = shbresponse.status();
