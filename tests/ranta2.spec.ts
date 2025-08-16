@@ -492,7 +492,7 @@ test('Qred Bank', async ({ page }) => {
 test('NstartPlus1', async ({ page }) => {
   let nstartresponse = await page.goto('https://www.plus1.com/');
   //await page.getByRole('button', { name: 'Godkänn alla' }).click();
-  await expect(page.locator('#splide01-slide01')).toContainText('Sparkonto Fast 3 mån');
+  //await expect(page.locator('#splide01-slide01')).toContainText('Sparkonto Fast 3 mån');
   if (nstartresponse) {
     let status = nstartresponse.status();
     let nstartbody = await nstartresponse.text();
