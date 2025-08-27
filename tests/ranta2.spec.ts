@@ -405,9 +405,10 @@ test('Qliro', async ({ page }) => {
     let qlirobody = await qliroresponse.text();
     //console.log('Content:', qlirobody);
     if (qlirobody.includes('sparkonto')) {
-      let qlirokord = qlirobody.indexOf('med</span><span class="StyledTitle_part__9uu2C StyledTitle_highlight__Yag_6 StyledTitle_last-in-segment__M8d15 StyledTitle_green___0HF9">')
+      //let qlirokord = qlirobody.indexOf('med</span><span class="StyledTitle_part__9uu2C StyledTitle_highlight__Yag_6 StyledTitle_last-in-segment__M8d15 StyledTitle_green___0HF9">')
+      let qlirokord = qlirobody.indexOf('>3 månader: ')
       let qlirokollen = qlirobody.substring(qlirokord, qlirokord+20)
-      qlirokranta = qlirobody.substring(qlirokord+137, qlirokord+141)
+      qlirokranta = qlirobody.substring(qlirokord+12, qlirokord+16)
       //console.log('Content:', qlirobody);
       //console.log('Index..:', qlirokord);
       //console.log('Content:', qlirokollen);
