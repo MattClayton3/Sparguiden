@@ -114,14 +114,15 @@ test('Bluestep Bank', async ({ page }) => {
 });
 
 test('EP Bank (Erik Penser)', async ({ page }) => {
-  let epresponse = await page.goto('https://www.epbank.se/spar/oversikt/');
+  //let epresponse = await page.goto('https://www.epbank.se/spar/oversikt/');
+  let epresponse = await page.goto('https://www.epbank.se/oversikt-spar-copy-2/');
   await expect(page.locator('#main')).toContainText('Spar');
   await page.getByText('3 månaders löptid').click();
   if (epresponse) {
     let status = epresponse.status();
     let epbody = await epresponse.text();
     //console.log('Content:', epbody);
-    if (epbody.includes('fasträntekonto')) {
+    if (epbody.includes('sparkonton')) {
       let epord = epbody.indexOf('3 månaders löptid')
       let epkollen = epbody.substring(epord, epord+20)
       epranta = epbody.substring(epord-198, epord-194)
