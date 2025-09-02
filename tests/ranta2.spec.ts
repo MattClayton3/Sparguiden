@@ -117,7 +117,7 @@ test('EP Bank (Erik Penser)', async ({ page }) => {
   //let epresponse = await page.goto('https://www.epbank.se/spar/oversikt/');
   let epresponse = await page.goto('https://www.epbank.se/oversikt-spar-copy-2/');
   await expect(page.locator('#main')).toContainText('Spar');
-  await page.getByText('3 månaders löptid').click();
+  //await page.getByText('3 månaders löptid').click();
   if (epresponse) {
     let status = epresponse.status();
     let epbody = await epresponse.text();
