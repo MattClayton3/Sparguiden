@@ -261,7 +261,7 @@ test('Swedbank', async ({ page }) => {
 
 test('Handelsbanken', async ({ page }) => {
   let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/rantor-privatpersoner');
-  await page.getByTestId('CookieConsent__acceptButton').click();
+  //await page.getByTestId('CookieConsent__acceptButton').click();
 
   //await page.getByRole('cell', { name: '1,85 %' }).locator('div').click();
 
@@ -947,7 +947,7 @@ test('Sorterat', async () => {
   }
 
   const bankarr: Banks[] = [
-    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank </a>&#128182;', ranta: learanta },
+    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank </a> &#128198; &#128182;', ranta: learanta },
     { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
     { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
@@ -970,7 +970,7 @@ test('Sorterat', async () => {
     { banknamn: 'Plus1 (Nstart)', bank: '<a href="https://www.plus1.com/" target="_blank">Plus1</a>', ranta: nstartranta},
     { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/sv/privat/spara-placera-forsakra/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
     { banknamn: 'Borgo', bank: '<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>', ranta: borgoranta},
-    { banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a>', ranta: broccranta},
+    { banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a> &#128198;', ranta: broccranta},
     { banknamn: 'JAK Medlemsbank', bank: '<a href="https://www.jak.se/vardagstjanster/spara-placera/" target="_blank">JAK Medlemsbank</a>', ranta: jakranta},
     { banknamn: 'Aros Kapital', bank: '<a href="https://www.aroskapital.se/tjanster/spara/" target="_blank">Aros Kapital</a>', ranta: arosranta},
     { banknamn: 'Serafim Finans', bank: '<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a>', ranta: serafimranta},
@@ -1128,7 +1128,8 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '  </table>\n');
   fs.appendFileSync(outputFile, '</div>\n');
   fs.appendFileSync(outputFile, '<br>Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">GitHub</a> &#127917; <a href="https://mgc2.webnode.se/sparguiden/" target="_blank">Webnode</a>\n');
-  fs.appendFileSync(outputFile, '<br>&#128182; = Räntan betalas ut varje månad. Utbetalning 31 dagar från begäran.\n');
+  fs.appendFileSync(outputFile, '<br>&#128198; = Räntan betalas ut varje månad.\n');
+  fs.appendFileSync(outputFile, '<br>&#128182; = Utbetalning 31 dagar från begäran.\n');
   fs.appendFileSync(outputFile, '<br>&#128176; = Vanligt sparkonto.\n');
 
   
