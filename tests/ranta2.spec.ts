@@ -501,9 +501,9 @@ test('NstartPlus1', async ({ page }) => {
     let nstartbody = await nstartresponse.text();
     //console.log('Content:', nstartbody);
     if (nstartbody.includes('sparkonton')) {
-      let nstartord = nstartbody.indexOf('Sparkonto Fast 3 mån')
+      let nstartord = nstartbody.indexOf('Fast 3 mån')
       let nstartkollen = nstartbody.substring(nstartord, nstartord+20)
-      nstartranta = nstartbody.substring(nstartord+83, nstartord+87)
+      nstartranta = nstartbody.substring(nstartord+73, nstartord+77)
       //console.log('Content:', nstartbody);
       //console.log('Index..:', nstartord);
       //console.log('Content:', sveakollen);
@@ -949,7 +949,7 @@ test('Sorterat', async () => {
   const bankarr: Banks[] = [
     { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank </a> &#128198; &#128182;', ranta: learanta },
     { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
-    { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
+    { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Blu<sup>e</sup>st<sup>e</sup>p Bank</a>', ranta: blueranta},
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
     { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto" target="_blank">Resurs </a>&#128176;', ranta: resursranta},
     { banknamn: 'Nordiska', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>', ranta: nordiskaranta},
