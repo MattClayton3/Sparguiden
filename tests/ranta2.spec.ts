@@ -503,7 +503,7 @@ test('NstartPlus1', async ({ page }) => {
     if (nstartbody.includes('sparkonton')) {
       let nstartord = nstartbody.indexOf('Fast 3 mån')
       let nstartkollen = nstartbody.substring(nstartord, nstartord+20)
-      nstartranta = nstartbody.substring(nstartord+73, nstartord+77)
+      nstartranta = nstartbody.substring(nstartord+94, nstartord+98)
       //console.log('Content:', nstartbody);
       //console.log('Index..:', nstartord);
       //console.log('Content:', sveakollen);
