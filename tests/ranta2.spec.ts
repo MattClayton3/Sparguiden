@@ -143,11 +143,11 @@ test('Resurs', async ({ page }) => {
   if (resursresponse) {
     let status = resursresponse.status();
     let resursbody = await resursresponse.text();
-    //console.log('Content:', resursbody);
+    console.log('Content:', resursbody);
     if (resursbody.includes('sparkonto')) {
       let resursord = resursbody.indexOf('Ränta <span class="resurs')
       let resurskollen = resursbody.substring(resursord, resursord+20)
-      resursranta = resursbody.substring(resursord+45, resursord+49)
+      resursranta = resursbody.substring(resursord+50, resursord+54)
       //console.log('Content:', resursbody);
       //console.log('Index..:', resursord);
       //console.log('Content:', resurskollen);
