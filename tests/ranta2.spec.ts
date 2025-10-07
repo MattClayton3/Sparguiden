@@ -260,7 +260,7 @@ test('Swedbank', async ({ page }) => {
 /* 2025-08-28 Nu är vi tillbaka till hederliga kollen. */
 
 test('Handelsbanken', async ({ page }) => {
-  let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/rantor-privatpersoner');
+  let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor');
   //await page.getByTestId('CookieConsent__acceptButton').click();
 
   //await page.getByRole('cell', { name: '1,85 %' }).locator('div').click();
@@ -957,7 +957,7 @@ test('Sorterat', async () => {
     { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
     { banknamn: 'Skandia Bank', bank: '<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia Bank</a>', ranta: Skandiaranta},
     { banknamn: 'Swedban', bank: '<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a>', ranta: swedbankranta},
-    { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/vardagstjanster/konton-och-betalningar/placeringskonto-privat" target="_blank">Handelsbanken</a>', ranta: shbranta},
+    { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a>', ranta: shbranta},
     { banknamn: 'Nordea', bank: '<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>', ranta: nordearanta},
     { banknamn: 'SEB', bank: '<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>', ranta: sebranta},
     { banknamn: 'Länsförsäkringar Bank', bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/" target="_blank">Länsförsäkringar Bank</a>', ranta: lansfranta},
