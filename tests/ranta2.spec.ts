@@ -166,7 +166,7 @@ test('Nordiska Kreditmarknadsbolaget', async ({ page }) => {
   if (nordiskaresponse) {
     let status = nordiskaresponse.status();
     let nordiskabody = await nordiskaresponse.text();
-    console.log('Content:', nordiskabody);
+    //console.log('Content:', nordiskabody);
     if (nordiskabody.includes('sparformer')) {
       let nordriskaord = nordiskabody.indexOf('<div>3 månader</div>')
       let nordiskakollen = nordiskabody.substring(nordriskaord, nordriskaord+20)
