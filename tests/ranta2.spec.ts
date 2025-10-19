@@ -1094,11 +1094,11 @@ test('Sorterat', async () => {
     // if (rantan < 3.00){
     //   color = 'black';
     // }
-    if (rantan < 2.20){
+    if (rantan < 2.00){
       color = 'red';
       position = '&#129300;';
     }
-        if (rantan < 2.00){
+        if (rantan < 1.80){
       color = 'red';
       position = '&#128542;';
     }
