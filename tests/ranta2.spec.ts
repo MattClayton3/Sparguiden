@@ -567,11 +567,11 @@ test('Brocc', async ({ page }) => {
   if (broccresponse) {
     let status = broccresponse.status();
     let broccbody = await broccresponse.text();
-    //console.log('Content:', broccbody);
+    console.log('Content:', broccbody);
     if (broccbody.includes('Brocc Tillväxt')) {
       let broccord = broccbody.indexOf('>Brocc Tillväxt')
       let brocckollen = broccbody.substring(broccord, broccord+20)
-      broccranta = broccbody.substring(broccord+23, broccord+27)
+      broccranta = broccbody.substring(broccord+16, broccord+20)
       //console.log('Content:', broccbody);
       //console.log('Index..:', broccord);
       //console.log('Content:', brocckollen);
@@ -763,7 +763,7 @@ test('HoistSpar', async ({ page }) => {
   if (hoistresponse) {
     let status = hoistresponse.status();
     let hoistbody = await hoistresponse.text();
-    console.log('Content:', hoistbody);
+    //console.log('Content:', hoistbody);
     if (hoistbody.includes('Sparkonto Fast')) {
       let hoisthord = hoistbody.indexOf('Sparkonto Fast 3')
       let hoistkollen = hoistbody.substring(hoisthord, hoisthord+20)
@@ -1098,7 +1098,7 @@ test('Sorterat', async () => {
       color = 'red';
       position = '&#129300;';
     }
-        if (rantan < 1.80){
+        if (rantan < 1.60){
       color = 'red';
       position = '&#128542;';
     }
