@@ -567,7 +567,7 @@ test('Brocc', async ({ page }) => {
   if (broccresponse) {
     let status = broccresponse.status();
     let broccbody = await broccresponse.text();
-    console.log('Content:', broccbody);
+    //console.log('Content:', broccbody);
     if (broccbody.includes('Brocc Tillväxt')) {
       let broccord = broccbody.indexOf('>Brocc Tillväxt')
       let brocckollen = broccbody.substring(broccord, broccord+20)
@@ -1098,7 +1098,7 @@ test('Sorterat', async () => {
       color = 'red';
       position = '&#129300;';
     }
-        if (rantan < 1.60){
+        if (rantan < 1.65){
       color = 'red';
       position = '&#128542;';
     }
