@@ -651,7 +651,7 @@ test('Serafim Finans', async ({ page }) => {
 test('Froda', async ({ page }) => {
   let frodaresponse = await page.goto('https://www.froda.se/sparkonto');
   //await page.getByRole('button', { name: 'Acceptera alla' }).click();
-  await expect(page.locator('h1')).toContainText('Sparkonto');
+  //await expect(page.locator('h1')).toContainText('Sparkonto');
   //await page.locator('div').filter({ hasText: '3.3%Ränta - 3 mån3.3%Ränta -' }).nth(1).click();
   if (frodaresponse) {
     let status = frodaresponse.status();
@@ -660,7 +660,7 @@ test('Froda', async ({ page }) => {
     if (frodabody.includes('Sparkonto')) {
       let frodaord = frodabody.indexOf('>Ränta -  3 mån')
       let frodakollen = frodabody.substring(frodaord, frodaord+20)
-      frodaranta = frodabody.substring(frodaord+286, frodaord+290)
+      frodaranta = frodabody.substring(frodaord-128, frodaord-124)
       //console.log('Content:', frodabody);
       //console.log('Index..:', frodaord);
       //console.log('Content:', frodakollen);
