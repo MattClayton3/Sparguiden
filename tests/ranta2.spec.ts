@@ -962,7 +962,7 @@ test('Sorterat', async () => {
     { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
     { banknamn: 'Skandia Bank', bank: '<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia Bank</a>', ranta: Skandiaranta},
     { banknamn: 'Swedban', bank: '<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a>', ranta: swedbankranta},
-    { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a>', ranta: shbranta},
+    { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a>&#128204;', ranta: shbranta},
     { banknamn: 'Nordea', bank: '<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>', ranta: nordearanta},
     { banknamn: 'SEB', bank: '<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>', ranta: sebranta},
     { banknamn: 'Länsförsäkringar Bank', bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/" target="_blank">Länsförsäkringar Bank</a>', ranta: lansfranta},
@@ -982,7 +982,7 @@ test('Sorterat', async () => {
     { banknamn: 'Froda', bank: '<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>', ranta: frodaranta},
     { banknamn: 'Northmill Bank', bank: '<a href="https://www.northmill.com/se/spara/fastrantekonto/" target="_blank">Northmill Bank</a>', ranta: northranta},
     { banknamn: 'Multitude Bank', bank: '<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>', ranta: multiranta},
-    { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a>', ranta: klarnaranta},
+    { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a>&#128204;', ranta: klarnaranta},
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
   ];
@@ -1136,9 +1136,9 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<br>&#128198; = Räntan betalas ut varje månad.\n');
   fs.appendFileSync(outputFile, '<br>&#128182; = Utbetalning 31 dagar från begäran.\n');
   fs.appendFileSync(outputFile, '<br>&#128176; = Vanligt sparkonto.\n');
+  fs.appendFileSync(outputFile, '<br>&#128204; = OBS! Hårdkodad ränta.\n');
 
-  
-  fs.appendFileSync(outputFile, '</body>\n');
+   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
 
   // const execute = utils.promisify(exec);
