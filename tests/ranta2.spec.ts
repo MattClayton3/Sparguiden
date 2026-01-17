@@ -1138,7 +1138,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<br>&#128176; = Vanligt sparkonto.\n');
   fs.appendFileSync(outputFile, '<br>&#128204; = OBS! Hårdkodad ränta.\n');
 
-   fs.appendFileSync(outputFile, '</body>\n');
+  fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
 
   // const execute = utils.promisify(exec);
