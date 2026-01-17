@@ -952,11 +952,11 @@ test('Sorterat', async () => {
   }
 
   const bankarr: Banks[] = [
-    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank </a> &#128198; &#128182;', ranta: learanta },
+    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank</a> &#128198; &#128182;', ranta: learanta },
     { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
     { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
-    { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto" target="_blank">Resurs </a>&#128176;', ranta: resursranta},
+    { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto" target="_blank">Resurs</a> &#128176;', ranta: resursranta},
     { banknamn: 'Nordiska', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>', ranta: nordiskaranta},
     { banknamn: 'MedMera Bank', bank: '<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>', ranta: medranta},
     { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
