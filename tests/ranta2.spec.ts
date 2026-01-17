@@ -12,7 +12,7 @@ let resursranta: any;
 let medranta: any;
 let sbabranta: any;
 let Skandiaranta: any;
-let shbranta: "1.60";
+let shbranta = "1.60";
 let nordiskaranta: any;
 let epranta: any;
 let learanta: any;
