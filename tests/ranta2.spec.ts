@@ -12,7 +12,7 @@ let resursranta: any;
 let medranta: any;
 let sbabranta: any;
 let Skandiaranta: any;
-let shbranta: any;
+let shbranta: "1.60";
 let nordiskaranta: any;
 let epranta: any;
 let learanta: any;
@@ -37,7 +37,7 @@ let serafimranta: any;
 let frodaranta: any;
 let northranta: any;
 let multiranta: any;
-let klarnaranta = "2.00";
+let klarnaranta = "1.61";
 let hoistranta:any;
 let danskranta:any;
 
@@ -258,32 +258,37 @@ test('Swedbank', async ({ page }) => {
 /* 2025-06-14 Plockar bort SHB en stund. Allt har blivit en SVG bild?!?!? Sätter räntan fast så länge. */
 /* 2025-06-26 SHB fakead men ändå med ett klick på rätt ränta. För att ha lite koll. */
 /* 2025-08-28 Nu är vi tillbaka till hederliga kollen. */
+/* 2026-01-17 Plockar bort SHB en stund. Allt har blivit en SVG bild?!?!? IGEN!!! Sätter räntan fast så länge. */
 
 test('Handelsbanken', async ({ page }) => {
-  let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor');
-  //await page.getByTestId('CookieConsent__acceptButton').click();
+  // let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor');
+  // //await page.getByTestId('CookieConsent__acceptButton').click();
 
-  //await page.getByRole('cell', { name: '1,85 %' }).locator('div').click();
+  // //await page.getByRole('cell', { name: '1,85 %' }).locator('div').click();
 
-  if (shbresponse) {
-    let status = shbresponse.status();
-    let shbbody = await shbresponse.text();
-    //console.log(shbbody)
-    //if (shbbody.includes('Placeringskonto')) {
-      let shbord = shbbody.indexOf('3 månader med automatisk förlängning')
-      let shbkollen = shbbody.substring(shbord, shbord+20)
-      shbranta = shbbody.substring(shbord+252, shbord+256)
-      //console.log('Content:', shbbody);
-      //console.log('Index..:', shbord);
-      //console.log('Content:', shbkollen);
+  // if (shbresponse) {
+  //   let status = shbresponse.status();
+  //   let shbbody = await shbresponse.text();
+  //   console.log(shbbody)
+  //   //if (shbbody.includes('Placeringskonto')) {
+  //     let shbord = shbbody.indexOf('3 månader med automatisk förlängning')
+  //     let shbkollen = shbbody.substring(shbord, shbord+200)
+  //     shbranta = shbbody.substring(shbord+252, shbord+256)
+  //     //console.log('Content:', shbbody);
+  //     console.log('Index..:', shbord);
+  //     console.log('Content:', shbkollen);
+  //     console.log('Handelsbanken');
+  //     console.log('Fast 3 månaders ränta:', shbranta, '%');
+  //   //}
+  // }
       console.log('Handelsbanken');
       console.log('Fast 3 månaders ränta:', shbranta, '%');
-    //}
-  }
-      //  console.log('Handelsbanken');
-      //  console.log('Fast 3 månaders ränta:', shbranta, '%');
 
 });
+
+
+
+
 
 test('Nordea', async ({ page }) => {
   let nordearesponse = await page.goto('https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html');
