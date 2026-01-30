@@ -136,23 +136,23 @@ test('EP Bank (Erik Penser)', async ({ page }) => {
 });
 
 test('Resurs', async ({ page }) => {
-  let resursresponse = await page.goto('https://www.resursbank.se/sparkonto');
+  let resursresponse = await page.goto('https://www.resursbank.se/sparkonto/sparkonto-flex');
   //await page.getByRole('button', { name: 'Acceptera cookies' }).click();
   //await page.locator('span').filter({ hasText: '%' }).click();
   //await expect(page.locator('#main-content')).toContainText('Våra sparkonton');
   if (resursresponse) {
     let status = resursresponse.status();
     let resursbody = await resursresponse.text();
-    console.log('Content:', resursbody);
+    //console.log('Content:', resursbody);
     if (resursbody.includes('sparkonto')) {
-      let resursord = resursbody.indexOf('Ränta <span class="resurs')
+      let resursord = resursbody.indexOf('Sparkonto Flex ger dig')
       let resurskollen = resursbody.substring(resursord, resursord+20)
-      resursranta = resursbody.substring(resursord+50, resursord+54)
+      resursranta = resursbody.substring(resursord+23, resursord+27)
       //console.log('Content:', resursbody);
       //console.log('Index..:', resursord);
       //console.log('Content:', resurskollen);
       console.log('Resurs Bank');
-      console.log('Sparkonto Max ränta:', resursranta, '%');
+      console.log('Sparkonto Flex ränta:', resursranta, '%');
     }
   }
 });
@@ -956,7 +956,7 @@ test('Sorterat', async () => {
     { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
     { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
-    { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto" target="_blank">Resurs</a> &#128176;', ranta: resursranta},
+    { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto/sparkonto-flex" target="_blank">Resurs</a> &#128176;', ranta: resursranta},
     { banknamn: 'Nordiska', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>', ranta: nordiskaranta},
     { banknamn: 'MedMera Bank', bank: '<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>', ranta: medranta},
     { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
