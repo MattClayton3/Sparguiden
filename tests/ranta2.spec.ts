@@ -521,7 +521,7 @@ test('NstartPlus1', async ({ page }) => {
 /* 20250319: Denna sida har havererat, den visar bara låneräntor ggr 5 :) plockar bort den så länge. */
 /* 20250325: Uppdaterad till nya utseendet. */
 test('Sparbanken Syd', async ({ page }) => {
-  let sparsydresponse = await page.goto('https://www.sparbankensyd.se/sv/privat/spara-placera-forsakra/spara/sparkonto');
+  let sparsydresponse = await page.goto('https://www.sparbankensyd.se/sv/privat/vara-tjanster/spara/sparkonto');
   await page.getByRole('button', { name: 'Godkänn alla' }).click();
   await expect(page.locator('#main-content')).toContainText('Fasträntekonto');
   //await expect(page.getByRole('rowgroup')).toContainText('2,45');
@@ -973,7 +973,7 @@ test('Sorterat', async () => {
     { banknamn: 'Svea Bank', bank: '<a href="https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto" target="_blank">Svea Bank</a>', ranta: svearanta},
     { banknamn: 'Qred Bank', bank: '<a href="https://www.qred.se/sparkonto" target="_blank">Qred Bank</a>', ranta: qredranta},
     { banknamn: 'Plus1 (Nstart)', bank: '<a href="https://www.plus1.com/" target="_blank">Plus1</a>', ranta: nstartranta},
-    { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/sv/privat/spara-placera-forsakra/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
+    { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/sv/privat/vara-tjanster/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
     { banknamn: 'Borgo', bank: '<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>', ranta: borgoranta},
     { banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a> &#128198;', ranta: broccranta},
     { banknamn: 'JAK Medlemsbank', bank: '<a href="https://www.jak.se/vardagstjanster/spara-placera/" target="_blank">JAK Medlemsbank</a>', ranta: jakranta},
