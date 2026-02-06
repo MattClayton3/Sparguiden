@@ -714,9 +714,9 @@ test('Multitude Bank', async ({ page }) => {
     let multihbody = await multirespons.text();
     //console.log('Content:', multihbody);
     if (multihbody.includes('Sparkonto')) {
-      let multihord = multihbody.indexOf('Fast 3 månader</td><td class="ferra-table__cell Table_colShort____6Ep">')
+      let multihord = multihbody.indexOf('Fast 3 månader</td><td')
       let multikollen = multihbody.substring(multihord, multihord+20)
-      multiranta = multihbody.substring(multihord+71, multihord+75)
+      multiranta = multihbody.substring(multihord+102, multihord+106)
       //console.log('Content:', multihbody);
       //console.log('Index..:', multihord);
       //console.log('Content:', multikollen);
