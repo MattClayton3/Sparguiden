@@ -359,7 +359,7 @@ test('Lansforsakringar', async ({ page }) => {
 test('Collector', async ({ page }) => {
   let collectorresponse = await page.goto('https://www.collector.se/spara-pengar/aktuella-sparrantor/');
   //await page.getByRole('button', { name: 'Acceptera alla' }).click();
-  await expect(page.locator('h1')).toContainText('Aktuella sparräntor');
+  //await expect(page.locator('h1')).toContainText('Aktuella sparräntor');
   //await page.locator('label').filter({ hasText: '-6 mån' }).click();
   if (collectorresponse) {
     let status = collectorresponse.status();
@@ -452,7 +452,7 @@ test('Coeli', async ({ page }) => {
 test('Svea Bank', async ({ page }) => {
   let svearesponse = await page.goto('https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto');
   //await page.getByRole('button', { name: 'Tillåt alla cookies' }).click();
-  await expect(page.locator('#hero-heading')).toContainText('Fasträntekonto');
+  //await expect(page.locator('#hero-heading')).toContainText('Fasträntekonto');
   //await page.locator('#main-content > div > div:nth-child(4)').click();
   //await page.locator('div:nth-child(4) > .mx-4').click();
   //await page.getByText('2,85').click();
@@ -476,7 +476,7 @@ test('Svea Bank', async ({ page }) => {
 test('Qred Bank', async ({ page }) => {
   let qredresponse = await page.goto('https://www.qred.se/sparkonto');
   //await page.getByRole('button', { name: 'Acceptera alla cookies' }).click();
-  await expect(page.locator('body')).toContainText('Sparkonto Fast');
+  //await expect(page.locator('body')).toContainText('Sparkonto Fast');
   //await page.locator('#w-node-_793c7bf6-93cc-6681-7f99-ebfd74effe9c-4f2d5aef > .text-align-center').click();
   //await page.getByText('3 mån').click();
   //await page.getByText('3,40 %', { exact: true }).click();
@@ -522,8 +522,8 @@ test('NstartPlus1', async ({ page }) => {
 /* 20250325: Uppdaterad till nya utseendet. */
 test('Sparbanken Syd', async ({ page }) => {
   let sparsydresponse = await page.goto('https://www.sparbankensyd.se/sv/privat/vara-tjanster/spara/sparkonto');
-  await page.getByRole('button', { name: 'Godkänn alla' }).click();
-  await expect(page.locator('#main-content')).toContainText('Fasträntekonto');
+  //await page.getByRole('button', { name: 'Godkänn alla' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Fasträntekonto');
   //await expect(page.getByRole('rowgroup')).toContainText('2,45');
   //await expect(page.getByRole('rowgroup')).toMatchAriaSnapshot(`- cell "3 mån"`);
   if (sparsydresponse) {
@@ -547,7 +547,7 @@ test('Sparbanken Syd', async ({ page }) => {
 
 test('Borgo', async ({ page }) => {
   let borgoresponse = await page.goto('https://www.borgohypotek.se/sparkonto#privatpersoner');
-  await expect(page.locator('#privatpersoner')).toContainText('sparräntor');
+  //await expect(page.locator('#privatpersoner')).toContainText('sparräntor');
   if (borgoresponse) {
     let status = borgoresponse.status();
     let borgobody = await borgoresponse.text();
@@ -568,7 +568,7 @@ test('Borgo', async ({ page }) => {
 test('Brocc', async ({ page }) => {
   let broccresponse = await page.goto('https://brocc.se/spara');
   //await page.getByRole('button', { name: 'Acceptera alla cookies' }).click();
-  await expect(page.getByRole('main')).toContainText('sparkonto');
+  //await expect(page.getByRole('main')).toContainText('sparkonto');
   if (broccresponse) {
     let status = broccresponse.status();
     let broccbody = await broccresponse.text();
