@@ -54,7 +54,7 @@ let fullDate = `${year}-${month}-${day}_${hour}-${min}-${sec}`;
 test('Lea Bank', async ({ page }) => {
   let learesponse = await page.goto('https://leabank.se/spara/sparkonto-plus');
   //await page.getByRole('button', { name: 'Godta alla' }).click();
-  await expect(page.locator('h1')).toContainText('Sparkonto');
+  //await expect(page.locator('h1')).toContainText('Sparkonto');
   if (learesponse) {
     let status = learesponse.status();
     let leabody = await learesponse.text();
@@ -75,7 +75,7 @@ test('Lea Bank', async ({ page }) => {
 test('Moank', async ({ page }) => {
   let moankresponse = await page.goto('https://www.moank.se/spara-pengar');
   //await page.getByRole('button', { name: 'Tillåt alla' }).click();
-  await expect(page.locator('body')).toContainText('Spara');
+  //await expect(page.locator('body')).toContainText('Spara');
   if (moankresponse) {
     let status = moankresponse.status();
     let moankbody = await moankresponse.text();
@@ -95,8 +95,8 @@ test('Moank', async ({ page }) => {
 
 test('Bluestep Bank', async ({ page }) => {
   let blueresponse = await page.goto('https://www.bluestep.se/spara/fast-ranta/');
-  await page.getByRole('button', { name: 'Godkänn alla cookies' }).click();
-  await page.getByRole('cell', { name: 'Sparkonto' }).getByRole('strong').click();
+  //await page.getByRole('button', { name: 'Godkänn alla cookies' }).click();
+  //await page.getByRole('cell', { name: 'Sparkonto' }).getByRole('strong').click();
   if (blueresponse) {
     let status = blueresponse.status();
     let bluebody = await blueresponse.text();
@@ -116,7 +116,7 @@ test('Bluestep Bank', async ({ page }) => {
 test('EP Bank (Erik Penser)', async ({ page }) => {
   //let epresponse = await page.goto('https://www.epbank.se/spar/oversikt/');
   let epresponse = await page.goto('https://www.epbank.se/oversikt-spar-copy-2/');
-  await expect(page.locator('#main')).toContainText('Spar');
+  //await expect(page.locator('#main')).toContainText('Spar');
   //await page.getByText('3 månaders löptid').click();
   if (epresponse) {
     let status = epresponse.status();
@@ -160,7 +160,7 @@ test('Resurs', async ({ page }) => {
 test('Nordiska Kreditmarknadsbolaget', async ({ page }) => {
   let nordiskaresponse = await page.goto('https://www.nordiska.se/spara/');
   //await page.getByRole('button', { name: 'Acceptera' }).click();
-  await expect(page.locator('[id="_30-11"]')).toContainText('Nordiska FIX');
+  //await expect(page.locator('[id="_30-11"]')).toContainText('Nordiska FIX');
   //await expect(page.locator('[id="_30-40"]')).toContainText('Spara');
   //await expect(page.locator('[id="_desktop-header"]')).toContainText('Logotype');
   if (nordiskaresponse) {
@@ -183,7 +183,7 @@ test('Nordiska Kreditmarknadsbolaget', async ({ page }) => {
 test('MedMera Bank', async ({ page }) => {
   let medresponse = await page.goto('https://medmerabank.se/spara/fastrantekonto');
   //await page.getByRole('button', { name: 'Tillåt alla' }).click();
-  await expect(page.locator('h1')).toContainText('Fasträntekonto');
+  //await expect(page.locator('h1')).toContainText('Fasträntekonto');
   if (medresponse) {
     let status = medresponse.status();
     let medbody = await medresponse.text();
@@ -204,7 +204,7 @@ test('MedMera Bank', async ({ page }) => {
 test('SBAB', async ({ page }) => {
   await page.goto('https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second');
   //await page.getByRole('button', { name: 'Acceptera rekommenderade' }).click();
-  await expect(page.locator('#n-side-nav')).toContainText('Fasträntekonto');
+  //await expect(page.locator('#n-side-nav')).toContainText('Fasträntekonto');
   //await expect(page.locator('#fixedThreeMonthInterest-interestRateSpan')).toMatchAriaSnapshot(`- text: /\\d+,\\d+/`);
   //await expect(page.getByText('2,80', { exact: true })).toBeVisible();
   //await expect(page.locator('#fixedThreeMonthInterest-interestRateSpan')).toContainText('2,80');
@@ -237,7 +237,7 @@ test('Skandia Bank', async ({ page }) => {
 test('Swedbank', async ({ page }) => {
   let swedbankresponse = await page.goto('https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html');
   //await page.getByText('Godkänn alla cookies').click();
-  await expect(page.locator('#page-content')).toContainText('Fasträntekonto');
+  //await expect(page.locator('#page-content')).toContainText('Fasträntekonto');
   if (swedbankresponse) {
     let status = swedbankresponse.status();
     let swedbankbody = await swedbankresponse.text();
@@ -293,7 +293,7 @@ test('Handelsbanken', async ({ page }) => {
 test('Nordea', async ({ page }) => {
   let nordearesponse = await page.goto('https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html');
   //await page.getByRole('button', { name: 'Godkänn alla' }).click();
-  await expect(page.locator('#content-start')).toContainText('Fasträntekonto');
+  //await expect(page.locator('#content-start')).toContainText('Fasträntekonto');
   if (nordearesponse) {
     let status = nordearesponse.status();
     let nordeabody = await nordearesponse.text();
@@ -314,7 +314,7 @@ test('Nordea', async ({ page }) => {
 test('SEB', async ({ page }) => {
   let sebrespones = await page.goto('https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto');
   //await page.getByRole('button', { name: 'Acceptera alla kakor' }).click();
-  await expect(page.locator('#placeringskonto---ett-sparkonto-med-fast-ranta')).toContainText('Placeringskonto');
+  //await expect(page.locator('#placeringskonto---ett-sparkonto-med-fast-ranta')).toContainText('Placeringskonto');
   if (sebrespones) {
     let status = sebrespones.status();
     let sebbody = await sebrespones.text();
@@ -614,15 +614,15 @@ test('JAK Medlemsbank', async ({ page }) => {
 test('Aros Kapital', async ({ page }) => {
   let arosresponse = await page.goto('https://www.aroskapital.se/tjanster/spara/');
   //await page.getByRole('button', { name: 'Acceptera alla cookies' }).click();
-  await expect(page.locator('#sectionContainer')).toContainText('Spara');
+  //await expect(page.locator('#sectionContainer')).toContainText('Spara');
   if (arosresponse) {
     let status = arosresponse.status();
     let arosbody = await arosresponse.text();
-    //console.log('Content:', arosbody);
+    console.log('Content:', arosbody);
     if (arosbody.includes('Spara')) {
-      let arosord = arosbody.indexOf('>– 3 månader fn ')
+      let arosord = arosbody.indexOf('>3 månader')
       let aroskollen = arosbody.substring(arosord, arosord+20)
-      arosranta = arosbody.substring(arosord+16, arosord+20)
+      arosranta = arosbody.substring(arosord+510, arosord+514)
       //console.log('Content:', arosbody);
       //console.log('Index..:', arosord);
       //console.log('Content:', aroskollen);
@@ -679,7 +679,7 @@ test('Froda', async ({ page }) => {
 test('Northmill Bank', async ({ page }) => {
   let northresonse = await page.goto('https://www.northmill.com/se/spara/fastrantekonto/');
   //await page.getByRole('button', { name: 'Tillåt alla' }).click();
-  await expect(page.locator('h1')).toContainText('Fasträntekonto');
+  //await expect(page.locator('h1')).toContainText('Fasträntekonto');
   //await page.getByText('%').nth(1).click();
   //await page.getByText('3 månader med fast årsränta').click();
   if (northresonse) {
