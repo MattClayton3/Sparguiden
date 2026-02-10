@@ -21,7 +21,7 @@ let sebranta: any;
 let nordearanta: any;
 let swedbankranta: any;
 let lansfranta: any;
-let collectorranta: any;
+let collectorranta = "0.0";
 let marginalranta: any;
 let qlirokranta: any;
 let coelikranta: any;
@@ -365,14 +365,15 @@ test('Collector', async ({ page }) => {
   if (collectorresponse) {
     let status = collectorresponse.status();
     let collectorbody = await collectorresponse.text();
-    //console.log('Content:', collectorbody);
+    console.log('Content:', collectorbody);
     if (collectorbody.includes('spar')) {
       let collectorord = collectorbody.indexOf('3-m&aring;naders sparkonto')
       let collectorkollen = collectorbody.substring(collectorord, collectorord+20)
       collectorranta = collectorbody.substring(collectorord+118, collectorord+122)
       //console.log('Content:', collectorbody);
       //console.log('Index..:', collectorord);
-      //console.log('Content:', sebkollen);
+      //console.log('Content:', collectorkollen);
+      collectorranta = collectorranta.replace(',', '.');
       console.log('Collector');
       console.log('Fast 3 månaders ränta:', collectorranta, '%');
       collectorranta = collectorranta.replace(',', '.');
