@@ -366,7 +366,7 @@ test('Collector', async ({ page }) => {
     let status = collectorresponse.status();
     let collectorbody = await collectorresponse.text();
     //console.log('Content:', collectorbody);
-    if (collectorbody.includes('sparr&auml;ntor')) {
+    if (collectorbody.includes('spar')) {
       let collectorord = collectorbody.indexOf('3-m&aring;naders sparkonto')
       let collectorkollen = collectorbody.substring(collectorord, collectorord+20)
       collectorranta = collectorbody.substring(collectorord+118, collectorord+122)
