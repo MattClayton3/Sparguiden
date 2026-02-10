@@ -620,7 +620,7 @@ test('Aros Kapital', async ({ page }) => {
   if (arosresponse) {
     let status = arosresponse.status();
     let arosbody = await arosresponse.text();
-    console.log('Content:', arosbody);
+    //console.log('Content:', arosbody);
     if (arosbody.includes('Spara')) {
       let arosord = arosbody.indexOf('>3 månader')
       let aroskollen = arosbody.substring(arosord, arosord+20)
