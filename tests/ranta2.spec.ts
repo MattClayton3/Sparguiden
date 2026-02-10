@@ -21,7 +21,7 @@ let sebranta: any;
 let nordearanta: any;
 let swedbankranta: any;
 let lansfranta: any;
-let collectorranta = "0.0";
+let collectorranta: any;
 let marginalranta: any;
 let qlirokranta: any;
 let coelikranta: any;
@@ -287,10 +287,6 @@ test('Handelsbanken', async ({ page }) => {
 
 });
 
-
-
-
-
 test('Nordea', async ({ page }) => {
   let nordearesponse = await page.goto('https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html');
   //await page.getByRole('button', { name: 'Godkänn alla' }).click();
@@ -357,30 +353,6 @@ test('Lansforsakringar', async ({ page }) => {
   }
 });
 
-test('Collector', async ({ page }) => {
-  let collectorresponse = await page.goto('https://www.collector.se/spara-pengar/aktuella-sparrantor/');
-  //await page.getByRole('button', { name: 'Acceptera alla' }).click();
-  //await expect(page.locator('h1')).toContainText('Aktuella sparräntor');
-  //await page.locator('label').filter({ hasText: '3-6 mån' }).click();
-  if (collectorresponse) {
-    let status = collectorresponse.status();
-    let collectorbody = await collectorresponse.text();
-    console.log('Content:', collectorbody);
-    if (collectorbody.includes('spar')) {
-      let collectorord = collectorbody.indexOf('3-m&aring;naders sparkonto')
-      let collectorkollen = collectorbody.substring(collectorord, collectorord+20)
-      collectorranta = collectorbody.substring(collectorord+118, collectorord+122)
-      //console.log('Content:', collectorbody);
-      //console.log('Index..:', collectorord);
-      //console.log('Content:', collectorkollen);
-      collectorranta = collectorranta.replace(',', '.');
-      console.log('Collector');
-      console.log('Fast 3 månaders ränta:', collectorranta, '%');
-      collectorranta = collectorranta.replace(',', '.');
-    }
-  }  
-});
-
 test('Marginalen Bank', async ({ page }) => {
   let marginalresponse = await page.goto('https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/');
   //await page.getByRole('button', { name: 'Tillåt alla' }).click();
@@ -403,6 +375,30 @@ test('Marginalen Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', marginalranta, '%');
     }
   }
+});
+
+test('Collector', async ({ page }) => {
+  let collectorresponse = await page.goto('https://www.collector.se/spara-pengar/aktuella-sparrantor/');
+  //await page.getByRole('button', { name: 'Acceptera alla' }).click();
+  //await expect(page.locator('h1')).toContainText('Aktuella sparräntor');
+  //await page.locator('label').filter({ hasText: '3-6 mån' }).click();
+  if (collectorresponse) {
+    let status = collectorresponse.status();
+    let collectorbody = await collectorresponse.text();
+    //console.log('Content:', collectorbody);
+    if (collectorbody.includes('spar')) {
+      let collectorord = collectorbody.indexOf('3-m&aring;naders sparkonto')
+      let collectorkollen = collectorbody.substring(collectorord, collectorord+20)
+      collectorranta = collectorbody.substring(collectorord+118, collectorord+122)
+      //console.log('Content:', collectorbody);
+      //console.log('Index..:', collectorord);
+      //console.log('Content:', collectorkollen);
+      collectorranta = collectorranta.replace(',', '.');
+      console.log('Collector');
+      console.log('Fast 3 månaders ränta:', collectorranta, '%');
+      collectorranta = collectorranta.replace(',', '.');
+    }
+  }  
 });
 
 test('Qliro', async ({ page }) => {
