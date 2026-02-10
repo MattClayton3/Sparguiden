@@ -935,7 +935,7 @@ test('Sammanställning', async () => {
 });
 
 test('Sorterat', async () => {
-  console.log('Sortering... index.htlm')
+  console.log('Sortering... index.html')
 
   learanta = learanta.replace(',', '.');
   moankranta = moankranta.replace(',', '.');
