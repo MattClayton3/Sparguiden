@@ -21,7 +21,7 @@ let sebranta: any;
 let nordearanta: any;
 let swedbankranta: any;
 let lansfranta: any;
-let collectorranta: any;
+let collectorranta = "2.60";
 let marginalranta: any;
 let qlirokranta: any;
 let coelikranta: any;
@@ -353,29 +353,7 @@ test('Lansforsakringar', async ({ page }) => {
   }
 });
 
-test('Marginalen Bank', async ({ page }) => {
-  let marginalresponse = await page.goto('https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/');
-  //await page.getByRole('button', { name: 'Tillåt alla' }).click();
-  //await expect(page.locator('#fatsrantekontot-innehall-ingress2-16820')).toContainText('Det här är Fasträntekontot');
-  let marginalspecial = await (page.locator('#fastrantekontot-tabell-3552')).textContent();
-  if (marginalresponse) {
-    let status = marginalresponse.status();
-    let marginalbody = await marginalresponse.text();
-    //let marginalspecial = await (page.locator('#fastrantekontot-tabell-3552')).textContent();
-    //console.log('Content:', marginalbody);
-    if (marginalbody.includes('Fastr&#xE4;ntekontot')) {
-      let marginalord = marginalspecial.indexOf('VillkorFasträntekontoBindningstid')
-      let marginalkollen = marginalspecial.substring(marginalord, marginalord+20)
-      marginalranta = marginalspecial.substring(marginalord+39, marginalord+43)
-      //console.log('Content:', marginalbody);
-      //console.log('Index..:', marginalord);
-      //console.log('Content:', marginalkollen);
-      //let marginalranta = await (page.locator('#fastrantekontot-tabell-3552')).textContent();
-      console.log('Marginalen Bank');
-      console.log('Fast 3 månaders ränta:', marginalranta, '%');
-    }
-  }
-});
+/* 2026-02-10 Hårdkodar räntan 2,60 ovan (let collectorranta = "2.60";) CI/CD/GitHub verkar inte köra Collector av någon anledning? Funkar bra lokal? */
 
 test('Collector', async ({ page }) => {
   let collectorresponse = await page.goto('https://www.collector.se/spara-pengar/aktuella-sparrantor/');
@@ -399,6 +377,30 @@ test('Collector', async ({ page }) => {
       collectorranta = collectorranta.replace(',', '.');
     }
   }  
+});
+
+test('Marginalen Bank', async ({ page }) => {
+  let marginalresponse = await page.goto('https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/');
+  //await page.getByRole('button', { name: 'Tillåt alla' }).click();
+  //await expect(page.locator('#fatsrantekontot-innehall-ingress2-16820')).toContainText('Det här är Fasträntekontot');
+  let marginalspecial = await (page.locator('#fastrantekontot-tabell-3552')).textContent();
+  if (marginalresponse) {
+    let status = marginalresponse.status();
+    let marginalbody = await marginalresponse.text();
+    //let marginalspecial = await (page.locator('#fastrantekontot-tabell-3552')).textContent();
+    //console.log('Content:', marginalbody);
+    if (marginalbody.includes('Fastr&#xE4;ntekontot')) {
+      let marginalord = marginalspecial.indexOf('VillkorFasträntekontoBindningstid')
+      let marginalkollen = marginalspecial.substring(marginalord, marginalord+20)
+      marginalranta = marginalspecial.substring(marginalord+39, marginalord+43)
+      //console.log('Content:', marginalbody);
+      //console.log('Index..:', marginalord);
+      //console.log('Content:', marginalkollen);
+      //let marginalranta = await (page.locator('#fastrantekontot-tabell-3552')).textContent();
+      console.log('Marginalen Bank');
+      console.log('Fast 3 månaders ränta:', marginalranta, '%');
+    }
+  }
 });
 
 test('Qliro', async ({ page }) => {
@@ -803,26 +805,26 @@ test('Danske Bank', async ({ page }) => {
   }
 });
 
-// test('Fedelta', async ({ page }) => {
-//   let fedeltaresponse = await page.goto('https://fedelta.se/sparkonto');
-//   //await page.getByRole('button', { name: 'OK till alla' }).click();
-//   //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
-//   if (fedeltaresponse) {
-//     let status = fedeltaresponse.status();
-//     let fedeltabody = await fedeltaresponse.text();
-//     //console.log('Content:', fedeltabody);
-//     if (fedeltabody.includes('3 mån')) {
-//       let fedeltakord = fedeltabody.indexOf('3 mån","')
-//       let fedeltakollen = fedeltabody.substring(fedeltakord, fedeltakord+20)
-//       fedeltaranta = fedeltabody.substring(fedeltakord+8, fedeltakord+12)
-//       //console.log('Content:', fedeltabody);
-//       //console.log('Index..:', fedeltakord);
-//       //console.log('Content:', fedeltakollen);
-//       console.log('Fedelta');
-//       console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
-//     }
-//   }
-// });
+test('Fedelta', async ({ page }) => {
+  let fedeltaresponse = await page.goto('https://fedelta.se/sparkonto');
+  //await page.getByRole('button', { name: 'OK till alla' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  if (fedeltaresponse) {
+    let status = fedeltaresponse.status();
+    let fedeltabody = await fedeltaresponse.text();
+    //console.log('Content:', fedeltabody);
+    if (fedeltabody.includes('3 mån')) {
+      let fedeltakord = fedeltabody.indexOf('3 mån","')
+      let fedeltakollen = fedeltabody.substring(fedeltakord, fedeltakord+20)
+      fedeltaranta = fedeltabody.substring(fedeltakord+8, fedeltakord+12)
+      //console.log('Content:', fedeltabody);
+      //console.log('Index..:', fedeltakord);
+      //console.log('Content:', fedeltakollen);
+      console.log('Fedelta');
+      console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
+    }
+  }
+});
 
 test('Sammanställning', async () => {
   console.log('Sammanställning...');
@@ -927,8 +929,8 @@ test('Sammanställning', async () => {
   console.log('Fast 3 månaders ränta:', danskranta, '%');
   console.log('');
   console.log('Fedelta');
-  //console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
-  //console.log('');
+  console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
+  console.log('');
   // ...
 });
 
@@ -949,7 +951,7 @@ test('Sorterat', async () => {
   nordearanta = nordearanta.replace(',', '.');
   sebranta = sebranta.replace(',', '.');
   lansfranta = lansfranta.replace(',', '.');
-  //collectorranta = collectorranta.replace(',', '.');
+  collectorranta = collectorranta.replace(',', '.');
   marginalranta = marginalranta.replace(',', '.');
   qlirokranta = qlirokranta.replace(',', '.');
   coelikranta = coelikranta.replace(',', '.');
@@ -968,7 +970,7 @@ test('Sorterat', async () => {
   klarnaranta = klarnaranta.replace(',', '.');
   hoistranta = hoistranta.replace(',', '.');
   danskranta = danskranta.replace(',', '.');
-  //fedeltaranta = fedeltaranta.replace(',', '.');
+  fedeltaranta = fedeltaranta.replace(',', '.');
   
   interface Banks{
     banknamn: string;
@@ -1010,7 +1012,7 @@ test('Sorterat', async () => {
     { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a> &#128204;', ranta: klarnaranta},
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
-    //{ banknamn: 'Fedelta', bank: '<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>', ranta: fedeltaranta},
+    { banknamn: 'Fedelta', bank: '<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>', ranta: fedeltaranta},
   ];
   
   bankarr.sort((a,b) => {
