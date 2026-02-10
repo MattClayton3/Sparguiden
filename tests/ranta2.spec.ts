@@ -812,7 +812,7 @@ test('Fedelta', async ({ page }) => {
   if (fedeltaresponse) {
     let status = fedeltaresponse.status();
     let fedeltabody = await fedeltaresponse.text();
-    console.log('Content:', fedeltabody);
+    //console.log('Content:', fedeltabody);
     if (fedeltabody.includes('3 mån')) {
       let fedeltakord = fedeltabody.indexOf('3 mån","')
       let fedeltakollen = fedeltabody.substring(fedeltakord, fedeltakord+20)
