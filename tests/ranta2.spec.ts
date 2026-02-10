@@ -361,7 +361,7 @@ test('Collector', async ({ page }) => {
   let collectorresponse = await page.goto('https://www.collector.se/spara-pengar/aktuella-sparrantor/');
   //await page.getByRole('button', { name: 'Acceptera alla' }).click();
   //await expect(page.locator('h1')).toContainText('Aktuella sparräntor');
-  //await page.locator('label').filter({ hasText: '-6 mån' }).click();
+  //await page.locator('label').filter({ hasText: '3-6 mån' }).click();
   if (collectorresponse) {
     let status = collectorresponse.status();
     let collectorbody = await collectorresponse.text();
