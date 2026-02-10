@@ -803,26 +803,26 @@ test('Danske Bank', async ({ page }) => {
   }
 });
 
-test('Fedelta', async ({ page }) => {
-  let fedeltaresponse = await page.goto('https://fedelta.se/sparkonto');
-  //await page.getByRole('button', { name: 'OK till alla' }).click();
-  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
-  if (fedeltaresponse) {
-    let status = fedeltaresponse.status();
-    let fedeltabody = await fedeltaresponse.text();
-    //console.log('Content:', fedeltabody);
-    if (fedeltabody.includes('3 mån')) {
-      let fedeltakord = fedeltabody.indexOf('3 mån","')
-      let fedeltakollen = fedeltabody.substring(fedeltakord, fedeltakord+20)
-      fedeltaranta = fedeltabody.substring(fedeltakord+8, fedeltakord+12)
-      //console.log('Content:', fedeltabody);
-      //console.log('Index..:', fedeltakord);
-      //console.log('Content:', fedeltakollen);
-      console.log('Fedelta');
-      console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
-    }
-  }
-});
+// test('Fedelta', async ({ page }) => {
+//   let fedeltaresponse = await page.goto('https://fedelta.se/sparkonto');
+//   //await page.getByRole('button', { name: 'OK till alla' }).click();
+//   //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+//   if (fedeltaresponse) {
+//     let status = fedeltaresponse.status();
+//     let fedeltabody = await fedeltaresponse.text();
+//     //console.log('Content:', fedeltabody);
+//     if (fedeltabody.includes('3 mån')) {
+//       let fedeltakord = fedeltabody.indexOf('3 mån","')
+//       let fedeltakollen = fedeltabody.substring(fedeltakord, fedeltakord+20)
+//       fedeltaranta = fedeltabody.substring(fedeltakord+8, fedeltakord+12)
+//       //console.log('Content:', fedeltabody);
+//       //console.log('Index..:', fedeltakord);
+//       //console.log('Content:', fedeltakollen);
+//       console.log('Fedelta');
+//       console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
+//     }
+//   }
+// });
 
 test('Sammanställning', async () => {
   console.log('Sammanställning...');
@@ -927,8 +927,8 @@ test('Sammanställning', async () => {
   console.log('Fast 3 månaders ränta:', danskranta, '%');
   console.log('');
   console.log('Fedelta');
-  console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
-  console.log('');
+  //console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
+  //console.log('');
   // ...
 });
 
@@ -968,7 +968,7 @@ test('Sorterat', async () => {
   klarnaranta = klarnaranta.replace(',', '.');
   hoistranta = hoistranta.replace(',', '.');
   danskranta = danskranta.replace(',', '.');
-  fedeltaranta = fedeltaranta.replace(',', '.');
+  //fedeltaranta = fedeltaranta.replace(',', '.');
   
   interface Banks{
     banknamn: string;
@@ -1010,7 +1010,7 @@ test('Sorterat', async () => {
     { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a> &#128204;', ranta: klarnaranta},
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
-    { banknamn: 'Fedelta', bank: '<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>', ranta: fedeltaranta},
+    //{ banknamn: 'Fedelta', bank: '<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>', ranta: fedeltaranta},
   ];
   
   bankarr.sort((a,b) => {
