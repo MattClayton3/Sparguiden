@@ -375,6 +375,7 @@ test('Collector', async ({ page }) => {
       //console.log('Content:', sebkollen);
       console.log('Collector');
       console.log('Fast 3 månaders ränta:', collectorranta, '%');
+      collectorranta = collectorranta.replace(',', '.');
     }
   }  
 });
