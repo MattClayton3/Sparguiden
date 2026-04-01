@@ -12,7 +12,7 @@ let resursranta: any;
 let medranta: any;
 let sbabranta: any;
 let Skandiaranta: any;
-let shbranta = "1.60";
+let shbranta = "1.75";
 let nordiskaranta: any;
 let epranta: any;
 let learanta: any;
@@ -267,21 +267,21 @@ test('Handelsbanken', async ({ page }) => {
 
   // //await page.getByRole('cell', { name: '1,85 %' }).locator('div').click();
 
-  // if (shbresponse) {
-  //   let status = shbresponse.status();
-  //   let shbbody = await shbresponse.text();
-  //   console.log(shbbody)
+   //if (shbresponse) {
+     //let status = shbresponse.status();
+     //let shbbody = await shbresponse.text();
+     //console.log(shbbody)
   //   //if (shbbody.includes('Placeringskonto')) {
   //     let shbord = shbbody.indexOf('3 månader med automatisk förlängning')
   //     let shbkollen = shbbody.substring(shbord, shbord+200)
   //     shbranta = shbbody.substring(shbord+252, shbord+256)
-  //     //console.log('Content:', shbbody);
+       //console.log('Content:', shbbody);
   //     console.log('Index..:', shbord);
   //     console.log('Content:', shbkollen);
   //     console.log('Handelsbanken');
   //     console.log('Fast 3 månaders ränta:', shbranta, '%');
   //   //}
-  // }
+   //}
       console.log('Handelsbanken');
       console.log('Fast 3 månaders ränta:', shbranta, '%');
 
