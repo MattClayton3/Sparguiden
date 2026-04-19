@@ -588,7 +588,7 @@ test('Brocc', async ({ page }) => {
 });
 
 test('JAK Medlemsbank', async ({ page }) => {
-  let jakresponse = await page.goto('https://www.jak.se/vardagstjanster/spara-placera/');
+  let jakresponse = await page.goto('https://www.jak.se/spara-placera/oppna-konto/');
   //await page.getByRole('button', { name: 'Acceptera alla' }).click();
   //await expect(page.locator('h1')).toContainText('Spara');
   if (jakresponse) {
@@ -596,10 +596,10 @@ test('JAK Medlemsbank', async ({ page }) => {
     let jakbody = await jakresponse.text();
     //console.log('Content:', jakbody);
     if (jakbody.includes('Spara')) {
-      let jakord = jakbody.indexOf('Fasträntekonto för privatpersoner')
+      let jakord = jakbody.indexOf('i årsränta med 3 månaders bindningstid')
       //let jakord2 = jakbody.indexOf('3 %*')
       let jakkollen = jakbody.substring(jakord, jakord+20)
-      jakranta = jakbody.substring(jakord+1019, jakord+1023)
+      jakranta = jakbody.substring(jakord-7, jakord-3)
       //console.log('Content:', jakbody);
       //console.log('Index..:', jakord);
       //console.log('Index2.:', jakord2);
@@ -1003,7 +1003,7 @@ test('Sorterat', async () => {
     { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/sv/privat/vara-tjanster/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
     { banknamn: 'Borgo', bank: '<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>', ranta: borgoranta},
     { banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a> &#128198;', ranta: broccranta},
-    { banknamn: 'JAK Medlemsbank', bank: '<a href="https://www.jak.se/vardagstjanster/spara-placera/" target="_blank">JAK Medlemsbank</a>', ranta: jakranta},
+    { banknamn: 'JAK Medlemsbank', bank: '<a href="https://www.jak.se/spara-placera/oppna-konto/" target="_blank">JAK Medlemsbank</a>', ranta: jakranta},
     { banknamn: 'Aros Kapital', bank: '<a href="https://www.aroskapital.se/tjanster/spara/" target="_blank">Aros Kapital</a>', ranta: arosranta},
     { banknamn: 'Serafim Finans', bank: '<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a>', ranta: serafimranta},
     { banknamn: 'Froda', bank: '<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>', ranta: frodaranta},
