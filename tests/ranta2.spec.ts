@@ -36,7 +36,7 @@ let arosranta: any;
 let serafimranta: any;
 let frodaranta: any;
 let northranta: any;
-let multiranta: any;
+//let multiranta: any; /* 2026-05-10 Verkar ha slutat med 3 månaders fasräntekonto. */
 let klarnaranta = "1.61";
 let hoistranta:any;
 let danskranta:any;
@@ -703,30 +703,31 @@ test('Northmill Bank', async ({ page }) => {
 
 /* 2025-07-03 Pausar så länge, playwright tycker inte att siten är säker... Räntan hårdkodad. */
 /* 2025-07-12 Siten är tydligen säker igen enligt Playwright. Aktiverar testen igen. */
+/* 2026-05-10 Verkar ha slutat med 3 månaders fasräntekonto. */
 
-test('Multitude Bank', async ({ page }) => {
-  //let multirespons = await page.goto('https://www.multitudebank.se/priser?sc_lang=sv-se');
-  let multirespons = await page.goto('https://www.multitudebank.se/priser');
-  //await page.getByRole('button', { name: 'Accept all' }).click();
-  //await page.getByRole('cell', { name: '3,00%' }).first().click();
-  //await page.getByRole('cell', { name: 'Fast 3 månader' }).click();
-  //await expect(page.locator('h2')).toContainText('Aktuella räntor och bindningstider');
-  if (multirespons) {
-    let status = multirespons.status();
-    let multihbody = await multirespons.text();
-    //console.log('Content:', multihbody);
-    if (multihbody.includes('Sparkonto')) {
-      let multihord = multihbody.indexOf('Fast 3 månader</td><td')
-      let multikollen = multihbody.substring(multihord, multihord+20)
-      multiranta = multihbody.substring(multihord+102, multihord+106)
-      //console.log('Content:', multihbody);
-      //console.log('Index..:', multihord);
-      //console.log('Content:', multikollen);
-      console.log('Multitude Bank');
-      console.log('Fast 3 månaders ränta:', multiranta, '%');
-    }
-  }
-});
+// test('Multitude Bank', async ({ page }) => {
+//   //let multirespons = await page.goto('https://www.multitudebank.se/priser?sc_lang=sv-se');
+//   let multirespons = await page.goto('https://www.multitudebank.se/priser');
+//   //await page.getByRole('button', { name: 'Accept all' }).click();
+//   //await page.getByRole('cell', { name: '3,00%' }).first().click();
+//   //await page.getByRole('cell', { name: 'Fast 3 månader' }).click();
+//   //await expect(page.locator('h2')).toContainText('Aktuella räntor och bindningstider');
+//   if (multirespons) {
+//     let status = multirespons.status();
+//     let multihbody = await multirespons.text();
+//     //console.log('Content:', multihbody);
+//     if (multihbody.includes('Sparkonto')) {
+//       let multihord = multihbody.indexOf('Fast 3 månader</td><td')
+//       let multikollen = multihbody.substring(multihord, multihord+20)
+//       multiranta = multihbody.substring(multihord+102, multihord+106)
+//       //console.log('Content:', multihbody);
+//       //console.log('Index..:', multihord);
+//       //console.log('Content:', multikollen);
+//       console.log('Multitude Bank');
+//       console.log('Fast 3 månaders ränta:', multiranta, '%');
+//     }
+//   }
+// });
 
 /* 20250319: Klarna krånglar, plockar bort denna. Sämsta räntan i vilket fall. */
 /* 20250326: Klarna krånglar IGEN, plockar bort denna. Sämsta räntan i vilket fall. */
@@ -916,9 +917,10 @@ test('Sammanställning', async () => {
   console.log('Northmill Bank');
   console.log('Fast 3 månaders ränta:', northranta, '%');
   console.log('');
-  console.log('Multitude Bank');
-  console.log('Fast 3 månaders ränta:', multiranta, '%');
-  console.log('');
+  /* 2026-05-10 Verkar ha slutat med 3 månaders fasräntekonto. */
+  // console.log('Multitude Bank');
+  // console.log('Fast 3 månaders ränta:', multiranta, '%');
+  // console.log('');
   console.log('Klarna');
   console.log('Fast 3 månaders ränta:', klarnaranta, '%');
   console.log('');
@@ -966,7 +968,7 @@ test('Sorterat', async () => {
   serafimranta = serafimranta.replace(',', '.');
   frodaranta = frodaranta.replace(',', '.');
   northranta = northranta.replace(',', '.');
-  multiranta = multiranta.replace(',', '.');
+  //multiranta = multiranta.replace(',', '.');
   klarnaranta = klarnaranta.replace(',', '.');
   hoistranta = hoistranta.replace(',', '.');
   danskranta = danskranta.replace(',', '.');
@@ -1008,7 +1010,7 @@ test('Sorterat', async () => {
     { banknamn: 'Serafim Finans', bank: '<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a>', ranta: serafimranta},
     { banknamn: 'Froda', bank: '<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>', ranta: frodaranta},
     { banknamn: 'Northmill Bank', bank: '<a href="https://www.northmill.com/se/spara/fastrantekonto/" target="_blank">Northmill Bank</a>', ranta: northranta},
-    { banknamn: 'Multitude Bank', bank: '<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>', ranta: multiranta},
+    //{ banknamn: 'Multitude Bank', bank: '<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>', ranta: multiranta},
     { banknamn: 'Klarna', bank: '<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a> &#128204;', ranta: klarnaranta},
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
