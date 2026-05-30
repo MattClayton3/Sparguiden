@@ -82,9 +82,9 @@ test('Moank', async ({ page }) => {
     let moankbody = await moankresponse.text();
     //console.log('Content:', moankbody);
     if (moankbody.includes('Spara med fast ränta')) {
-      let moankord = moankbody.indexOf('Fast 90 dagar')
+      let moankord = moankbody.indexOf('>Fast 90 dagar')
       let lmoankkollen = moankbody.substring(moankord, moankord+20)
-      moankranta = moankbody.substring(moankord+74, moankord+78)
+      moankranta = moankbody.substring(moankord+169, moankord+173)
       //console.log('Content:', moankbody);
       //console.log('Index..:', moankord);
       //console.log('Content:', lmoankkollen);
@@ -1060,7 +1060,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '</head>\n');
   fs.appendFileSync(outputFile, '<body>\n');
   fs.appendFileSync(outputFile, `<h2><span style='font-size:30px;'>&#128200;</span> Sparguiden ${fullDate}</h2>\n`);
-  fs.appendFileSync(outputFile, '<p>Bästa fasträntekontot just nu. Listan tas fram 2 gånger per dag, morgon och kväll, måndag - fredag.</p>\n');
+  fs.appendFileSync(outputFile, '<p>Bästa 3 månaders fasträntekontot just nu. Listan tas fram 2 gånger per dag, morgon och kväll, måndag - fredag.</p>\n');
   // fs.appendFileSync(outputFile, '<p>Fasträntekonto 1* - 3 mån.</p>\n');
   fs.appendFileSync(outputFile, '<div style="overflow-x:auto;">\n');
   fs.appendFileSync(outputFile, '  <table>\n');
