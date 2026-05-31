@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/MattClayton3/Sparguiden#readme",
   "devDependencies": {
-    "@playwright/test": "^1.56.1",
+    "@playwright/test": "^1.60.0",
     "@types/node": "^22.19.19"
   }
 }
