@@ -30,7 +30,7 @@ let qredranta: any;
 let nstartranta: any;
 let sparsydranta: any;
 let borgoranta: any;
-let broccranta: any;
+//let broccranta: any; /* 2026-06-10 Dom har stoppat in räntan i en .pdf. */
 let jakranta: any;
 let arosranta: any;
 let serafimranta: any;
@@ -566,26 +566,29 @@ test('Borgo', async ({ page }) => {
   }
 });
 
-test('Brocc', async ({ page }) => {
-  let broccresponse = await page.goto('https://brocc.se/spara');
-  //await page.getByRole('button', { name: 'Acceptera alla cookies' }).click();
-  //await expect(page.getByRole('main')).toContainText('sparkonto');
-  if (broccresponse) {
-    let status = broccresponse.status();
-    let broccbody = await broccresponse.text();
-    //console.log('Content:', broccbody);
-    if (broccbody.includes('Brocc Tillväxt')) {
-      let broccord = broccbody.indexOf('>Brocc Tillväxt')
-      let brocckollen = broccbody.substring(broccord, broccord+20)
-      broccranta = broccbody.substring(broccord+16, broccord+20)
-      //console.log('Content:', broccbody);
-      //console.log('Index..:', broccord);
-      //console.log('Content:', brocckollen);
-      console.log('Brocc');
-      console.log('Fast 3 månaders ränta:', broccranta, '%');
-    }
-  }
-});
+
+/* 2026-06-10 Plockar bort BROCC dom har gömt räntan i en .pdf. */
+
+// test('Brocc', async ({ page }) => {
+//   let broccresponse = await page.goto('https://brocc.se/spara');
+//   //await page.getByRole('button', { name: 'Acceptera alla cookies' }).click();
+//   //await expect(page.getByRole('main')).toContainText('sparkonto');
+//   if (broccresponse) {
+//     let status = broccresponse.status();
+//     let broccbody = await broccresponse.text();
+//     //console.log('Content:', broccbody);
+//     if (broccbody.includes('Brocc Tillväxt')) {
+//       let broccord = broccbody.indexOf('>Brocc Tillväxt')
+//       let brocckollen = broccbody.substring(broccord, broccord+20)
+//       broccranta = broccbody.substring(broccord+16, broccord+20)
+//       //console.log('Content:', broccbody);
+//       //console.log('Index..:', broccord);
+//       //console.log('Content:', brocckollen);
+//       console.log('Brocc');
+//       console.log('Fast 3 månaders ränta:', broccranta, '%');
+//     }
+//   }
+// });
 
 test('JAK Medlemsbank', async ({ page }) => {
   let jakresponse = await page.goto('https://www.jak.se/spara-placera/oppna-konto/');
@@ -899,9 +902,10 @@ test('Sammanställning', async () => {
   console.log('Borgo');
   console.log('Fast 3 månaders ränta:', borgoranta, '%');
   console.log('');
-  console.log('Brocc');
-  console.log('Fast 3 månaders ränta:', broccranta, '%');
-  console.log('');
+  /* 2026-06-10 Dom har stoppat in räntan i en .pdf. */
+  // console.log('Brocc');
+  // console.log('Fast 3 månaders ränta:', broccranta, '%');
+  // console.log('');
   console.log('JAK');
   console.log('Fast 3 månaders ränta:', jakranta, '%');
   console.log('');
@@ -962,7 +966,7 @@ test('Sorterat', async () => {
   nstartranta = nstartranta.replace(',', '.');
   sparsydranta = sparsydranta.replace(',', '.');
   borgoranta = borgoranta.replace(',', '.');
-  broccranta = broccranta.replace(',', '.');
+  // broccranta = broccranta.replace(',', '.');
   jakranta = jakranta.replace(',', '.');
   arosranta = arosranta.replace(',', '.');
   serafimranta = serafimranta.replace(',', '.');
@@ -1004,7 +1008,7 @@ test('Sorterat', async () => {
     { banknamn: 'Plus1 (Nstart)', bank: '<a href="https://www.plus1.com/" target="_blank">Plus1</a>', ranta: nstartranta},
     { banknamn: 'Sparbanken Syd', bank: '<a href="https://www.sparbankensyd.se/sv/privat/vara-tjanster/spara/sparkonto" target="_blank">Sparbanken Syd</a>', ranta: sparsydranta},
     { banknamn: 'Borgo', bank: '<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>', ranta: borgoranta},
-    { banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a> &#128198;', ranta: broccranta},
+    //{ banknamn: 'Brocc', bank: '<a href="https://brocc.se/spara" target="_blank">Brocc</a> &#128198;', ranta: broccranta},
     { banknamn: 'JAK Medlemsbank', bank: '<a href="https://www.jak.se/spara-placera/oppna-konto/" target="_blank">JAK Medlemsbank</a>', ranta: jakranta},
     { banknamn: 'Aros Kapital', bank: '<a href="https://www.aroskapital.se/tjanster/spara/" target="_blank">Aros Kapital</a>', ranta: arosranta},
     { banknamn: 'Serafim Finans', bank: '<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a>', ranta: serafimranta},
