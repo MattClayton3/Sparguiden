@@ -530,12 +530,12 @@ test('Sparbanken Syd', async ({ page }) => {
   if (sparsydresponse) {
     let status = sparsydresponse.status();
     let sparsydbody = await sparsydresponse.text();
-    //console.log('Content:', sparsydbody);
+    console.log('Content:', sparsydbody);
     if (sparsydbody.includes('Fasträntekonto')) {
-      let sparsydord = sparsydbody.indexOf('&nbsp;3 m&aring;n')
+      let sparsydord = sparsydbody.indexOf('3 mån</td>')
       //let sparsydord2 = sparsydspecial.indexOf('2,70')
       let sparsydkollen = sparsydbody.substring(sparsydord, sparsydord+20)
-      sparsydranta = sparsydbody.substring(sparsydord+80, sparsydord+84)
+      sparsydranta = sparsydbody.substring(sparsydord+68, sparsydord+72)
       //console.log('Content:', sparsydbody);
       //console.log('Index..:', sparsydord);
       //console.log('Index2.:', sparsydord2);
