@@ -14,6 +14,7 @@ let sbabranta: any;
 let Skandiaranta: any;
 let shbranta = "1.70";
 let nordiskaranta: any;
+let nordiska2ranta: any;
 let epranta: any;
 let learanta: any;
 let moankranta: any;
@@ -177,6 +178,29 @@ test('Nordiska Kreditmarknadsbolaget', async ({ page }) => {
       //console.log('Content:', nordiskakollen);
       console.log('Nordiska Kreditmarknadsbolaget');
       console.log('Fast 3 månaders ränta:', nordiskaranta, '%');
+    }
+  }
+});
+
+test('Nordiska 2 Kreditmarknadsbolaget', async ({ page }) => {
+  let nordiska2response = await page.goto('https://www.nordiska.se/spara/');
+  //await page.getByRole('button', { name: 'Acceptera' }).click();
+  //await expect(page.locator('[id="_30-11"]')).toContainText('Nordiska FIX');
+  //await expect(page.locator('[id="_30-40"]')).toContainText('Spara');
+  //await expect(page.locator('[id="_desktop-header"]')).toContainText('Logotype');
+  if (nordiska2response) {
+    let status = nordiska2response.status();
+    let nordiska2body = await nordiska2response.text();
+    //console.log('Content:', nordiska2body);
+    if (nordiska2body.includes('Sparkonto')) {
+      let nordriska2ord = nordiska2body.indexOf('nordiskaFix2Mnad')
+      let nordiska2kollen = nordiska2body.substring(nordriska2ord, nordriska2ord+20)
+      nordiska2ranta = nordiska2body.substring(nordriska2ord+21, nordriska2ord+25)
+      //console.log('Content:', nordiska2body);
+      //console.log('Index..:', nordriska2ord);
+      //console.log('Content:', nordiska2kollen);
+      console.log('Nordiska 2 Kreditmarknadsbolaget');
+      console.log('Fast 2 månaders ränta:', nordiska2ranta, '%');
     }
   }
 });
@@ -851,6 +875,9 @@ test('Sammanställning', async () => {
   console.log('Nordiska Kreditmarknadsbolaget');
   console.log('Fast 3 månaders ränta:', nordiskaranta, '%');
   console.log('');
+  console.log('Nordiska 2 Kreditmarknadsbolaget');
+  console.log('Fast 2 månaders ränta:', nordiska2ranta, '%');
+  console.log('');  
   console.log('MedMera Bank');
   console.log('Fast 3 månaders ränta:', medranta, '%');
   console.log('');
@@ -949,6 +976,7 @@ test('Sorterat', async () => {
   epranta = epranta.replace(',', '.');
   resursranta = resursranta.replace(',', '.');
   nordiskaranta = nordiskaranta.replace(',', '.');
+  nordiska2ranta = nordiska2ranta.replace(',', '.');
   medranta = medranta.replace(',', '.');
   sbabranta = sbabranta.replace(',', '.');
   Skandiaranta = Skandiaranta.replace(',', '.');
@@ -991,6 +1019,7 @@ test('Sorterat', async () => {
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
     { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto/sparkonto-flex" target="_blank">Resurs</a> &#128176;', ranta: resursranta},
     { banknamn: 'Nordiska', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>', ranta: nordiskaranta},
+    { banknamn: 'Nordiska 2 månader', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska 2</a>', ranta: nordiska2ranta},
     { banknamn: 'MedMera Bank', bank: '<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>', ranta: medranta},
     { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
     { banknamn: 'Skandia Bank', bank: '<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia Bank</a>', ranta: Skandiaranta},
