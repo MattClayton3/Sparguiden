@@ -1019,7 +1019,7 @@ test('Sorterat', async () => {
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
     { banknamn: 'Resurs Bank', bank: '<a href="https://www.resursbank.se/sparkonto/sparkonto-flex" target="_blank">Resurs</a> &#128176;', ranta: resursranta},
     { banknamn: 'Nordiska', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>', ranta: nordiskaranta},
-    { banknamn: 'Nordiska 2 månader', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska 2</a>', ranta: nordiska2ranta},
+    { banknamn: 'Nordiska2', bank: '<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska 2 månader</a>', ranta: nordiska2ranta},
     { banknamn: 'MedMera Bank', bank: '<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>', ranta: medranta},
     { banknamn: 'SBAB', bank: '<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a>', ranta: sbabranta},
     { banknamn: 'Skandia Bank', bank: '<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia Bank</a>', ranta: Skandiaranta},
