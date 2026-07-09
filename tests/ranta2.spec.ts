@@ -1027,7 +1027,7 @@ test('Sorterat', async () => {
     { banknamn: 'Handelsbanken', bank: '<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a> &#128204;', ranta: shbranta},
     { banknamn: 'Nordea', bank: '<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>', ranta: nordearanta},
     { banknamn: 'SEB', bank: '<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>', ranta: sebranta},
-    { banknamn: 'Länsförsäkringar Bank', bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/bli-bankkund/aktuella-rantor-och-priser/" target="_blank">Länsförsäkringar Bank</a>', ranta: lansfranta},
+    { banknamn: 'Länsförsäkringar Bank', bank: '<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar Bank</a>', ranta: lansfranta},
     { banknamn: 'Collector', bank: '<a href="https://www.collector.se/spara-pengar/aktuella-sparrantor/" target="_blank">Collector</a>', ranta: collectorranta},
     { banknamn: 'Marginalen Bank', bank: '<a href="https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/" target="_blank">Marginalen Bank</a>', ranta: marginalranta},
     { banknamn: 'Qliro', bank: '<a href="https://www.qliro.com/sv-se/spara" target="_blank">Qliro</a>', ranta: qlirokranta},
