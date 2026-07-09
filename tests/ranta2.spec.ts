@@ -367,7 +367,7 @@ test('Lansforsakringar', async ({ page }) => {
     if (lansfbody.includes('konto')) {
       let lansford = lansfbody.indexOf('>3 m&aring;nader<')
       let lansfkollen = lansfbody.substring(lansford, lansford+20)
-      lansfranta = lansfbody.substring(lansford+65, lansford+69)
+      lansfranta = lansfbody.substring(lansford+66, lansford+70)
       //console.log('Content:', lansfbody);
       //console.log('Index..:', lansford);
       //console.log('Content:', lansfkollen);
