@@ -529,7 +529,7 @@ test('NstartPlus1', async ({ page }) => {
   if (nstartresponse) {
     let status = nstartresponse.status();
     let nstartbody = await nstartresponse.text();
-    console.log('Content:', nstartbody);
+    //console.log('Content:', nstartbody);
     if (nstartbody.includes('sparkonton')) {
       let nstartord = nstartbody.indexOf('<p>Fast 3 mån</p>')
       let nstartkollen = nstartbody.substring(nstartord, nstartord+20)
