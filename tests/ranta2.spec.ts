@@ -1100,9 +1100,9 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '    <tr>\n');
   fs.appendFileSync(outputFile, '      <th>Bank &#127974;<br>Fasträntekonto 3 månader.</th>\n');
   fs.appendFileSync(outputFile, '      <th>Ränta %</th>\n');
-  fs.appendFileSync(outputFile, `      <th>Kvartal(netto)<br>Ex. ${exempelBelopp} kr</th>\n`);
+  fs.appendFileSync(outputFile, `      <th>Kvartal (netto)<br>Ex. ${exempelBelopp} kr</th>\n`);
   //fs.appendFileSync(outputFile, `      <th>Netto kvartal<br>Ex. ${exempelBelopp} kr</th>\n`);
-  fs.appendFileSync(outputFile, `      <th>Dag(netto)<br>Ex. ${exempelBelopp} kr</th>\n`);
+  fs.appendFileSync(outputFile, `      <th>Dag (netto)<br>Ex. ${exempelBelopp} kr</th>\n`);
   fs.appendFileSync(outputFile, '    </tr>\n');
 
   let counter = 0;
@@ -1166,7 +1166,7 @@ test('Sorterat', async () => {
       color = 'red';
       position = '&#129300;';
     }
-        if (rantan < 1.75){
+        if (rantan < 1.65){
       color = 'red';
       position = '&#128542;';
     }
@@ -1176,7 +1176,7 @@ test('Sorterat', async () => {
     let kvartal1 = (Math.round(kvartal * 100) / 100).toFixed(2);
     let nettoKvartal = kvartal * 0.7;
     let nettoKvartal1 = (Math.round(nettoKvartal * 100) / 100).toFixed(2);
-    let kvartalStr = `    <td style="color:${color}"> ${kvartal1}(${nettoKvartal1}) </td>\n`;
+    let kvartalStr = `    <td style="color:${color}"> ${kvartal1} (${nettoKvartal1}) </td>\n`;
     //let nettoKvartal = kvartal * 0.7;
     //let nettoKvartal1 = (Math.round(nettoKvartal * 100) / 100).toFixed(2);
     //let nettoKvartalStr = `    <td style="color:${color}"> ${nettoKvartal1} </td>\n`;
@@ -1184,7 +1184,7 @@ test('Sorterat', async () => {
     let dag1 = (Math.round(dag * 100) / 100).toFixed(2);
     let nettoDag = nettoKvartal / 90;
     let nettoDag1 = (Math.round(nettoDag * 100) / 100).toFixed(2);
-    let dagStr = `    <td style="color:${color}"> ${dag1}(${nettoDag1}) </td>\n`;
+    let dagStr = `    <td style="color:${color}"> ${dag1} (${nettoDag1}) </td>\n`;
 
     fs.appendFileSync(outputFile, '  <tr>\n');
     fs.appendFileSync(outputFile, bankStr);
