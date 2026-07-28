@@ -554,7 +554,7 @@ test('Sparbanken Syd', async ({ page }) => {
   if (sparsydresponse) {
     let status = sparsydresponse.status();
     let sparsydbody = await sparsydresponse.text();
-    console.log('Content:', sparsydbody);
+    //console.log('Content:', sparsydbody);
     if (sparsydbody.includes('Fasträntekonto')) {
       let sparsydord = sparsydbody.indexOf('3 mån</td>')
       //let sparsydord2 = sparsydspecial.indexOf('2,70')
@@ -1100,9 +1100,9 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '    <tr>\n');
   fs.appendFileSync(outputFile, '      <th>Bank &#127974;<br>Fasträntekonto 3 månader.</th>\n');
   fs.appendFileSync(outputFile, '      <th>Ränta %</th>\n');
-  fs.appendFileSync(outputFile, `      <th>Kvartal<br>Ex. ${exempelBelopp} kr</th>\n`);
-  fs.appendFileSync(outputFile, `      <th>Netto kvartal<br>Ex. ${exempelBelopp} kr</th>\n`);
-  fs.appendFileSync(outputFile, `      <th>Netto per dag<br>Ex. ${exempelBelopp} kr</th>\n`);
+  fs.appendFileSync(outputFile, `      <th>Kvartal(netto)<br>Ex. ${exempelBelopp} kr</th>\n`);
+  //fs.appendFileSync(outputFile, `      <th>Netto kvartal<br>Ex. ${exempelBelopp} kr</th>\n`);
+  fs.appendFileSync(outputFile, `      <th>Dag(netto)<br>Ex. ${exempelBelopp} kr</th>\n`);
   fs.appendFileSync(outputFile, '    </tr>\n');
 
   let counter = 0;
@@ -1166,7 +1166,7 @@ test('Sorterat', async () => {
       color = 'red';
       position = '&#129300;';
     }
-        if (rantan < 1.65){
+        if (rantan < 1.75){
       color = 'red';
       position = '&#128542;';
     }
@@ -1174,20 +1174,24 @@ test('Sorterat', async () => {
     let rantaStr = `    <td style="color:${color}"> ${rantan} </td>\n`;
     let kvartal = (rantan * 0.01) * exempelBelopp / 4;
     let kvartal1 = (Math.round(kvartal * 100) / 100).toFixed(2);
-    let kvartalStr = `    <td style="color:${color}"> ${kvartal1} </td>\n`;
     let nettoKvartal = kvartal * 0.7;
     let nettoKvartal1 = (Math.round(nettoKvartal * 100) / 100).toFixed(2);
-    let nettoKvartalStr = `    <td style="color:${color}"> ${nettoKvartal1} </td>\n`;
+    let kvartalStr = `    <td style="color:${color}"> ${kvartal1}(${nettoKvartal1}) </td>\n`;
+    //let nettoKvartal = kvartal * 0.7;
+    //let nettoKvartal1 = (Math.round(nettoKvartal * 100) / 100).toFixed(2);
+    //let nettoKvartalStr = `    <td style="color:${color}"> ${nettoKvartal1} </td>\n`;
+    let dag = (kvartal / 90);
+    let dag1 = (Math.round(dag * 100) / 100).toFixed(2);
     let nettoDag = nettoKvartal / 90;
     let nettoDag1 = (Math.round(nettoDag * 100) / 100).toFixed(2);
-    let nettoDagStr = `    <td style="color:${color}"> ${nettoDag1} </td>\n`;
+    let dagStr = `    <td style="color:${color}"> ${dag1}(${nettoDag1}) </td>\n`;
 
     fs.appendFileSync(outputFile, '  <tr>\n');
     fs.appendFileSync(outputFile, bankStr);
     fs.appendFileSync(outputFile, rantaStr);
     fs.appendFileSync(outputFile, kvartalStr);
-    fs.appendFileSync(outputFile, nettoKvartalStr);
-    fs.appendFileSync(outputFile, nettoDagStr);
+    //fs.appendFileSync(outputFile, nettoKvartalStr);
+    fs.appendFileSync(outputFile, dagStr);
     fs.appendFileSync(outputFile, '  </tr>\n');
     i++
     position = '';
