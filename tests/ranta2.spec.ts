@@ -1166,7 +1166,7 @@ test('Sorterat', async () => {
       color = 'red';
       position = '&#129300;';
     }
-        if (rantan < 1.65){
+        if (rantan < 1.80){
       color = 'red';
       position = '&#128542;';
     }
