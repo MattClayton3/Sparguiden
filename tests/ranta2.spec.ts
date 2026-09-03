@@ -1099,7 +1099,7 @@ test('Sorterat', async () => {
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
     { banknamn: 'Fedelta', bank: '<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>', ranta: fedeltaranta},
-    { banknamn: 'Artika Spar', bank: '<a href="https://artika.se/sparkonto" target="_blank">Artika Spar</a> &#127905;', ranta: artikaranta},
+    { banknamn: 'Artika Spar', bank: '<a href="https://www.arktikaspar.se/" target="_blank">Artika Spar</a> &#127905;', ranta: artikaranta},
     { banknamn: 'Brixo', bank: '<a href="https://brixo.se/sparkonto/" target="_blank">Brixo</a>', ranta: brixoranta}    
   ];
   
