@@ -22,7 +22,7 @@ let sebranta: any;
 let nordearanta: any;
 let swedbankranta: any;
 let lansfranta: any;
-let collectorranta = "2.60";
+let collectorranta: any;
 let marginalranta: any;
 let qlirokranta: any;
 let coelikranta: any;
@@ -49,6 +49,7 @@ let landsranta:any;
 let myntroranta:any;
 let prasparranta:any;
 let sevendayranta:any;
+let sparspiraranta:any;
 
 // Skapar upp dagens datum.
 let date = new Date()
@@ -385,6 +386,7 @@ test('Lansforsakringar', async ({ page }) => {
 });
 
 /* 2026-02-10 Hårdkodar räntan 2,60 ovan (let collectorranta = "2.60";) CI/CD/GitHub verkar inte köra Collector av någon anledning? Funkar bra lokal? */
+/* 2026-09-06 Collector verkar fungera igen. Plockar bort hårdkodningen. */
 
 test('Collector', async ({ page }) => {
   let collectorresponse = await page.goto('https://www.collector.se/spara-pengar/aktuella-sparrantor/');
@@ -1008,6 +1010,27 @@ test('SevenDay Bank', async ({ page }) => {
   }
 });
 
+test('Sparbanken Spira', async ({ page }) => {
+  let sparspiraresponse = await page.goto('https://www.sparbankenspira.se/privat/spara-och-placera/fastrantekonto.html');
+  //await page.getByRole('button', { name: 'OK till alla' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  if (sparspiraresponse) {
+    let status = sparspiraresponse.status();
+    let sparspirabody = await sparspiraresponse.text();
+    //console.log('Content:', sparspirabody);
+    if (sparspirabody.includes('konto')) {
+      let sparspirakord = sparspirabody.indexOf('<td>3 mån</td>')
+      let sparspirakollen = sparspirabody.substring(sparspirakord, sparspirakord+20)
+      sparspiraranta = sparspirabody.substring(sparspirakord+18, sparspirakord+22)
+      //console.log('Content:', sparspirabody);
+      //console.log('Index..:', sparspirakord);
+      //console.log('Content:', sparspirakollen);
+      console.log('Sparbanken Spira');
+      console.log('Fast 3 månaders ränta:', sparspiraranta, '%');
+    }
+  }
+});
+
 test('Sammanställning', async () => {
   console.log('Sammanställning...');
   //console.log('');
@@ -1138,6 +1161,9 @@ test('Sammanställning', async () => {
   console.log('');
   console.log('SevenDay Bank');
   console.log('Fast 3 månaders ränta:', sevendayranta, '%');
+  console.log('');
+  console.log('Sparbanken Spira');
+  console.log('Fast 3 månaders ränta:', sparspiraranta, '%');
   console.log('');  
   // ...
 });
@@ -1187,6 +1213,8 @@ test('Sorterat', async () => {
   myntroranta = myntroranta.replace(',', '.');
   prasparranta = prasparranta.replace(',', '.');
   sevendayranta = sevendayranta.replace(',', '.');
+  sparspiraranta = sparspiraranta.replace(',', '.');
+
   interface Banks{
     banknamn: string;
     bank: string;
@@ -1235,7 +1263,8 @@ test('Sorterat', async () => {
     { banknamn: 'Landshypotek', bank: '<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a>', ranta: landsranta},
     { banknamn: 'Myntro', bank: '<a href="https://myntrosavings.se/" target="_blank">Myntro</a>', ranta: myntroranta},
     { banknamn: 'PRA Spar', bank: '<a href="https://praspar.se/" target="_blank">PRA Spar</a>', ranta: prasparranta},
-    { banknamn: 'SevenDay Bank', bank: '<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a>', ranta: sevendayranta},   
+    { banknamn: 'SevenDay Bank', bank: '<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a>', ranta: sevendayranta},
+    { banknamn: 'Sparbanken Spira', bank: '<a href="https://www.sparbankenspira.se/privat/spara-och-placera/fastrantekonto.html" target="_blank">Sparbanken Spira</a>', ranta: sparspiraranta},   
   ];
   
   bankarr.sort((a,b) => {
