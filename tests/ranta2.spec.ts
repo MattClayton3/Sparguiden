@@ -46,6 +46,9 @@ let artikaranta:any;
 let brixoranta:any;
 let ekoranta:any;
 let landsranta:any;
+let myntroranta:any;
+let prasparranta:any;
+let sevendayranta:any;
 
 // Skapar upp dagens datum.
 let date = new Date()
@@ -942,6 +945,69 @@ test('Landshypotek', async ({ page }) => {
   }
 });
 
+test('Myntro', async ({ page }) => {
+  let myntroresponse = await page.goto('https://myntrosavings.se/');
+  //await page.getByRole('button', { name: 'OK till alla' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  if (myntroresponse) {
+    let status = myntroresponse.status();
+    let myntrobody = await myntroresponse.text();
+    //console.log('Content:', myntrobody);
+    if (myntrobody.includes('konto')) {
+      let myntrokord = myntrobody.indexOf('3 mån')
+      let myntrokollen = myntrobody.substring(myntrokord, myntrokord+20)
+      myntroranta = myntrobody.substring(myntrokord+36, myntrokord+40)
+      //console.log('Content:', myntrobody);
+      //console.log('Index..:', myntrokord);
+      //console.log('Content:', myntrokollen);
+      console.log('Myntro');
+      console.log('Fast 3 månaders ränta:', myntroranta, '%');
+    }
+  }
+});
+
+test('PRA Spar', async ({ page }) => {
+  let prasparresponse = await page.goto('https://praspar.se/');
+  //await page.getByRole('button', { name: 'OK till alla' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  if (prasparresponse) {
+    let status = prasparresponse.status();
+    let prasparbody = await prasparresponse.text();
+    //console.log('Content:', prasparbody);
+    if (prasparbody.includes('konto')) {
+      let prasparkord = prasparbody.indexOf('"3 månaders fasträntekonto"')
+      let prasparkollen = prasparbody.substring(prasparkord, prasparkord+20)
+      prasparranta = prasparbody.substring(prasparkord-13, prasparkord-8)
+      //console.log('Content:', prasparbody);
+      //console.log('Index..:', prasparkord);
+      //console.log('Content:', prasparkollen);
+      console.log('PRA Spar');
+      console.log('Fast 3 månaders ränta:', prasparranta, '%');
+    }
+  }
+});
+
+test('SevenDay Bank', async ({ page }) => {
+  let sevendayresponse = await page.goto('https://www.sevenday.se/');
+  //await page.getByRole('button', { name: 'OK till alla' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  if (sevendayresponse) {
+    let status = sevendayresponse.status();
+    let sevendaybody = await sevendayresponse.text();
+    //console.log('Content:', sevendaybody);
+    if (sevendaybody.includes('konto')) {
+      let sevendaykord = sevendaybody.indexOf('<span class="title">SevenDay 3 mån')
+      let sevendaykollen = sevendaybody.substring(sevendaykord, sevendaykord+20)
+      sevendayranta = sevendaybody.substring(sevendaykord+74, sevendaykord+78)
+      //console.log('Content:', sevendaybody);
+      //console.log('Index..:', sevendaykord);
+      //console.log('Content:', sevendaykollen);
+      console.log('SevenDay Bank');
+      console.log('Fast 3 månaders ränta:', sevendayranta, '%');
+    }
+  }
+});
+
 test('Sammanställning', async () => {
   console.log('Sammanställning...');
   //console.log('');
@@ -1057,6 +1123,21 @@ test('Sammanställning', async () => {
   console.log('');
   console.log('Brixo');
   console.log('Fast 3 månaders ränta:', brixoranta, '%');
+  console.log('');
+  console.log('Ekobanken');
+  console.log('Fast 3 månaders ränta:', ekoranta, '%');
+  console.log('');  
+  console.log('Landshypotek');
+  console.log('Fast 3 månaders ränta:', landsranta, '%');
+  console.log('');
+  console.log('Myntro');
+  console.log('Fast 3 månaders ränta:', myntroranta, '%');
+  console.log('');
+  console.log('PRA Spar');
+  console.log('Fast 3 månaders ränta:', prasparranta, '%');
+  console.log('');
+  console.log('SevenDay Bank');
+  console.log('Fast 3 månaders ränta:', sevendayranta, '%');
   console.log('');  
   // ...
 });
@@ -1103,7 +1184,9 @@ test('Sorterat', async () => {
   brixoranta = brixoranta.replace(',', '.');
   ekoranta = ekoranta.replace(',', '.');
   landsranta = landsranta.replace(',', '.');
-
+  myntroranta = myntroranta.replace(',', '.');
+  prasparranta = prasparranta.replace(',', '.');
+  sevendayranta = sevendayranta.replace(',', '.');
   interface Banks{
     banknamn: string;
     bank: string;
@@ -1149,7 +1232,10 @@ test('Sorterat', async () => {
     { banknamn: 'Artika Spar', bank: '<a href="https://www.arktikaspar.se/" target="_blank">Artika Spar</a> &#127905;', ranta: artikaranta},
     { banknamn: 'Brixo', bank: '<a href="https://brixo.se/sparkonto/" target="_blank">Brixo</a>', ranta: brixoranta},
     { banknamn: 'Ekobanken', bank: '<a href="https://www.ekobanken.se/hem/privat/aktuella-rantor" target="_blank">Ekobanken</a>', ranta: ekoranta},
-    { banknamn: 'Landshypotek', bank: '<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a>', ranta: landsranta},     
+    { banknamn: 'Landshypotek', bank: '<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a>', ranta: landsranta},
+    { banknamn: 'Myntro', bank: '<a href="https://myntrosavings.se/" target="_blank">Myntro</a>', ranta: myntroranta},
+    { banknamn: 'PRA Spar', bank: '<a href="https://praspar.se/" target="_blank">PRA Spar</a>', ranta: prasparranta},
+    { banknamn: 'SevenDay Bank', bank: '<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a>', ranta: sevendayranta}   
   ];
   
   bankarr.sort((a,b) => {
