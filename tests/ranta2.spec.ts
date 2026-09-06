@@ -44,6 +44,8 @@ let danskranta:any;
 let fedeltaranta:any;
 let artikaranta:any;
 let brixoranta:any;
+let ekoranta:any;
+let landsranta:any;
 
 // Skapar upp dagens datum.
 let date = new Date()
@@ -898,6 +900,48 @@ test('Brixo', async ({ page }) => {
   }
 });
 
+test('Ekobanken', async ({ page }) => {
+  let ekobankenresponse = await page.goto('https://www.ekobanken.se/hem/privat/aktuella-rantor');
+  //await page.getByRole('button', { name: 'OK till alla' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  if (ekobankenresponse) {
+    let status = ekobankenresponse.status();
+    let ekobankbody = await ekobankenresponse.text();
+    //console.log('Content:', ekobankbody);
+    if (ekobankbody.includes('konto')) {
+      let ekobankkord = ekobankbody.indexOf('uppsägningstid 1-9 mån')
+      let ekobankkollen = ekobankbody.substring(ekobankkord, ekobankkord+20)
+      ekoranta = ekobankbody.substring(ekobankkord+126, ekobankkord+130)
+      //console.log('Content:', ekobankbody);
+      //console.log('Index..:', ekobankkord);
+      //console.log('Content:', ekobankkollen);
+      console.log('Ekobanken');
+      console.log('Fast 3 månaders ränta:', ekoranta, '%');
+    }
+  }
+});
+
+test('Landshypotek', async ({ page }) => {
+  let landshypotekresponse = await page.goto('https://www.landshypotek.se/spara-privat/fastranteerbjudande/');
+  //await page.getByRole('button', { name: 'OK till alla' }).click();
+  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  if (landshypotekresponse) {
+    let status = landshypotekresponse.status();
+    let landshypotekbody = await landshypotekresponse.text();
+    //console.log('Content:', landshypotekbody);
+    if (landshypotekbody.includes('konto')) {
+      let landshypotekkord = landshypotekbody.indexOf('<p>3 m&aring;nader</p>')
+      let landshypotekkollen = landshypotekbody.substring(landshypotekkord, landshypotekkord+20)
+      landsranta = landshypotekbody.substring(landshypotekkord+71, landshypotekkord+75)
+      //console.log('Content:', landshypotekbody);
+      //console.log('Index..:', landshypotekkord);
+      //console.log('Content:', landshypotekkollen);
+      console.log('Landshypotek');
+      console.log('Fast 3 månaders ränta:', landsranta, '%');
+    }
+  }
+});
+
 test('Sammanställning', async () => {
   console.log('Sammanställning...');
   //console.log('');
@@ -1057,6 +1101,9 @@ test('Sorterat', async () => {
   fedeltaranta = fedeltaranta.replace(',', '.');
   artikaranta = artikaranta.replace(',', '.');
   brixoranta = brixoranta.replace(',', '.');
+  ekoranta = ekoranta.replace(',', '.');
+  landsranta = landsranta.replace(',', '.');
+
   interface Banks{
     banknamn: string;
     bank: string;
@@ -1100,7 +1147,9 @@ test('Sorterat', async () => {
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
     { banknamn: 'Fedelta', bank: '<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>', ranta: fedeltaranta},
     { banknamn: 'Artika Spar', bank: '<a href="https://www.arktikaspar.se/" target="_blank">Artika Spar</a> &#127905;', ranta: artikaranta},
-    { banknamn: 'Brixo', bank: '<a href="https://brixo.se/sparkonto/" target="_blank">Brixo</a>', ranta: brixoranta}    
+    { banknamn: 'Brixo', bank: '<a href="https://brixo.se/sparkonto/" target="_blank">Brixo</a>', ranta: brixoranta},
+    { banknamn: 'Ekobanken', bank: '<a href="https://www.ekobanken.se/hem/privat/aktuella-rantor" target="_blank">Ekobanken</a>', ranta: ekoranta},
+    { banknamn: 'Landshypot', bank: '<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypot</a>', ranta: landsranta},     
   ];
   
   bankarr.sort((a,b) => {
