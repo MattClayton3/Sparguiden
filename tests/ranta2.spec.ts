@@ -977,7 +977,7 @@ test('PRA Spar', async ({ page }) => {
     if (prasparbody.includes('konto')) {
       let prasparkord = prasparbody.indexOf('"3 månaders fasträntekonto"')
       let prasparkollen = prasparbody.substring(prasparkord, prasparkord+20)
-      prasparranta = prasparbody.substring(prasparkord-13, prasparkord-8)
+      prasparranta = prasparbody.substring(prasparkord-12, prasparkord-8)
       //console.log('Content:', prasparbody);
       //console.log('Index..:', prasparkord);
       //console.log('Content:', prasparkollen);
