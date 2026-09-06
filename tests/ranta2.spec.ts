@@ -42,7 +42,7 @@ let klarnaranta = "1.61";
 let hoistranta:any;
 let danskranta:any;
 let fedeltaranta:any;
-let artikaranta:any;
+let arktikaranta:any;
 let brixoranta:any;
 let ekoranta:any;
 let landsranta:any;
@@ -864,23 +864,23 @@ test('Fedelta', async ({ page }) => {
   }
 });
 
-test('Artika Spar', async ({ page }) => {
-  let artikaresponse = await page.goto('https://www.arktikaspar.se/');
+test('Arktika Spar', async ({ page }) => {
+  let arktikaresponse = await page.goto('https://www.arktikaspar.se/');
   //await page.getByRole('button', { name: 'OK till alla' }).click();
   //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
-  if (artikaresponse) {
-    let status = artikaresponse.status();
-    let artikabody = await artikaresponse.text();
-    //console.log('Content:', artikabody);
-    if (artikabody.includes('3 mån')) {
-      let artikakord = artikabody.indexOf('3 månader')
-      let artikakollen = artikabody.substring(artikakord, artikakord+20)
-      artikaranta = artikabody.substring(artikakord+97, artikakord+101)
-      //console.log('Content:', artikabody);
-      //console.log('Index..:', artikakord);
-      //console.log('Content:', artikakollen);
-      console.log('Artika Spar');
-      console.log('Fast 3 månaders ränta:', artikaranta, '%');
+  if (arktikaresponse) {
+    let status = arktikaresponse.status();
+    let arktikabody = await arktikaresponse.text();
+    //console.log('Content:', arktikabody);
+    if (arktikabody.includes('3 mån')) {
+      let arktikakord = arktikabody.indexOf('3 månader')
+      let arktikakollen = arktikabody.substring(arktikakord, arktikakord+20)
+      arktikaranta = arktikabody.substring(arktikakord+97, arktikakord+101)
+      //console.log('Content:', arktikabody);
+      //console.log('Index..:', arktikakord);
+      //console.log('Content:', arktikakollen);
+      console.log('Arktika Spar');
+      console.log('Fast 3 månaders ränta:', arktikaranta, '%');
     }
   }
 });
@@ -1164,8 +1164,8 @@ test('Sammanställning', async () => {
   console.log('Fedelta');
   console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
   console.log('');
-  console.log('Artika Spar');
-  console.log('Fast 3 månaders ränta:', artikaranta, '%');
+  console.log('Arktika Spar');
+  console.log('Fast 3 månaders ränta:', arktikaranta, '%');
   console.log('');
   console.log('Brixo');
   console.log('Fast 3 månaders ränta:', brixoranta, '%');
@@ -1232,7 +1232,7 @@ test('Sorterat', async () => {
   hoistranta = hoistranta.replace(',', '.');
   danskranta = danskranta.replace(',', '.');
   fedeltaranta = fedeltaranta.replace(',', '.');
-  artikaranta = artikaranta.replace(',', '.');
+  arktikaranta = arktikaranta.replace(',', '.');
   brixoranta = brixoranta.replace(',', '.');
   ekoranta = ekoranta.replace(',', '.');
   landsranta = landsranta.replace(',', '.');
@@ -1284,7 +1284,7 @@ test('Sorterat', async () => {
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
     { banknamn: 'Fedelta', bank: '<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>', ranta: fedeltaranta},
-    { banknamn: 'Artika Spar', bank: '<a href="https://www.arktikaspar.se/" target="_blank">Artika Spar</a> &#127905; &#129518;', ranta: artikaranta},
+    { banknamn: 'Arktika Spar', bank: '<a href="https://www.arktikaspar.se/" target="_blank">Arktika Spar</a> &#127905; &#129518;', ranta: arktikaranta},
     { banknamn: 'Brixo', bank: '<a href="https://brixo.se/sparkonto/" target="_blank">Brixo</a>', ranta: brixoranta},
     { banknamn: 'Ekobanken', bank: '<a href="https://www.ekobanken.se/hem/privat/aktuella-rantor" target="_blank">Ekobanken</a>', ranta: ekoranta},
     { banknamn: 'Landshypotek', bank: '<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a>', ranta: landsranta},
