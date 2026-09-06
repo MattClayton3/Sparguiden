@@ -1229,7 +1229,7 @@ test('Sorterat', async () => {
     { banknamn: 'HoistSpar', bank: '<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>', ranta: hoistranta},
     { banknamn: 'Danske Bank', bank: '<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>', ranta: danskranta},
     { banknamn: 'Fedelta', bank: '<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>', ranta: fedeltaranta},
-    { banknamn: 'Artika Spar', bank: '<a href="https://www.arktikaspar.se/" target="_blank">Artika Spar</a> &#127905;', ranta: artikaranta},
+    { banknamn: 'Artika Spar', bank: '<a href="https://www.arktikaspar.se/" target="_blank">Artika Spar</a> &#127905; &#129518;', ranta: artikaranta},
     { banknamn: 'Brixo', bank: '<a href="https://brixo.se/sparkonto/" target="_blank">Brixo</a>', ranta: brixoranta},
     { banknamn: 'Ekobanken', bank: '<a href="https://www.ekobanken.se/hem/privat/aktuella-rantor" target="_blank">Ekobanken</a>', ranta: ekoranta},
     { banknamn: 'Landshypotek', bank: '<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a>', ranta: landsranta},
@@ -1393,6 +1393,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<br>&#128176; = Vanligt sparkonto.\n');
   fs.appendFileSync(outputFile, '<br>&#128204; = OBS! Hårdkodad ränta.\n');
   fs.appendFileSync(outputFile, '<br>&#127905; = Automatisk förlängning möjlig.\n');
+  fs.appendFileSync(outputFile, '<br>&#129518; = Bonus vid förlängning.\n');
 
   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
