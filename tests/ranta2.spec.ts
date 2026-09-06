@@ -1235,7 +1235,7 @@ test('Sorterat', async () => {
     { banknamn: 'Landshypotek', bank: '<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a>', ranta: landsranta},
     { banknamn: 'Myntro', bank: '<a href="https://myntrosavings.se/" target="_blank">Myntro</a>', ranta: myntroranta},
     { banknamn: 'PRA Spar', bank: '<a href="https://praspar.se/" target="_blank">PRA Spar</a>', ranta: prasparranta},
-    { banknamn: 'SevenDay Bank', bank: '<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a>', ranta: sevendayranta}   
+    { banknamn: 'SevenDay Bank', bank: '<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a>', ranta: sevendayranta},   
   ];
   
   bankarr.sort((a,b) => {
