@@ -37,8 +37,7 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add index.html
-        git add historik.txt
+        git add index.html historik.txt
         git commit -m "Add generated index.html and historik.txt"
         git push
       env:
