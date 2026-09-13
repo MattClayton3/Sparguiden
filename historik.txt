@@ -1,4 +1,4 @@
-Sparguiden 2026-09-13_21-05-05
+Sparguiden 2026-09-13_21-28-55
 Lea Bank: 2.45
 Moank: 2.60
 Bluestep Bank: 2.85
@@ -35,7 +35,7 @@ Arktika Spar: 2.50
 Brixo: 2.55
 Ekobanken: 0.65
 Landshypotek: 2.30
-Myntro: 2.85
+Myntro: undefined
 PRA Spar: 2.90
 SevenDay Bank: 1.65
 Sparbanken Spira: 1.75
