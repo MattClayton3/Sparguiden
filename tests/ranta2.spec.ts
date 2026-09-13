@@ -622,7 +622,7 @@ test('Swedbank', async ({ page }) => {
     if (swedbankbody.includes('fasträntekonto')) {
       let swedbaknord = swedbankbody.indexOf('>3 mån<')
       let swedbankkollen = swedbankbody.substring(swedbaknord, swedbaknord+20)
-      swedbankranta = swedbankbody.substring(swedbaknord+15, swedbaknord+20)
+      swedbankranta = swedbankbody.substring(swedbaknord+15, swedbaknord+19)
       swedbankranta = swedbankranta.replace(',', '.');
       //console.log('Content:', swedbankbody);
       //console.log('Index..:', swedbaknord);
@@ -646,7 +646,7 @@ test('Swedbank', async ({ page }) => {
 /* 2025-08-28 Nu är vi tillbaka till hederliga kollen. */
 /* 2026-01-17 Plockar bort SHB en stund. Allt har blivit en SVG bild?!?!? IGEN!!! Sätter räntan fast så länge. */
 
-// test('Handelsbanken', async ({ page }) => {
+test('Handelsbanken', async ({ page }) => {
 //   // let shbresponse = await page.goto('https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor');
 //   // //await page.getByTestId('CookieConsent__acceptButton').click();
 
@@ -669,8 +669,17 @@ test('Swedbank', async ({ page }) => {
 //    //}
 //       console.log('Handelsbanken');
 //       console.log('Fast 3 månaders ränta:', shbranta, '%');
-
-// });
+       console.log('Handelsbanken');
+       console.log('Fast 3 månaders ränta:', shbranta, '%');
+        if (shbranta > old_shbranta) {
+        console.log('Räntan har höjts!');
+        shbchange = `&#9195; (${old_shbranta}%)`;
+      }
+      if (shbranta < old_shbranta) {
+        console.log('Räntan har sänkts!');
+        shbchange = `&#9196; (${old_shbranta}%)`;
+      }
+});
 
 test('Nordea', async ({ page }) => {
   let nordearesponse = await page.goto('https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html');
