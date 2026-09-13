@@ -2042,7 +2042,8 @@ test('Sorterat', async () => {
 
   /* Historik fel förändring sedan förra kontrollen. */
   let historikFile = 'historik.txt';
-  fs.writeFileSync(historikFile, 'Lea Bank: ' + learanta + '\n');
+  fs.writeFileSync(historikFile, 'Sparguiden ' + fullDate + '\n');
+  fs.appendFileSync(historikFile, 'Lea Bank: ' + learanta + '\n');
   fs.appendFileSync(historikFile, 'Moank: ' + moankranta + '\n');
   fs.appendFileSync(historikFile, 'Bluestep Bank: ' + blueranta + '\n');
   fs.appendFileSync(historikFile, 'EP Bank: ' + epranta + '\n');
