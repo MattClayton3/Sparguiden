@@ -40,6 +40,13 @@ jobs:
         git add index.html
         git commit -m "Add generated index.html"
         git push
+    - name: Commit and push historik.txt
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add historik.txt
+        git commit -m "Add generated historik.txt"
+        git push        
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

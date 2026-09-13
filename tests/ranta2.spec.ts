@@ -1843,6 +1843,7 @@ test('Sorterat', async () => {
     { banknamn: 'SBAB', bank: `<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a> &#127905; ${sbabchange}`, ranta: sbabranta},
     { banknamn: 'Skandia Bank', bank: `<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia</a> ${Skandiachange}`, ranta: Skandiaranta},
     { banknamn: 'Swedbank', bank: `<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a> ${swedbankchange}`, ranta: swedbankranta},
+    { banknamn: 'Nordea', bank: `<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a> ${nordeachange}`, ranta: nordearanta},
     { banknamn: 'Handelsbanken', bank: `<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a> &#128204; &#127905; ${shbchange}`, ranta: shbranta},
     { banknamn: 'SEB', bank: `<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a> ${sebchange}`, ranta: sebranta},
     { banknamn: 'Länsförsäkringar Bank', bank: `<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar Bank</a> ${lansfchange}`, ranta: lansfranta},
@@ -1874,7 +1875,6 @@ test('Sorterat', async () => {
     { banknamn: 'SevenDay Bank', bank: `<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a> ${sevendaychange}`, ranta: sevendayranta},
     { banknamn: 'Sparbanken Spira', bank: `<a href="https://www.sparbankenspira.se/privat/spara-och-placera/fastrantekonto.html" target="_blank">Sparbanken Spira</a> ${sparspirachange}`, ranta: sparspiraranta},   
     { banknamn: 'Arktika Spar', bank: `<a href="https://www.arktikaspar.se/" target="_blank">Arktika Spar</a> &#127905; &#129518; ${arktikachange}`, ranta: arktikaranta},
-    { banknamn: 'Ekobanken', bank: `<a href="https://www.ekobanken.se/hem/privat/aktuella-rantor" target="_blank">Ekobanken</a> ${ekochange}`, ranta: ekoranta},
     { banknamn: 'Ålandsbanken', bank: `<a href="https://www.alandsbanken.se/banktjanster/konton/fastrantekonto" target="_blank">Ålandsbanken</a> ${alandchange}`, ranta: alandranta},
   ];
   
