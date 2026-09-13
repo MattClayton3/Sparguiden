@@ -1,7 +1,12 @@
 39+359+119=517
 
->&nbsp;3 m&aring;n</td>
-<td style="background-color: #ffe000;">&nbsp;1,95</td>
+    - name: Commit and push historik.txt
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add historik.txt
+        git commit -m "Add generated historik.txt"
+        git push 
 
                                                 
 

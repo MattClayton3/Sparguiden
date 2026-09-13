@@ -24,7 +24,7 @@ Sparbanken Syd: 1.95
 Borgo: 2.40
 JAK: 1.90
 Aros Kapital: 2.70
-Serafim Finans: 2.85
+Serafim Finans: 2.95
 Froda: 2.50
 Northmill Bank: 2.60
 Klarna: 1.61
