@@ -8,49 +8,310 @@ import * as fs from 'fs';
 
 test.describe.serial('Fasträntekonto 3 mån', () => {
 let blueranta: any;
+let old_blueranta: any;
+let bluechange = "";
 let resursranta: any;
+let old_resursranta: any;
+let resurschange = "";
 let medranta: any;
+let old_medranta: any;
+let medchange = "";
 let sbabranta: any;
+let old_sbabranta: any;
+let sbabchange = "";
 let Skandiaranta: any;
+let old_Skandiaranta: any;
+let Skandiachange = "";
 let shbranta = "1.70";
+let old_shbranta: any;
+let shbchange = "";
 let nordiskaranta: any;
+let old_nordiskaranta: any;
+let nordiskachange = "";
 //let nordiska2ranta: any; /* 2026-09-06 Plockar bort denna, inte så rolig längre. */
 let epranta: any;
+let old_epranta: any;
+let epchange = "";
 let learanta: any;
+let old_learanta: any;
+let leachange = "";
 let moankranta: any;
+let old_moankranta: any;
+let moankchange = "";
 let sebranta: any;
+let old_sebranta: any;
+let sebchange = "";
 let nordearanta: any;
+let old_nordearanta: any;
+let nordeachange = "";
 let swedbankranta: any;
+let old_swedbankranta: any;
+let swedbankchange = "";
 let lansfranta: any;
+let old_lansfranta: any;
+let lansfchange = "";
 let collectorranta: any;
+let old_collectorranta: any;
+let collectorchange = "";
 let marginalranta: any;
+let old_marginalranta: any;
+let marginalchange = "";
 let qlirokranta: any;
+let old_qlirokranta: any;
+let qlirochange = "";
 let coelikranta: any;
+let old_coelikranta: any;
+let coelichange = "";
 let svearanta: any;
+let old_svearanta: any;
+let sveachange = "";
 let qredranta: any;
+let old_qredranta: any;
+let qredchange = "";
 let nstartranta: any;
+let old_nstartranta: any;
+let nstartchange = "";
 let sparsydranta: any;
+let old_sparsydranta: any;
+let sparsydchange = "";
 let borgoranta: any;
+let old_borgoranta: any;
+let borgochange = "";
 //let broccranta: any; /* 2026-06-10 Dom har stoppat in räntan i en .pdf. */
 let jakranta: any;
+let old_jakranta: any;
+let jakchange = "";
 let arosranta: any;
+let old_arosranta: any;
+let aroschange = "";
 let serafimranta: any;
+let old_serafimranta: any;
+let serafimchange = "";
 let frodaranta: any;
+let old_frodaranta: any;
+let frodachange = "";
 let northranta: any;
+let old_northranta: any;
+let northchange = "";
 //let multiranta: any; /* 2026-05-10 Verkar ha slutat med 3 månaders fasräntekonto. */
 let klarnaranta = "1.61";
+let old_klarnaranta: any;
+let klarnachange = "";
 let hoistranta:any;
+let old_hoistranta:any;
+let hoistchange = "";
 let danskranta:any;
+let old_danskranta:any;
+let danskchange = "";
 let fedeltaranta:any;
+let old_fedeltaranta:any;
+let fedeltachange = "";
 let arktikaranta:any;
+let old_arktikaranta:any;
+let arktikachange = "";
 let brixoranta:any;
+let old_brixoranta:any;
+let brixochange = "";
 let ekoranta:any;
+let old_ekoranta:any;
+let ekochange = "";
 let landsranta:any;
+let old_landsranta:any;
+let landschange = "";
 let myntroranta:any;
+let old_myntroranta:any;
+let myntrochange = "";
 let prasparranta:any;
+let old_prasparranta:any;
+let prasparchange = "";
 let sevendayranta:any;
+let old_sevendayranta:any;
+let sevendaychange = "";
 let sparspiraranta:any;
+let old_sparspiraranta:any;
+let sparspirachange = "";
 let alandranta:any;
+let old_alandranta:any;
+let alandchange = "";
+
+const filePath = 'historik.txt';
+const content = fs.readFileSync(filePath, 'utf-8');
+const lines = content.split(/\r?\n/);
+
+for (const line of lines.slice(0, -1)) {
+  const [name, rate] = line.split(': ');
+  const trimmedName = name.trim();
+  //const trimmedRate = rate.trim();
+    if (trimmedName === 'Lea Bank') {
+      old_learanta = rate.trim();
+      console.log(`Lea Bank Rate: ${old_learanta}`);
+    }
+    if (trimmedName === 'Moank') {
+      old_moankranta = rate.trim();
+      console.log(`Moank Rate: ${old_moankranta}`);
+    }    
+    if (trimmedName === 'Bluestep Bank') {
+      old_blueranta = rate.trim();
+      console.log(`Bluestep Bank Rate: ${old_blueranta}`);
+    }
+    if (trimmedName === 'EP Bank') {
+      old_epranta = rate.trim();
+      console.log(`EP Bank Rate: ${old_epranta}`);
+    }
+    if (trimmedName === 'Resurs Bank') {
+      old_resursranta = rate.trim();
+      console.log(`Resurs Bank Rate: ${old_resursranta}`);
+    }
+    if (trimmedName === 'Nordiska') {
+      old_nordiskaranta = rate.trim();
+      console.log(`Nordiska Rate: ${old_nordiskaranta}`);
+    }
+    if (trimmedName === 'MedMera Bank') {
+      old_medranta = rate.trim();
+      console.log(`MedMera Bank Rate: ${old_medranta}`);
+    }
+    if (trimmedName === 'SBAB') {
+      old_sbabranta = rate.trim();
+      console.log(`SBAB Rate: ${old_sbabranta}`);
+    }
+    if (trimmedName === 'Skandia Bank') {
+      old_Skandiaranta = rate.trim();
+      console.log(`Skandia Bank Rate: ${old_Skandiaranta}`);
+    }
+    if (trimmedName === 'Handelsbanken') {
+      old_shbranta = rate.trim();
+      console.log(`Handelsbanken Rate: ${old_shbranta}`);
+    }
+    if (trimmedName === 'Nordea') {
+      old_nordearanta = rate.trim();
+      console.log(`Nordea Rate: ${old_nordearanta}`);
+    }
+    if (trimmedName === 'SEB') {
+      old_sebranta = rate.trim();
+      console.log(`SEB Rate: ${old_sebranta}`);
+    }
+    if (trimmedName === 'Swedbank') {
+      old_swedbankranta = rate.trim();
+      console.log(`Swedbank Rate: ${old_swedbankranta}`);
+    }
+    if (trimmedName === 'Länsförsäkringar Bank') {
+      old_lansfranta = rate.trim();
+      console.log(`Länsförsäkringar Bank Rate: ${old_lansfranta}`);
+    }
+    if (trimmedName === 'Collector') {
+      old_collectorranta = rate.trim();
+      console.log(`Collector Rate: ${old_collectorranta}`);
+    }
+    if (trimmedName === 'Marginalen Bank') {
+      old_marginalranta = rate.trim();
+      console.log(`Marginalen Bank Rate: ${old_marginalranta}`);
+    }
+    if (trimmedName === 'Qliro') {
+      old_qlirokranta = rate.trim();
+      console.log(`Qliro Rate: ${old_qlirokranta}`);
+    }
+    if (trimmedName === 'Coeli') {
+      old_coelikranta = rate.trim();
+      console.log(`Coeli Rate: ${old_coelikranta}`);
+    }
+    if (trimmedName === 'Svea Bank') {
+      old_svearanta = rate.trim();
+      console.log(`Svea Bank Rate: ${old_svearanta}`);
+    }
+    if (trimmedName === 'Qred Bank') {
+      old_qredranta = rate.trim();
+      console.log(`Qred Bank Rate: ${old_qredranta}`);
+    }
+    if (trimmedName === 'Nstart') {
+      old_nstartranta = rate.trim();
+      console.log(`Nstart (Plus1) Rate: ${old_nstartranta}`);
+    }
+    if (trimmedName === 'Sparbanken Syd') {
+      old_sparsydranta = rate.trim();
+      console.log(`Sparbanken Syd Rate: ${old_sparsydranta}`);
+    }
+    if (trimmedName === 'Borgo') {
+      old_borgoranta = rate.trim();
+      console.log(`Borgo Rate: ${old_borgoranta}`);
+    }
+    if (trimmedName === 'JAK') {
+      old_jakranta = rate.trim();
+      console.log(`JAK Rate: ${old_jakranta}`);
+    }
+    if (trimmedName === 'Aros Kapital') {
+      old_arosranta = rate.trim();
+      console.log(`Aros Kapital Rate: ${old_arosranta}`);
+    }
+    if (trimmedName === 'Serafim Finans') {
+      old_serafimranta = rate.trim();
+      console.log(`Serafim Finans Rate: ${old_serafimranta}`);
+    }
+    if (trimmedName === 'Froda') {
+      old_frodaranta = rate.trim();
+      console.log(`Froda Rate: ${old_frodaranta}`);
+    }
+    if (trimmedName === 'Northmill Bank') {
+      old_northranta = rate.trim();
+      console.log(`Northmill Bank Rate: ${old_northranta}`);
+    }
+    if (trimmedName === 'Klarna') {
+      old_klarnaranta = rate.trim();
+      console.log(`Klarna Rate: ${old_klarnaranta}`);
+    }
+    if (trimmedName === 'HoistSpar') {
+      old_hoistranta = rate.trim();
+      console.log(`HoistSpar Rate: ${old_hoistranta}`);
+    }
+    if (trimmedName === 'Danske Bank') {
+      old_danskranta = rate.trim();
+      console.log(`Danske Bank Rate: ${old_danskranta}`);
+    }
+    if (trimmedName === 'Fedelta') {
+      old_fedeltaranta = rate.trim();
+      console.log(`Fedelta Rate: ${old_fedeltaranta}`);
+    }
+    if (trimmedName === 'Arktika Spar') {
+      old_arktikaranta = rate.trim();
+      console.log(`Arktika Spar Rate: ${old_arktikaranta}`);
+    }
+    if (trimmedName === 'Brixo') {
+      old_brixoranta = rate.trim();
+      console.log(`Brixo Rate: ${old_brixoranta}`);
+    }
+    if (trimmedName === 'Ekobanken') {
+      old_ekoranta = rate.trim();
+      console.log(`Ekobanken Rate: ${old_ekoranta}`);
+    }
+    if (trimmedName === 'Landshypotek') {
+      old_landsranta = rate.trim();
+      console.log(`Landshypotek Rate: ${old_landsranta}`);
+    }
+    if (trimmedName === 'Myntro') {
+      old_myntroranta = rate.trim();
+      console.log(`Myntro Rate: ${old_myntroranta}`);
+    }
+    if (trimmedName === 'PRA Spar') {
+      old_prasparranta = rate.trim();
+      console.log(`PRA Spar Rate: ${old_prasparranta}`);
+    }
+    if (trimmedName === 'SevenDay Bank') {
+      old_sevendayranta = rate.trim();
+      console.log(`SevenDay Bank Rate: ${old_sevendayranta}`);
+    }
+    if (trimmedName === 'Sparbanken Spira') {
+      old_sparspiraranta = rate.trim();
+      console.log(`Sparbanken Spira Rate: ${old_sparspiraranta}`);
+    }
+    if (trimmedName === 'Ålandsbanken') {
+      old_alandranta = rate.trim();
+      console.log(`Ålandsbanken Rate: ${old_alandranta}`);
+    }
+
+
+  //console.log(`Bank: ${trimmedName}, Rate: ${rate}`);
+  console.log(line.trim());
+}
+
 
 // Skapar upp dagens datum.
 let date = new Date()
@@ -74,11 +335,21 @@ test('Lea Bank', async ({ page }) => {
       let leaord = leabody.indexOf('närvarande är')
       let leakakollen = leabody.substring(leaord, leaord+20)
       learanta = leabody.substring(leaord+14, leaord+18)
+      learanta = learanta.replace(',', '.');
       //console.log('Content:', leabody);
       //console.log('Index..:', leaord);
       //console.log('Content:', leakakollen);
+      //learanta = 1.45;
       console.log('Lea Bank');
       console.log('Fast 1 månaders ränta:', learanta, '%');
+      if (learanta > old_learanta) {
+        console.log('Räntan har höjts!');
+        leachange = `&#9195; (${old_learanta}%)`;
+      }
+      if (learanta < old_learanta) {
+        console.log('Räntan har sänkts!');
+        leachange = `&#9196; (${old_learanta}%)`;
+      }
     }
   }
 });
@@ -95,11 +366,20 @@ test('Moank', async ({ page }) => {
       let moankord = moankbody.indexOf('>Fast 90 dagar')
       let lmoankkollen = moankbody.substring(moankord, moankord+20)
       moankranta = moankbody.substring(moankord+169, moankord+173)
+      moankranta = moankranta.replace(',', '.');
       //console.log('Content:', moankbody);
       //console.log('Index..:', moankord);
       //console.log('Content:', lmoankkollen);
       console.log('Moank');
       console.log('Fast 3 månaders ränta:', moankranta, '%');
+      if (moankranta > old_moankranta) {
+        console.log('Räntan har höjts!');
+        moankchange = `&#9195; (${old_moankranta}%)`;
+      }
+      if (moankranta < old_moankranta) {
+        console.log('Räntan har sänkts!');
+        moankchange = `&#9196; (${old_moankranta}%)`;
+      }
     }
   }
 });
@@ -115,11 +395,20 @@ test('Bluestep Bank', async ({ page }) => {
       let blueord = bluebody.indexOf('Fast 3 m&aring;nader')
       let bluekollen = bluebody.substring(blueord, blueord+20)
       blueranta = bluebody.substring(blueord+66, blueord+70)
+      blueranta = blueranta.replace(',', '.');
       //console.log('Content:', bluebody);
       //console.log('Index..:', blueord);
       //console.log('Content:', bluekollen);
       console.log('Bluestep Bank');
       console.log('Fast 3 månaders ränta:', blueranta, '%');
+      if (blueranta > old_blueranta) {
+        console.log('Räntan har höjts!');
+        bluechange = `&#9195; (${old_blueranta}%)`;
+      }
+      if (blueranta < old_blueranta) {
+        console.log('Räntan har sänkts!');
+        bluechange = `&#9196; (${old_blueranta}%)`;
+      }
     }
   }
 });
@@ -137,11 +426,20 @@ test('EP Bank (Erik Penser)', async ({ page }) => {
       let epord = epbody.indexOf('3 månaders löptid')
       let epkollen = epbody.substring(epord, epord+20)
       epranta = epbody.substring(epord-198, epord-194)
+      epranta = epranta.replace(',', '.');
       //console.log('Content:', epbody);
       //console.log('Index..:', epord);
       //console.log('Content:', epkollen);
       console.log('EP Bank (Erik Penser)');
       console.log('Fast 3 månaders ränta:', epranta, '%');
+        if (epranta > old_epranta) {
+        console.log('Räntan har höjts!');
+        epchange = `&#9195; (${old_epranta}%)`;
+      }
+      if (epranta < old_epranta) {
+        console.log('Räntan har sänkts!');
+        epchange = `&#9196; (${old_epranta}%)`;
+      }
     }
   }
 });
@@ -159,11 +457,20 @@ test('Resurs', async ({ page }) => {
       let resursord = resursbody.indexOf('Sparkonto Flex ger dig')
       let resurskollen = resursbody.substring(resursord, resursord+20)
       resursranta = resursbody.substring(resursord+23, resursord+27)
+      resursranta = resursranta.replace(',', '.');
       //console.log('Content:', resursbody);
       //console.log('Index..:', resursord);
       //console.log('Content:', resurskollen);
       console.log('Resurs Bank');
       console.log('Sparkonto Flex ränta:', resursranta, '%');
+      if (resursranta > old_resursranta) {
+        console.log('Räntan har höjts!');
+        resurschange = `&#9195; (${old_resursranta}%)`;
+      }
+      if (resursranta < old_resursranta) {
+        console.log('Räntan har sänkts!');
+        resurschange = `&#9196; (${old_resursranta}%)`;
+      }
     }
   }
 });
@@ -182,11 +489,20 @@ test('Nordiska Kreditmarknadsbolaget', async ({ page }) => {
       let nordriskaord = nordiskabody.indexOf('nordiskaFix3Mnad')
       let nordiskakollen = nordiskabody.substring(nordriskaord, nordriskaord+20)
       nordiskaranta = nordiskabody.substring(nordriskaord+21, nordriskaord+25)
+      nordiskaranta = nordiskaranta.replace(',', '.');
       //console.log('Content:', nordiskabody);
       //console.log('Index..:', nordriskaord);
       //console.log('Content:', nordiskakollen);
       console.log('Nordiska Kreditmarknadsbolaget');
       console.log('Fast 3 månaders ränta:', nordiskaranta, '%');
+      if (nordiskaranta > old_nordiskaranta) {
+        console.log('Räntan har höjts!');
+        nordiskachange = `&#9195; (${old_nordiskaranta}%)`;
+      }
+      if (nordiskaranta < old_nordiskaranta) {
+        console.log('Räntan har sänkts!');
+        nordiskachange = `&#9196; (${old_nordiskaranta}%)`;
+      }
     }
   }
 });
@@ -226,11 +542,20 @@ test('MedMera Bank', async ({ page }) => {
       let medord = medbody.indexOf('just nu upp till')
       let medkollen = medbody.substring(medord, medord+20)
       medranta = medbody.substring(medord+17, medord+21)
+      medranta = medranta.replace(',', '.');
       //console.log('Content:', medbody);
       //console.log('Index..:', medord);
       //console.log('Content:', medkollen);
       console.log('MedMera Bank');
       console.log('Fast 3 månaders ränta:', medranta, '%');
+      if (medranta > old_medranta) {
+        console.log('Räntan har höjts!');
+        medchange = `&#9195; (${old_medranta}%)`;
+      }
+      if (medranta < old_medranta) {
+        console.log('Räntan har sänkts!');
+        medchange = `&#9196; (${old_medranta}%)`;
+      }
     }
   }
 });
@@ -243,8 +568,17 @@ test('SBAB', async ({ page }) => {
   //await expect(page.getByText('2,80', { exact: true })).toBeVisible();
   //await expect(page.locator('#fixedThreeMonthInterest-interestRateSpan')).toContainText('2,80');
   sbabranta = await (page.locator('#fixedThreeMonthInterest-interestRateSpan')).textContent();
+  sbabranta = sbabranta.replace(',', '.');
   console.log('SBAB');
   console.log('Fast 3 månaders ränta:', sbabranta, '%');
+        if (sbabranta > old_sbabranta) {
+        console.log('Räntan har höjts!');
+        sbabchange = `&#9195; (${old_sbabranta}%)`;
+      }
+      if (sbabranta < old_sbabranta) {
+        console.log('Räntan har sänkts!');
+        sbabchange = `&#9196; (${old_sbabranta}%)`;
+      }
 });
 
 test('Skandia Bank', async ({ page }) => {
@@ -259,11 +593,20 @@ test('Skandia Bank', async ({ page }) => {
       let skandiabord = skandiabody.indexOf('"cellHeader": "Fast ränta",')
       let skandiakollen = skandiabody.substring(skandiabord, skandiabord+20)
       Skandiaranta = skandiabody.substring(skandiabord+80, skandiabord+84)
+      Skandiaranta = Skandiaranta.replace(',', '.');
       //console.log('Content:', skandiabody);
       //console.log('Index..:', skandiabord);
       //console.log('Content:', skandiakollen);
       console.log('Skandia Bank');
       console.log('Fast 3 månaders ränta:', Skandiaranta, '%');
+      if (Skandiaranta > old_Skandiaranta) {
+        console.log('Räntan har höjts!');
+        Skandiachange = `&#9195; (${old_Skandiaranta}%)`;
+      }
+      if (Skandiaranta < old_Skandiaranta) {
+        console.log('Räntan har sänkts!');
+        Skandiachange = `&#9196; (${old_Skandiaranta}%)`;
+      }
     }
   }
 });
@@ -280,11 +623,20 @@ test('Swedbank', async ({ page }) => {
       let swedbaknord = swedbankbody.indexOf('>3 mån<')
       let swedbankkollen = swedbankbody.substring(swedbaknord, swedbaknord+20)
       swedbankranta = swedbankbody.substring(swedbaknord+15, swedbaknord+20)
+      swedbankranta = swedbankranta.replace(',', '.');
       //console.log('Content:', swedbankbody);
       //console.log('Index..:', swedbaknord);
       //console.log('Content:', swedbankkollen);
       console.log('Swedbank');
       console.log('Fast 3 månaders ränta:', swedbankranta, '%');
+      if (swedbankranta > old_swedbankranta) {
+        console.log('Räntan har höjts!');
+        swedbankchange = `&#9195; (${old_swedbankranta}%)`;
+      }
+      if (swedbankranta < old_swedbankranta) {
+        console.log('Räntan har sänkts!');
+        swedbankchange = `&#9196; (${old_swedbankranta}%)`;
+      }
     }
   }
 });
@@ -332,11 +684,20 @@ test('Nordea', async ({ page }) => {
       let nordeaord = nordeabody.indexOf('left">3 månader')
       let nordeakollen = nordeabody.substring(nordeaord, nordeaord+20)
       nordearanta = nordeabody.substring(nordeaord+58, nordeaord+62)
+      nordearanta = nordearanta.replace(',', '.');
       //console.log('Content:', nordeabody);
       //console.log('Index..:', nordeaord);
       //console.log('Content:', nordeakollen);
       console.log('Nordea');
       console.log('Fast 3 månaders ränta:', nordearanta, '%');
+      if (nordearanta > old_nordearanta) {
+        console.log('Räntan har höjts!');
+        nordeachange = `&#9195; (${old_nordearanta}%)`;
+      }
+      if (nordearanta < old_nordearanta) {
+        console.log('Räntan har sänkts!');
+        nordeachange = `&#9196; (${old_nordearanta}%)`;
+      }
     }
   } 
 });
@@ -353,11 +714,20 @@ test('SEB', async ({ page }) => {
       let sebord = sebbody.indexOf('>3 månader<')
       let sebkollen = sebbody.substring(sebord, sebord+20)
       sebranta = sebbody.substring(sebord+90, sebord+94)
+      sebranta = sebranta.replace(',', '.');
       //console.log('Content:', sebbody);
       //console.log('Index..:', sebord);
       //console.log('Content:', sebkollen);
       console.log('SEB');
       console.log('Fast 3 månaders ränta:', sebranta, '%');
+      if (sebranta > old_sebranta) {
+        console.log('Räntan har höjts!');
+        sebchange = `&#9195; (${old_sebranta}%)`;
+      }
+      if (sebranta < old_sebranta) {
+        console.log('Räntan har sänkts!');
+        sebchange = `&#9196; (${old_sebranta}%)`;
+      }
     }
   }  
 });
@@ -377,11 +747,20 @@ test('Lansforsakringar', async ({ page }) => {
       let lansford = lansfbody.indexOf('>3 m&aring;nader<')
       let lansfkollen = lansfbody.substring(lansford, lansford+20)
       lansfranta = lansfbody.substring(lansford+66, lansford+70)
+      lansfranta = lansfranta.replace(',', '.');
       //console.log('Content:', lansfbody);
       //console.log('Index..:', lansford);
       //console.log('Content:', lansfkollen);
       console.log('Länsförsäkringar Bank');
       console.log('Fast 3 månaders ränta:', lansfranta, '%');
+      if (lansfranta > old_lansfranta) {
+        console.log('Räntan har höjts!');
+        lansfchange = `&#9195; (${old_lansfranta}%)`;
+      }
+      if (lansfranta < old_lansfranta) {
+        console.log('Räntan har sänkts!');
+        lansfchange = `&#9196; (${old_lansfranta}%)`;
+      }
     }
   }
 });
@@ -402,13 +781,20 @@ test('Collector', async ({ page }) => {
       let collectorord = collectorbody.indexOf('3-m&aring;naders sparkonto')
       let collectorkollen = collectorbody.substring(collectorord, collectorord+20)
       collectorranta = collectorbody.substring(collectorord+118, collectorord+122)
+      collectorranta = collectorranta.replace(',', '.');
       //console.log('Content:', collectorbody);
       //console.log('Index..:', collectorord);
       //console.log('Content:', collectorkollen);
-      collectorranta = collectorranta.replace(',', '.');
       console.log('Collector');
       console.log('Fast 3 månaders ränta:', collectorranta, '%');
-      collectorranta = collectorranta.replace(',', '.');
+      if (collectorranta > old_collectorranta) {
+        console.log('Räntan har höjts!');
+        collectorchange = `&#9195; (${old_collectorranta}%)`;
+      }
+      if (collectorranta < old_collectorranta) {
+        console.log('Räntan har sänkts!');
+        collectorchange = `&#9196; (${old_collectorranta}%)`;
+      }
     }
   }  
 });
@@ -427,12 +813,21 @@ test('Marginalen Bank', async ({ page }) => {
       let marginalord = marginalspecial.indexOf('VillkorFasträntekontoBindningstid')
       let marginalkollen = marginalspecial.substring(marginalord, marginalord+20)
       marginalranta = marginalspecial.substring(marginalord+39, marginalord+43)
+      marginalranta = marginalranta.replace(',', '.');
       //console.log('Content:', marginalbody);
       //console.log('Index..:', marginalord);
       //console.log('Content:', marginalkollen);
       //let marginalranta = await (page.locator('#fastrantekontot-tabell-3552')).textContent();
       console.log('Marginalen Bank');
       console.log('Fast 3 månaders ränta:', marginalranta, '%');
+      if (marginalranta > old_marginalranta) {
+        console.log('Räntan har höjts!');
+        marginalchange = `&#9195; (${old_marginalranta}%)`;
+      }
+      if (marginalranta < old_marginalranta) {
+        console.log('Räntan har sänkts!');
+        marginalchange = `&#9196; (${old_marginalranta}%)`;
+      }
     }
   }
 });
@@ -451,11 +846,20 @@ test('Qliro', async ({ page }) => {
       let qlirokord = qlirobody.indexOf('>3 månader: ')
       let qlirokollen = qlirobody.substring(qlirokord, qlirokord+20)
       qlirokranta = qlirobody.substring(qlirokord+12, qlirokord+16)
+      qlirokranta = qlirokranta.replace(',', '.');
       //console.log('Content:', qlirobody);
       //console.log('Index..:', qlirokord);
       //console.log('Content:', qlirokollen);
       console.log('Qliro');
       console.log('Fast 3 månaders ränta:', qlirokranta, '%');
+      if (qlirokranta > old_qlirokranta) {
+        console.log('Räntan har höjts!');
+        qlirochange = `&#9195; (${old_qlirokranta}%)`;
+      }
+      if (qlirokranta < old_qlirokranta) {
+        console.log('Räntan har sänkts!');
+        qlirochange = `&#9196; (${old_qlirokranta}%)`;
+      }
     }
   }
 });
@@ -475,11 +879,20 @@ test('Coeli', async ({ page }) => {
       let coelikord = coelibody.indexOf('Sparkonto 3 månader:')
       let coelikollen = coelibody.substring(coelikord, coelikord+20)
       coelikranta = coelibody.substring(coelikord+21, coelikord+25)
+      coelikranta = coelikranta.replace(',', '.');
       //console.log('Content:', coelibody);
       //console.log('Index..:', qlirokord);
       //console.log('Content:', qlirokollen);
       console.log('Coeli');
       console.log('Fast 3 månaders ränta:', coelikranta, '%');
+      if (coelikranta > old_coelikranta) {
+        console.log('Räntan har höjts!');
+        coelichange = `&#9195; (${old_coelikranta}%)`;
+      }
+      if (coelikranta < old_coelikranta) {
+        console.log('Räntan har sänkts!');
+        coelichange = `&#9196; (${old_coelikranta}%)`;
+      }
     }
   }
 });
@@ -499,11 +912,20 @@ test('Svea Bank', async ({ page }) => {
       let sveaord = sveabody.indexOf('3 månader')
       let sveakollen = sveabody.substring(sveaord, sveaord+20)
       svearanta = sveabody.substring(sveaord+253, sveaord+257)
+      svearanta = svearanta.replace(',', '.');
       //console.log('Content:', sveabody);
       //console.log('Index..:', sveakord);
       //console.log('Content:', sveakollen);
       console.log('Svea Bank');
       console.log('Fast 3 månaders ränta:', svearanta, '%');
+      if (svearanta > old_svearanta) {
+        console.log('Räntan har höjts!');
+        sveachange = `&#9195; (${old_svearanta}%)`;
+      }
+      if (svearanta < old_svearanta) {
+        console.log('Räntan har sänkts!');
+        sveachange = `&#9196; (${old_svearanta}%)`;
+      }
     }
   }
 });
@@ -523,11 +945,20 @@ test('Qred Bank', async ({ page }) => {
       let qredord = qredbody.indexOf('>3 mån</div>')
       let qredkollen = qredbody.substring(qredord, qredord+20)
       qredranta = qredbody.substring(qredord+43, qredord+47)
+      qredranta = qredranta.replace(',', '.');
       //console.log('Content:', qredbody);
       //console.log('Index..:', qredord);
       //console.log('Content:', qredkollen);
       console.log('Qred Bank');
       console.log('Fast 3 månaders ränta:', qredranta, '%');
+      if (qredranta > old_qredranta) {
+        console.log('Räntan har höjts!');
+        qredchange = `&#9195; (${old_qredranta}%)`;
+      }
+      if (qredranta < old_qredranta) {
+        console.log('Räntan har sänkts!');
+        qredchange = `&#9196; (${old_qredranta}%)`;
+      }
     }
   }
 });
@@ -544,11 +975,20 @@ test('NstartPlus1', async ({ page }) => {
       let nstartord = nstartbody.indexOf('<p>Fast 3 mån</p>')
       let nstartkollen = nstartbody.substring(nstartord, nstartord+20)
       nstartranta = nstartbody.substring(nstartord+97, nstartord+101)
+      nstartranta = nstartranta.replace(',', '.');
       //console.log('Content:', nstartbody);
       //console.log('Index..:', nstartord);
       //console.log('Content:', sveakollen);
       console.log('Plus1 (Nstart)');
       console.log('Fast 3 månaders ränta:', nstartranta, '%');
+      if (nstartranta > old_nstartranta) {
+        console.log('Räntan har höjts!');
+        nstartchange = `&#9195; (${old_nstartranta}%)`;
+      }
+      if (nstartranta < old_nstartranta) {
+        console.log('Räntan har sänkts!');
+        nstartchange = `&#9196; (${old_nstartranta}%)`;
+      }
     }
   }
 });
@@ -564,18 +1004,27 @@ test('Sparbanken Syd', async ({ page }) => {
   if (sparsydresponse) {
     let status = sparsydresponse.status();
     let sparsydbody = await sparsydresponse.text();
-    console.log('Content:', sparsydbody);
+    //console.log('Content:', sparsydbody);
     if (sparsydbody.includes('Fasträntekonto')) {
       let sparsydord = sparsydbody.indexOf('>&nbsp;3 m&aring;n')
       //let sparsydord2 = sparsydspecial.indexOf('2,70')
       let sparsydkollen = sparsydbody.substring(sparsydord, sparsydord+20)
       sparsydranta = sparsydbody.substring(sparsydord+81, sparsydord+85)
+      sparsydranta = sparsydranta.replace(',', '.');
       //console.log('Content:', sparsydbody);
       //console.log('Index..:', sparsydord);
       //console.log('Index2.:', sparsydord2);
       //console.log('Content:', sparsydkollen);
       console.log('Sparbanken Syd');
       console.log('Fast 3 månaders ränta:', sparsydranta, '%');
+      if (sparsydranta > old_sparsydranta) {
+        console.log('Räntan har höjts!');
+        sparsydchange = `&#9195; (${old_sparsydranta}%)`;
+      }
+      if (sparsydranta < old_sparsydranta) {
+        console.log('Räntan har sänkts!');
+        sparsydchange = `&#9196; (${old_sparsydranta}%)`;
+      }
     }
   }
 });
@@ -591,11 +1040,20 @@ test('Borgo', async ({ page }) => {
       let borgoord = borgobody.indexOf('fixed_3_months')
       let borgokollen = borgobody.substring(borgoord, borgoord+20)
       borgoranta = borgobody.substring(borgoord+27, borgoord+31)
+      borgoranta = borgoranta.replace(',', '.');
       //console.log('Content:', borgobody);
       //console.log('Index..:', borgoord);
       //console.log('Content:', borgokollen);
       console.log('Borgo');
       console.log('Fast 3 månaders ränta:', borgoranta, '%');
+      if (borgoranta > old_borgoranta) {
+        console.log('Räntan har höjts!');
+        borgochange = `&#9195; (${old_borgoranta}%)`;
+      }
+      if (borgoranta < old_borgoranta) {
+        console.log('Räntan har sänkts!');
+        borgochange = `&#9196; (${old_borgoranta}%)`;
+      }
     }
   }
 });
@@ -637,12 +1095,21 @@ test('JAK Medlemsbank', async ({ page }) => {
       //let jakord2 = jakbody.indexOf('3 %*')
       let jakkollen = jakbody.substring(jakord, jakord+20)
       jakranta = jakbody.substring(jakord-7, jakord-3)
+      jakranta = jakranta.replace(',', '.');
       //console.log('Content:', jakbody);
       //console.log('Index..:', jakord);
       //console.log('Index2.:', jakord2);
       //console.log('Content:', jakkollen);
       console.log('JAK Medlemsbank');
       console.log('Fast 3 månaders ränta:', jakranta, '%');
+      if (jakranta > old_jakranta) {
+        console.log('Räntan har höjts!');
+        jakchange = `&#9195; (${old_jakranta}%)`;
+      }
+      if (jakranta < old_jakranta) {
+        console.log('Räntan har sänkts!');
+        jakchange = `&#9196; (${old_jakranta}%)`;
+      }
     }
   }
 });
@@ -662,11 +1129,20 @@ test('Aros Kapital', async ({ page }) => {
       let arosord = arosbody.indexOf('>3 månader')
       let aroskollen = arosbody.substring(arosord, arosord+20)
       arosranta = arosbody.substring(arosord+510, arosord+514)
+      arosranta = arosranta.replace(',', '.');
       //console.log('Content:', arosbody);
       //console.log('Index..:', arosord);
       //console.log('Content:', aroskollen);
       console.log('Aros Kapital');
       console.log('Fast 3 månaders ränta:', arosranta, '%');
+      if (arosranta > old_arosranta) {
+        console.log('Räntan har höjts!');
+        aroschange = `&#9195; (${old_arosranta}%)`;
+      }
+      if (arosranta < old_arosranta) {
+        console.log('Räntan har sänkts!');
+        aroschange = `&#9196; (${old_arosranta}%)`;
+      }
     }
   }
 });
@@ -683,11 +1159,20 @@ test('Serafim Finans', async ({ page }) => {
       let serafimord = serafimbody.indexOf('<h3 class="h5 font-weight--bold" data-accordion-trigger>SeraFast privat 3 mån')
       let serafimkollen = serafimbody.substring(serafimord, serafimord+120)
       serafimranta = serafimbody.substring(serafimord+80, serafimord+84)
+      serafimranta = serafimranta.replace(',', '.');
       //console.log('Content:', serafimbody);
       //console.log('Index..:', serafimord);
       //console.log('Content:', serafimkollen);
       console.log('Serafim Finans');
       console.log('Fast 3 månaders ränta:', serafimranta, '%');
+      if (serafimranta > old_serafimranta) {
+        console.log('Räntan har höjts!');
+        serafimchange = `&#9195; (${old_serafimranta}%)`;
+      }
+      if (serafimranta < old_serafimranta) {
+        console.log('Räntan har sänkts!');
+        serafimchange = `&#9196; (${old_serafimranta}%)`;
+      }
     }
   }
 });
@@ -705,11 +1190,20 @@ test('Froda', async ({ page }) => {
       let frodaord = frodabody.indexOf('>Ränta -  3 mån')
       let frodakollen = frodabody.substring(frodaord, frodaord+20)
       frodaranta = frodabody.substring(frodaord-128, frodaord-124)
+      frodaranta = frodaranta.replace(',', '.');
       //console.log('Content:', frodabody);
       //console.log('Index..:', frodaord);
       //console.log('Content:', frodakollen);
       console.log('Froda');
       console.log('Fast 3 månaders ränta:', frodaranta, '%');
+      if (frodaranta > old_frodaranta) {
+        console.log('Räntan har höjts!');
+        frodachange = `&#9195; (${old_frodaranta}%)`;
+      }
+      if (frodaranta < old_frodaranta) {
+        console.log('Räntan har sänkts!');
+        frodachange = `&#9196; (${old_frodaranta}%)`;
+      }
     }
   }
 });
@@ -729,11 +1223,20 @@ test('Northmill Bank', async ({ page }) => {
       let northord = northbody.indexOf('3 månader med fast årsränta')
       let northkollen = northbody.substring(northord, northord+20)
       northranta = northbody.substring(northord+138, northord+142)
+      northranta = northranta.replace(',', '.');
       //console.log('Content:', northbody);
       //console.log('Index..:', northord);
       //console.log('Content:', northkollen);
       console.log('Northmill Bank');
       console.log('Fast 3 månaders ränta:', northranta, '%');
+      if (northranta > old_northranta) {
+        console.log('Räntan har höjts!');
+        northchange = `&#9195; (${old_northranta}%)`;
+      }
+      if (northranta < old_northranta) {
+        console.log('Räntan har sänkts!');
+        northchange = `&#9196; (${old_northranta}%)`;
+      }
     }
   }
 });
@@ -799,6 +1302,14 @@ test('Klarna', async ({ page }) => {
   // }
        console.log('Klarna');
        console.log('Fast 3 månaders ränta:', klarnaranta, '%');
+        if (klarnaranta > old_klarnaranta) {
+        console.log('Räntan har höjts!');
+        klarnachange = `&#9195; (${old_klarnaranta}%)`;
+      }
+      if (klarnaranta < old_klarnaranta) {
+        console.log('Räntan har sänkts!');
+        klarnachange = `&#9196; (${old_klarnaranta}%)`;
+      }
 });
 
 test('HoistSpar', async ({ page }) => {
@@ -813,11 +1324,20 @@ test('HoistSpar', async ({ page }) => {
       let hoisthord = hoistbody.indexOf('Sparkonto Fast 3')
       let hoistkollen = hoistbody.substring(hoisthord, hoisthord+20)
       hoistranta = hoistbody.substring(hoisthord-85, hoisthord-81)
+      hoistranta = hoistranta.replace(',', '.');
       //console.log('Content:', hoistbody);
       //console.log('Index..:', hoisthord);
       //console.log('Content:', hoistkollen);
       console.log('HoistSpar');
       console.log('Fast 3 månaders ränta:', hoistranta, '%');
+      if (hoistranta > old_hoistranta) {
+        console.log('Räntan har höjts!');
+        hoistchange = `&#9195; (${old_hoistranta}%)`;
+      }
+      if (hoistranta < old_hoistranta) {
+        console.log('Räntan har sänkts!');
+        hoistchange = `&#9196; (${old_hoistranta}%)`;
+      }
     }
   }
 });
@@ -834,11 +1354,20 @@ test('Danske Bank', async ({ page }) => {
       let danskord = danskbody.indexOf('>3 månader<')
       let danskkollen = danskbody.substring(danskord, danskord+20)
       danskranta = danskbody.substring(danskord+88, danskord+92)
+      danskranta = danskranta.replace(',', '.');
       //console.log('Content:', danskbody);
       //console.log('Index..:', danskord);
       //console.log('Content:', danskkollen);
       console.log('Danske Bank');
       console.log('Fast 3 månaders ränta:', danskranta, '%');
+      if (danskranta > old_danskranta) {
+        console.log('Räntan har höjts!');
+        danskchange = `&#9195; (${old_danskranta}%)`;
+      }
+      if (danskranta < old_danskranta) {
+        console.log('Räntan har sänkts!');
+        danskchange = `&#9196; (${old_danskranta}%)`;
+      }
     }
   }
 });
@@ -855,11 +1384,20 @@ test('Fedelta', async ({ page }) => {
       let fedeltakord = fedeltabody.indexOf('3 mån","')
       let fedeltakollen = fedeltabody.substring(fedeltakord, fedeltakord+20)
       fedeltaranta = fedeltabody.substring(fedeltakord+8, fedeltakord+12)
+      fedeltaranta = fedeltaranta.replace(',', '.');
       //console.log('Content:', fedeltabody);
       //console.log('Index..:', fedeltakord);
       //console.log('Content:', fedeltakollen);
       console.log('Fedelta');
       console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
+      if (fedeltaranta > old_fedeltaranta) {
+        console.log('Räntan har höjts!');
+        fedeltachange = `&#9195; (${old_fedeltaranta}%)`;
+      }
+      if (fedeltaranta < old_fedeltaranta) {
+        console.log('Räntan har sänkts!');
+        fedeltachange = `&#9196; (${old_fedeltaranta}%)`;
+      }
     }
   }
 });
@@ -876,11 +1414,20 @@ test('Arktika Spar', async ({ page }) => {
       let arktikakord = arktikabody.indexOf('3 månader')
       let arktikakollen = arktikabody.substring(arktikakord, arktikakord+20)
       arktikaranta = arktikabody.substring(arktikakord+97, arktikakord+101)
+      arktikaranta = arktikaranta.replace(',', '.');
       //console.log('Content:', arktikabody);
       //console.log('Index..:', arktikakord);
       //console.log('Content:', arktikakollen);
       console.log('Arktika Spar');
       console.log('Fast 3 månaders ränta:', arktikaranta, '%');
+      if (arktikaranta > old_arktikaranta) {
+        console.log('Räntan har höjts!');
+        arktikachange = `&#9195; (${old_arktikaranta}%)`;
+      }
+      if (arktikaranta < old_arktikaranta) {
+        console.log('Räntan har sänkts!');
+        arktikachange = `&#9196; (${old_arktikaranta}%)`;
+      }
     }
   }
 });
@@ -897,11 +1444,20 @@ test('Brixo', async ({ page }) => {
       let brixokord = brixobody.indexOf('</span>3 månader:')
       let brixokollen = brixobody.substring(brixokord, brixokord+20)
       brixoranta = brixobody.substring(brixokord+18, brixokord+22)
+      brixoranta = brixoranta.replace(',', '.');
       //console.log('Content:', brixobody);
       //console.log('Index..:', brixokord);
       //console.log('Content:', brixokollen);
       console.log('Brixo');
       console.log('Fast 3 månaders ränta:', brixoranta, '%');
+      if (brixoranta > old_brixoranta) {
+        console.log('Räntan har höjts!');
+        brixochange = `&#9195; (${old_brixoranta}%)`;
+      }
+      if (brixoranta < old_brixoranta) {
+        console.log('Räntan har sänkts!');
+        brixochange = `&#9196; (${old_brixoranta}%)`;
+      }
     }
   }
 });
@@ -918,11 +1474,20 @@ test('Ekobanken', async ({ page }) => {
       let ekobankkord = ekobankbody.indexOf('uppsägningstid 1-9 mån')
       let ekobankkollen = ekobankbody.substring(ekobankkord, ekobankkord+20)
       ekoranta = ekobankbody.substring(ekobankkord+126, ekobankkord+130)
+      ekoranta = ekoranta.replace(',', '.');
       //console.log('Content:', ekobankbody);
       //console.log('Index..:', ekobankkord);
       //console.log('Content:', ekobankkollen);
       console.log('Ekobanken');
       console.log('Fast 3 månaders ränta:', ekoranta, '%');
+      if (ekoranta > old_ekoranta) {
+        console.log('Räntan har höjts!');
+        ekochange = `&#9195; (${old_ekoranta}%)`;
+      }
+      if (ekoranta < old_ekoranta) {
+        console.log('Räntan har sänkts!');
+        ekochange = `&#9196; (${old_ekoranta}%)`;
+      }
     }
   }
 });
@@ -939,11 +1504,20 @@ test('Landshypotek', async ({ page }) => {
       let landshypotekkord = landshypotekbody.indexOf('<p>3 m&aring;nader</p>')
       let landshypotekkollen = landshypotekbody.substring(landshypotekkord, landshypotekkord+20)
       landsranta = landshypotekbody.substring(landshypotekkord+71, landshypotekkord+75)
+      landsranta = landsranta.replace(',', '.');
       //console.log('Content:', landshypotekbody);
       //console.log('Index..:', landshypotekkord);
       //console.log('Content:', landshypotekkollen);
       console.log('Landshypotek');
       console.log('Fast 3 månaders ränta:', landsranta, '%');
+      if (landsranta > old_landsranta) {
+        console.log('Räntan har höjts!');
+        landschange = `&#9195; (${old_landsranta}%)`;
+      }
+      if (landsranta < old_landsranta) {
+        console.log('Räntan har sänkts!');
+        landschange = `&#9196; (${old_landsranta}%)`;
+      }
     }
   }
 });
@@ -960,11 +1534,20 @@ test('Myntro', async ({ page }) => {
       let myntrokord = myntrobody.indexOf('3 mån')
       let myntrokollen = myntrobody.substring(myntrokord, myntrokord+20)
       myntroranta = myntrobody.substring(myntrokord+36, myntrokord+40)
+      myntroranta = myntroranta.replace(',', '.');
       //console.log('Content:', myntrobody);
       //console.log('Index..:', myntrokord);
       //console.log('Content:', myntrokollen);
       console.log('Myntro');
       console.log('Fast 3 månaders ränta:', myntroranta, '%');
+      if (myntroranta > old_myntroranta) {
+        console.log('Räntan har höjts!');
+        myntrochange = `&#9195; (${old_myntroranta}%)`;
+      }
+      if (myntroranta < old_myntroranta) {
+        console.log('Räntan har sänkts!');
+        myntrochange = `&#9196; (${old_myntroranta}%)`;
+      }
     }
   }
 });
@@ -981,11 +1564,20 @@ test('PRA Spar', async ({ page }) => {
       let prasparkord = prasparbody.indexOf('"3 månaders fasträntekonto"')
       let prasparkollen = prasparbody.substring(prasparkord, prasparkord+20)
       prasparranta = prasparbody.substring(prasparkord-12, prasparkord-8)
+      prasparranta = prasparranta.replace(',', '.');
       //console.log('Content:', prasparbody);
       //console.log('Index..:', prasparkord);
       //console.log('Content:', prasparkollen);
       console.log('PRA Spar');
       console.log('Fast 3 månaders ränta:', prasparranta, '%');
+      if (prasparranta > old_prasparranta) {
+        console.log('Räntan har höjts!');
+        prasparchange = `&#9195; (${old_prasparranta}%)`;
+      }
+      if (prasparranta < old_prasparranta) {
+        console.log('Räntan har sänkts!');
+        prasparchange = `&#9196; (${old_prasparranta}%)`;
+      }
     }
   }
 });
@@ -1002,11 +1594,20 @@ test('SevenDay Bank', async ({ page }) => {
       let sevendaykord = sevendaybody.indexOf('<span class="title">SevenDay 3 mån')
       let sevendaykollen = sevendaybody.substring(sevendaykord, sevendaykord+20)
       sevendayranta = sevendaybody.substring(sevendaykord+74, sevendaykord+78)
+      sevendayranta = sevendayranta.replace(',', '.');
       //console.log('Content:', sevendaybody);
       //console.log('Index..:', sevendaykord);
       //console.log('Content:', sevendaykollen);
       console.log('SevenDay Bank');
       console.log('Fast 3 månaders ränta:', sevendayranta, '%');
+      if (sevendayranta > old_sevendayranta) {
+        console.log('Räntan har höjts!');
+        sevendaychange = `&#9195; (${old_sevendayranta}%)`;
+      }
+      if (sevendayranta < old_sevendayranta) {
+        console.log('Räntan har sänkts!');
+        sevendaychange = `&#9196; (${old_sevendayranta}%)`;
+      }
     }
   }
 });
@@ -1023,11 +1624,20 @@ test('Sparbanken Spira', async ({ page }) => {
       let sparspirakord = sparspirabody.indexOf('<td>3 mån</td>')
       let sparspirakollen = sparspirabody.substring(sparspirakord, sparspirakord+20)
       sparspiraranta = sparspirabody.substring(sparspirakord+18, sparspirakord+22)
+      sparspiraranta = sparspiraranta.replace(',', '.');
       //console.log('Content:', sparspirabody);
       //console.log('Index..:', sparspirakord);
       //console.log('Content:', sparspirakollen);
       console.log('Sparbanken Spira');
       console.log('Fast 3 månaders ränta:', sparspiraranta, '%');
+      if (sparspiraranta > old_sparspiraranta) {
+        console.log('Räntan har höjts!');
+        sparspirachange = `&#9195; (${old_sparspiraranta}%)`;
+      }
+      if (sparspiraranta < old_sparspiraranta) {
+        console.log('Räntan har sänkts!');
+        sparspirachange = `&#9196; (${old_sparspiraranta}%)`;
+      }
     }
   }
 });
@@ -1039,16 +1649,25 @@ test('Ålandsbanken', async ({ page }) => {
   if (alandresponse) {
     let status = alandresponse.status();
     let alandbody = await alandresponse.text();
-    console.log('Content:', alandbody);
+    //console.log('Content:', alandbody);
     if (alandbody.includes('konto')) {
       let alandkord = alandbody.indexOf('3 mån')
       let alandkollen = alandbody.substring(alandkord, alandkord+20)
       alandranta = alandbody.substring(alandkord+14, alandkord+18)
+      alandranta = alandranta.replace(',', '.');
       //console.log('Content:', alandbody);
       //console.log('Index..:', alandkord);
       //console.log('Content:', alandkollen);
       console.log('Ålandsbanken');
       console.log('Fast 3 månaders ränta:', alandranta, '%');
+      if (alandranta > old_alandranta) {
+        console.log('Räntan har höjts!');
+        alandchange = `&#9195; (${old_alandranta}%)`;
+      }
+      if (alandranta < old_alandranta) {
+        console.log('Räntan har sänkts!');
+        alandchange = `&#9196; (${old_alandranta}%)`;
+      }
     }
   }
 });
@@ -1197,51 +1816,6 @@ test('Sammanställning', async () => {
 test('Sorterat', async () => {
   console.log('Sortering... index.html')
 
-  learanta = learanta.replace(',', '.');
-  moankranta = moankranta.replace(',', '.');
-  blueranta = blueranta.replace(',', '.');
-  epranta = epranta.replace(',', '.');
-  resursranta = resursranta.replace(',', '.');
-  nordiskaranta = nordiskaranta.replace(',', '.');
-  //nordiska2ranta = nordiska2ranta.replace(',', '.');
-  medranta = medranta.replace(',', '.');
-  sbabranta = sbabranta.replace(',', '.');
-  Skandiaranta = Skandiaranta.replace(',', '.');
-  swedbankranta = swedbankranta.replace(',', '.');
-  shbranta = shbranta.replace(',', '.');
-  nordearanta = nordearanta.replace(',', '.');
-  sebranta = sebranta.replace(',', '.');
-  lansfranta = lansfranta.replace(',', '.');
-  collectorranta = collectorranta.replace(',', '.');
-  marginalranta = marginalranta.replace(',', '.');
-  qlirokranta = qlirokranta.replace(',', '.');
-  coelikranta = coelikranta.replace(',', '.');
-  svearanta = svearanta.replace(',', '.');
-  qredranta = qredranta.replace(',', '.');
-  nstartranta = nstartranta.replace(',', '.');
-  sparsydranta = sparsydranta.replace(',', '.');
-  borgoranta = borgoranta.replace(',', '.');
-  // broccranta = broccranta.replace(',', '.');
-  jakranta = jakranta.replace(',', '.');
-  arosranta = arosranta.replace(',', '.');
-  serafimranta = serafimranta.replace(',', '.');
-  frodaranta = frodaranta.replace(',', '.');
-  northranta = northranta.replace(',', '.');
-  //multiranta = multiranta.replace(',', '.');
-  klarnaranta = klarnaranta.replace(',', '.');
-  hoistranta = hoistranta.replace(',', '.');
-  danskranta = danskranta.replace(',', '.');
-  fedeltaranta = fedeltaranta.replace(',', '.');
-  arktikaranta = arktikaranta.replace(',', '.');
-  brixoranta = brixoranta.replace(',', '.');
-  ekoranta = ekoranta.replace(',', '.');
-  landsranta = landsranta.replace(',', '.');
-  myntroranta = myntroranta.replace(',', '.');
-  prasparranta = prasparranta.replace(',', '.');
-  sevendayranta = sevendayranta.replace(',', '.');
-  sparspiraranta = sparspiraranta.replace(',', '.');
-  alandranta = alandranta.replace(',', '.');
-
   interface Banks{
     banknamn: string;
     bank: string;
@@ -1249,7 +1823,7 @@ test('Sorterat', async () => {
   }
 
   const bankarr: Banks[] = [
-    { banknamn: 'Lea Bank', bank: '<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank</a> &#128198; &#128182;', ranta: learanta },
+    { banknamn: 'Lea Bank', bank: `<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank</a> &#128198; &#128182; ${leachange}`, ranta: learanta },
     { banknamn: 'Moank', bank: '<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>', ranta: moankranta },
     { banknamn: 'Bluestep Bank', bank: '<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>', ranta: blueranta},
     { banknamn: 'EP Bank', bank: '<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>', ranta: epranta },
@@ -1289,7 +1863,7 @@ test('Sorterat', async () => {
     { banknamn: 'Ekobanken', bank: '<a href="https://www.ekobanken.se/hem/privat/aktuella-rantor" target="_blank">Ekobanken</a>', ranta: ekoranta},
     { banknamn: 'Landshypotek', bank: '<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a>', ranta: landsranta},
     { banknamn: 'Myntro', bank: '<a href="https://myntrosavings.se/" target="_blank">Myntro</a>', ranta: myntroranta},
-    { banknamn: 'PRA Spar', bank: '<a href="https://praspar.se/" target="_blank">PRA Spar</a>', ranta: prasparranta},
+    { banknamn: 'PRA Spar', bank: '<a href="https://praspar.se/" target="_blank">PRA Spar</a> &#127905;', ranta: prasparranta},
     { banknamn: 'SevenDay Bank', bank: '<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a>', ranta: sevendayranta},
     { banknamn: 'Sparbanken Spira', bank: '<a href="https://www.sparbankenspira.se/privat/spara-och-placera/fastrantekonto.html" target="_blank">Sparbanken Spira</a>', ranta: sparspiraranta},   
     { banknamn: 'Ålandsbanken', bank: '<a href="https://www.alandsbanken.se/banktjanster/konton/fastrantekonto" target="_blank">Ålandsbanken</a>', ranta: alandranta},
@@ -1338,7 +1912,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '</head>\n');
   fs.appendFileSync(outputFile, '<body>\n');
   fs.appendFileSync(outputFile, `<h2><span style='font-size:30px;'>&#128200;</span> Sparguiden ${fullDate}</h2>\n`);
-  fs.appendFileSync(outputFile, '<p>Bästa 3 månaders fasträntekontot just nu. Listan tas fram 2 gånger per dag, morgon och kväll, måndag - fredag. Se det som en kvartalsutdelande aktie.</p>\n');
+  fs.appendFileSync(outputFile, '<p>Bästa 3 månaders fasträntekontot just nu. Listan tas fram 2 gånger per dag, morgon och kväll, måndag - fredag. (Funkar oftast.) Se det som en kvartalsutdelande aktie.</p>\n');
   // fs.appendFileSync(outputFile, '<p>Fasträntekonto 1* - 3 mån.</p>\n');
   fs.appendFileSync(outputFile, '<div style="overflow-x:auto;">\n');
   fs.appendFileSync(outputFile, '  <table>\n');
@@ -1448,13 +2022,63 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<br>&#128198; = Räntan betalas ut varje månad.\n');
   fs.appendFileSync(outputFile, '<br>&#128182; = Utbetalning 31 dagar från begäran.\n');
   fs.appendFileSync(outputFile, '<br>&#128176; = Vanligt sparkonto.\n');
-  fs.appendFileSync(outputFile, '<br>&#128204; = OBS! Hårdkodad ränta.\n');
+  fs.appendFileSync(outputFile, '<br>&#128204; = OBS! Hårdkodad ränta. Dubbelkolla räntan.\n');
   fs.appendFileSync(outputFile, '<br>&#127905; = Automatisk förlängning möjlig.\n');
   fs.appendFileSync(outputFile, '<br>&#129518; = Bonus vid förlängning.\n');
+  fs.appendFileSync(outputFile, '<br>&#9195; &#9196; = Förändring sedan förra kontrollen.\n');
 
   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
+  /* index.html klar */
 
+  /* Historik fel förändring sedan förra kontrollen. */
+  let historikFile = 'historik.txt';
+  fs.writeFileSync(historikFile, 'Lea Bank: ' + learanta + '\n');
+  fs.appendFileSync(historikFile, 'Moank: ' + moankranta + '\n');
+  fs.appendFileSync(historikFile, 'Bluestep Bank: ' + blueranta + '\n');
+  fs.appendFileSync(historikFile, 'EP Bank: ' + epranta + '\n');
+  fs.appendFileSync(historikFile, 'Resurs Bank: ' + resursranta + '\n');
+  fs.appendFileSync(historikFile, 'Nordiska: ' + nordiskaranta + '\n');
+  //fs.appendFileSync(historikFile, 'Nordiska2: ' + nordiska2ranta + '\n');
+  fs.appendFileSync(historikFile, 'MedMera Bank: ' + medranta + '\n');
+  fs.appendFileSync(historikFile, 'SBAB: ' + sbabranta + '\n');
+  fs.appendFileSync(historikFile, 'Skandia Bank: ' + Skandiaranta + '\n');
+  fs.appendFileSync(historikFile, 'Swedbank: ' + swedbankranta + '\n');
+  fs.appendFileSync(historikFile, 'Handelsbanken: ' + shbranta + '\n');
+  fs.appendFileSync(historikFile, 'Nordea: ' + nordearanta + '\n');
+  fs.appendFileSync(historikFile, 'SEB: ' + sebranta + '\n');
+  fs.appendFileSync(historikFile, 'Länsförsäkringar Bank: ' + lansfranta + '\n');
+  fs.appendFileSync(historikFile, 'Collector: ' + collectorranta + '\n');
+  fs.appendFileSync(historikFile, 'Marginalen Bank: ' + marginalranta + '\n');
+  fs.appendFileSync(historikFile, 'Qliro: ' + qlirokranta + '\n');
+  fs.appendFileSync(historikFile, 'Coeli: ' + coelikranta + '\n');
+  fs.appendFileSync(historikFile, 'Svea Bank: ' + svearanta + '\n');
+  fs.appendFileSync(historikFile, 'Qred Bank: ' + qredranta + '\n');
+  fs.appendFileSync(historikFile, 'Nstart: ' + nstartranta + '\n');
+  fs.appendFileSync(historikFile, 'Sparbanken Syd: ' + sparsydranta + '\n');
+  fs.appendFileSync(historikFile, 'Borgo: ' + borgoranta + '\n');
+  //fs.appendFileSync(historikFile, 'Brocc: ' + broccranta + '\n');
+  fs.appendFileSync(historikFile, 'JAK: ' + jakranta + '\n');
+  fs.appendFileSync(historikFile, 'Aros Kapital: ' + arosranta + '\n');
+  fs.appendFileSync(historikFile, 'Serafim Finans: ' + serafimranta + '\n');
+  fs.appendFileSync(historikFile, 'Froda: ' + frodaranta + '\n');
+  fs.appendFileSync(historikFile, 'Northmill Bank: ' + northranta + '\n');
+  //fs.appendFileSync(historikFile, 'Multitude Bank: ' + multiranta + '\n');
+  fs.appendFileSync(historikFile, 'Klarna: ' + klarnaranta + '\n');
+  fs.appendFileSync(historikFile, 'HoistSpar: ' + hoistranta + '\n');
+  fs.appendFileSync(historikFile, 'Danske Bank: ' + danskranta + '\n');
+  fs.appendFileSync(historikFile, 'Fedelta: ' + fedeltaranta + '\n');
+  fs.appendFileSync(historikFile, 'Arktika Spar: ' + arktikaranta + '\n');
+  fs.appendFileSync(historikFile, 'Brixo: ' + brixoranta + '\n');
+  fs.appendFileSync(historikFile, 'Ekobanken: ' + ekoranta + '\n');
+  fs.appendFileSync(historikFile, 'Landshypotek: ' + landsranta + '\n');
+  fs.appendFileSync(historikFile, 'Myntro: ' + myntroranta + '\n');
+  fs.appendFileSync(historikFile, 'PRA Spar: ' + prasparranta + '\n');
+  fs.appendFileSync(historikFile, 'SevenDay Bank: ' + sevendayranta + '\n');
+  fs.appendFileSync(historikFile, 'Sparbanken Spira: ' + sparspiraranta + '\n');
+  fs.appendFileSync(historikFile, 'Ålandsbanken: ' + alandranta + '\n');
+
+  
   // const execute = utils.promisify(exec);
   // console.log(await execute(outputFile));
 });
