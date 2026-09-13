@@ -5,7 +5,7 @@ EP Bank: 2.40
 Resurs Bank: 2.00
 Nordiska: 2.75
 MedMera Bank: 2.50
-SBAB: 2.35
+SBAB: 2.30
 Skandia Bank: 2.25
 Swedbank: 1.75
 Handelsbanken: 1.70
