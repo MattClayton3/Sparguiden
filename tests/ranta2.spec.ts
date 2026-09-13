@@ -1840,7 +1840,7 @@ test('Sorterat', async () => {
     { banknamn: 'Nordiska', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a> ${nordiskachange}`, ranta: nordiskaranta},
     //{ banknamn: 'Nordiska2', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska 2 månader</a> ${nordiska2change}`, ranta: nordiska2ranta},
     { banknamn: 'MedMera Bank', bank: `<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a> ${medchange}`, ranta: medranta},
-    { banknamn: 'SBAB', bank: `<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a> &#127905;`, ranta: sbabranta},
+    { banknamn: 'SBAB', bank: `<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a> &#127905; ${sbabchange}`, ranta: sbabranta},
     { banknamn: 'Skandia Bank', bank: `<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia</a> ${Skandiachange}`, ranta: Skandiaranta},
     { banknamn: 'Swedban', bank: `<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a> ${swedbankchange}`, ranta: swedbankranta},
     { banknamn: 'Handelsbanken', bank: `<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a> &#128204; &#127905; ${shbchange}`, ranta: shbranta},
