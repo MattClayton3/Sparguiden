@@ -2034,7 +2034,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<br>&#128204; = OBS! Hårdkodad ränta. Dubbelkolla räntan.\n');
   fs.appendFileSync(outputFile, '<br>&#127905; = Automatisk förlängning möjlig.\n');
   fs.appendFileSync(outputFile, '<br>&#129518; = Bonus vid förlängning.\n');
-  fs.appendFileSync(outputFile, '<br>&#9195; &#9196; = Förändring sedan förra kontrollen.\n');
+  fs.appendFileSync(outputFile, '<br>&#9195; &#9196; = Förändring sedan förra kontrollen. Tidigare värde inom ()\n');
 
   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
