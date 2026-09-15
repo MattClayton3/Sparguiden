@@ -365,7 +365,7 @@ test('Moank', async ({ page }) => {
     if (moankbody.includes('Spara med fast ränta')) {
       let moankord = moankbody.indexOf('>Fast 90 dagar')
       let lmoankkollen = moankbody.substring(moankord, moankord+20)
-      moankranta = moankbody.substring(moankord+169, moankord+173)
+      moankranta = moankbody.substring(moankord+157, moankord+161)
       moankranta = moankranta.replace(',', '.');
       //console.log('Content:', moankbody);
       //console.log('Index..:', moankord);
@@ -1570,7 +1570,7 @@ test('PRA Spar', async ({ page }) => {
     let prasparbody = await prasparresponse.text();
     //console.log('Content:', prasparbody);
     if (prasparbody.includes('konto')) {
-      let prasparkord = prasparbody.indexOf('"3 månaders fasträntekonto"')
+      let prasparkord = prasparbody.indexOf('"Sparkonto Fast 3 månader"')
       let prasparkollen = prasparbody.substring(prasparkord, prasparkord+20)
       prasparranta = prasparbody.substring(prasparkord-12, prasparkord-8)
       prasparranta = prasparranta.replace(',', '.');
@@ -1829,53 +1829,54 @@ test('Sorterat', async () => {
     banknamn: string;
     bank: string;
     ranta: number;
+    change: string;
   }
 
   const bankarr: Banks[] = [
-    { banknamn: 'Lea Bank', bank: `<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank</a> &#128198; &#128182; ${leachange}`, ranta: learanta },
-    { banknamn: 'Moank', bank: `<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a> ${moankchange}`, ranta: moankranta },
-    { banknamn: 'Bluestep Bank', bank: `<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a> ${bluechange}`, ranta: blueranta},
-    { banknamn: 'EP Bank', bank: `<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a> ${epchange}`, ranta: epranta },
-    { banknamn: 'Resurs Bank', bank: `<a href="https://www.resursbank.se/sparkonto/sparkonto-flex" target="_blank">Resurs</a> &#128176; ${resurschange}`, ranta: resursranta},
-    { banknamn: 'Nordiska', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a> ${nordiskachange}`, ranta: nordiskaranta},
+    { banknamn: 'Lea Bank', bank: `<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank</a> &#128198; &#128182;`, ranta: learanta, change: leachange },
+    { banknamn: 'Moank', bank: `<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>`, ranta: moankranta, change: moankchange },
+    { banknamn: 'Bluestep Bank', bank: `<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>`, ranta: blueranta, change: bluechange },
+    { banknamn: 'EP Bank', bank: `<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>`, ranta: epranta, change: epchange },
+    { banknamn: 'Resurs Bank', bank: `<a href="https://www.resursbank.se/sparkonto/sparkonto-flex" target="_blank">Resurs</a> &#128176; ${resurschange}`, ranta: resursranta,change: resurschange },
+    { banknamn: 'Nordiska', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>`, ranta: nordiskaranta, change: nordiskachange},
     //{ banknamn: 'Nordiska2', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska 2 månader</a> ${nordiska2change}`, ranta: nordiska2ranta},
-    { banknamn: 'MedMera Bank', bank: `<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a> ${medchange}`, ranta: medranta},
-    { banknamn: 'SBAB', bank: `<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a> &#127905; ${sbabchange}`, ranta: sbabranta},
-    { banknamn: 'Skandia Bank', bank: `<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia</a> ${Skandiachange}`, ranta: Skandiaranta},
-    { banknamn: 'Swedbank', bank: `<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a> ${swedbankchange}`, ranta: swedbankranta},
-    { banknamn: 'Nordea', bank: `<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a> ${nordeachange}`, ranta: nordearanta},
-    { banknamn: 'Handelsbanken', bank: `<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a> &#128204; &#127905; ${shbchange}`, ranta: shbranta},
-    { banknamn: 'SEB', bank: `<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a> ${sebchange}`, ranta: sebranta},
-    { banknamn: 'Länsförsäkringar Bank', bank: `<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar Bank</a> ${lansfchange}`, ranta: lansfranta},
-    { banknamn: 'Collector', bank: `<a href="https://www.collector.se/spara-pengar/aktuella-sparrantor/" target="_blank">Collector</a> ${collectorchange}`, ranta: collectorranta},
-    { banknamn: 'Marginalen Bank', bank: `<a href="https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/" target="_blank">Marginalen Bank</a> ${marginalchange}`, ranta: marginalranta},
-    { banknamn: 'Qliro', bank: `<a href="https://www.qliro.com/sv-se/spara" target="_blank">Qliro</a> ${qlirochange}`, ranta: qlirokranta},
-    { banknamn: 'Coeli', bank: `<a href="https://coeli.se/spara/" target="_blank">Coeli</a> ${coelichange}`, ranta: coelikranta},
-    { banknamn: 'Svea Bank', bank: `<a href="https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto" target="_blank">Svea</a> ${sveachange}`, ranta: svearanta},
-    { banknamn: 'Qred Bank', bank: `<a href="https://www.qred.se/sparkonto" target="_blank">Qred Bank</a> ${qredchange}`, ranta: qredranta},
-    { banknamn: 'Plus1 (Nstart)', bank: `<a href="https://www.plus1.com/" target="_blank">Plus1</a> ${nstartchange}`, ranta: nstartranta},
-    { banknamn: 'Sparbanken Syd', bank: `<a href="https://www.sparbankensyd.se/sv/privat/vara-tjanster/spara/sparkonto" target="_blank">Sparbanken Syd</a> ${sparsydchange}`, ranta: sparsydranta},
-    { banknamn: 'Borgo', bank: `<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a> ${borgochange}`, ranta: borgoranta},
+    { banknamn: 'MedMera Bank', bank: `<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>`, ranta: medranta, change: medchange},
+    { banknamn: 'SBAB', bank: `<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a> &#127905;`, ranta: sbabranta, change: sbabchange},
+    { banknamn: 'Skandia Bank', bank: `<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia</a>`, ranta: Skandiaranta, change: Skandiachange},
+    { banknamn: 'Swedbank', bank: `<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a>`, ranta: swedbankranta, change: swedbankchange},
+    { banknamn: 'Nordea', bank: `<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>`, ranta: nordearanta, change: nordeachange},
+    { banknamn: 'Handelsbanken', bank: `<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a> &#128204; &#127905;`, ranta: shbranta, change: shbchange},
+    { banknamn: 'SEB', bank: `<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>`, ranta: sebranta, change: sebchange},
+    { banknamn: 'Länsförsäkringar Bank', bank: `<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar Bank</a>`, ranta: lansfranta, change: lansfchange},
+    { banknamn: 'Collector', bank: `<a href="https://www.collector.se/spara-pengar/aktuella-sparrantor/" target="_blank">Collector</a>`, ranta: collectorranta, change: collectorchange},
+    { banknamn: 'Marginalen Bank', bank: `<a href="https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/" target="_blank">Marginalen Bank</a>`, ranta: marginalranta, change: marginalchange},
+    { banknamn: 'Qliro', bank: `<a href="https://www.qliro.com/sv-se/spara" target="_blank">Qliro</a>`, ranta: qlirokranta, change: qlirochange},
+    { banknamn: 'Coeli', bank: `<a href="https://coeli.se/spara/" target="_blank">Coeli</a>`, ranta: coelikranta, change: coelichange},
+    { banknamn: 'Svea Bank', bank: `<a href="https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto" target="_blank">Svea</a>`, ranta: svearanta, change: sveachange},
+    { banknamn: 'Qred Bank', bank: `<a href="https://www.qred.se/sparkonto" target="_blank">Qred Bank</a>`, ranta: qredranta, change: qredchange},
+    { banknamn: 'Plus1 (Nstart)', bank: `<a href="https://www.plus1.com/" target="_blank">Plus1</a>`, ranta: nstartranta, change: nstartchange},
+    { banknamn: 'Sparbanken Syd', bank: `<a href="https://www.sparbankensyd.se/sv/privat/vara-tjanster/spara/sparkonto" target="_blank">Sparbanken Syd</a>`, ranta: sparsydranta, change: sparsydchange},
+    { banknamn: 'Borgo', bank: `<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>`, ranta: borgoranta, change: borgochange},
     //{ banknamn: 'Brocc', bank: `<a href="https://brocc.se/spara" target="_blank">Brocc</a> &#128198;', ranta: broccranta},
-    { banknamn: 'JAK Medlemsbank', bank: `<a href="https://www.jak.se/spara-placera/oppna-konto/" target="_blank">JAK Medlemsbank</a> ${jakchange}`, ranta: jakranta},
-    { banknamn: 'Aros Kapital', bank: `<a href="https://aroskapital.se/tjanst/spara-privat/" target="_blank">Aros Kapital</a> ${aroschange}`, ranta: arosranta},
-    { banknamn: 'Serafim Finans', bank: `<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a> ${serafimchange}`, ranta: serafimranta},
-    { banknamn: 'Froda', bank: `<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a> ${frodachange}`, ranta: frodaranta},
-    { banknamn: 'Northmill Bank', bank: `<a href="https://www.northmill.com/se/spara/fastrantekonto/" target="_blank">Northmill Bank</a> ${northchange}`, ranta: northranta},
+    { banknamn: 'JAK Medlemsbank', bank: `<a href="https://www.jak.se/spara-placera/oppna-konto/" target="_blank">JAK Medlemsbank</a>`, ranta: jakranta, change: jakchange},
+    { banknamn: 'Aros Kapital', bank: `<a href="https://aroskapital.se/tjanst/spara-privat/" target="_blank">Aros Kapital</a>`, ranta: arosranta, change: aroschange},
+    { banknamn: 'Serafim Finans', bank: `<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a>`, ranta: serafimranta, change: serafimchange},
+    { banknamn: 'Froda', bank: `<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>}`, ranta: frodaranta, change: frodachange},
+    { banknamn: 'Northmill Bank', bank: `<a href="https://www.northmill.com/se/spara/fastrantekonto/" target="_blank">Northmill Bank</a>`, ranta: northranta, change: northchange},
     //{ banknamn: 'Multitude Bank', bank: `<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>`, ranta: multiranta},
-    { banknamn: 'Klarna', bank: `<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a> &#128204; ${klarnachange}`, ranta: klarnaranta},
-    { banknamn: 'HoistSpar', bank: `<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a> ${hoistchange}`, ranta: hoistranta},
-    { banknamn: 'Danske Bank', bank: `<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a> ${danskchange}`, ranta: danskranta},
-    { banknamn: 'Fedelta', bank: `<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a> ${fedeltachange}`, ranta: fedeltaranta},
-    { banknamn: 'Brixo', bank: `<a href="https://brixo.se/sparkonto/" target="_blank">Brixo</a> ${brixochange}`, ranta: brixoranta},
-    { banknamn: 'Ekobanken', bank: `<a href="https://www.ekobanken.se/hem/privat/aktuella-rantor" target="_blank">Ekobanken</a> ${ekochange}`, ranta: ekoranta},
-    { banknamn: 'Landshypotek', bank: `<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a> ${landschange}`, ranta: landsranta},
-    { banknamn: 'Myntro', bank: `<a href="https://myntrosavings.se/" target="_blank">Myntro</a> ${myntrochange}`, ranta: myntroranta},
-    { banknamn: 'PRA Spar', bank: `<a href="https://praspar.se/" target="_blank">PRA Spar</a> &#127905; ${prasparchange}`, ranta: prasparranta},
-    { banknamn: 'SevenDay Bank', bank: `<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a> ${sevendaychange}`, ranta: sevendayranta},
-    { banknamn: 'Sparbanken Spira', bank: `<a href="https://www.sparbankenspira.se/privat/spara-och-placera/fastrantekonto.html" target="_blank">Sparbanken Spira</a> ${sparspirachange}`, ranta: sparspiraranta},   
-    { banknamn: 'Arktika Spar', bank: `<a href="https://www.arktikaspar.se/" target="_blank">Arktika Spar</a> &#127905; &#129518; ${arktikachange}`, ranta: arktikaranta},
-    { banknamn: 'Ålandsbanken', bank: `<a href="https://www.alandsbanken.se/banktjanster/konton/fastrantekonto" target="_blank">Ålandsbanken</a> ${alandchange}`, ranta: alandranta},
+    { banknamn: 'Klarna', bank: `<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a> &#128204;`, ranta: klarnaranta, change: klarnachange},
+    { banknamn: 'HoistSpar', bank: `<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>`, ranta: hoistranta, change: hoistchange},
+    { banknamn: 'Danske Bank', bank: `<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>`, ranta: danskranta, change: danskchange},
+    { banknamn: 'Fedelta', bank: `<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>`, ranta: fedeltaranta, change: fedeltachange},
+    { banknamn: 'Brixo', bank: `<a href="https://brixo.se/sparkonto/" target="_blank">Brixo</a>`, ranta: brixoranta, change: brixochange},
+    { banknamn: 'Ekobanken', bank: `<a href="https://www.ekobanken.se/hem/privat/aktuella-rantor" target="_blank">Ekobanken</a>`, ranta: ekoranta, change: ekochange},
+    { banknamn: 'Landshypotek', bank: `<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a>`, ranta: landsranta, change: landschange},
+    { banknamn: 'Myntro', bank: `<a href="https://myntrosavings.se/" target="_blank">Myntro</a>`, ranta: myntroranta, change: myntrochange},
+    { banknamn: 'PRA Spar', bank: `<a href="https://praspar.se/" target="_blank">PRA Spar</a> &#127905;`, ranta: prasparranta, change: prasparchange},
+    { banknamn: 'SevenDay Bank', bank: `<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a>`, ranta: sevendayranta, change: sevendaychange},
+    { banknamn: 'Sparbanken Spira', bank: `<a href="https://www.sparbankenspira.se/privat/spara-och-placera/fastrantekonto.html" target="_blank">Sparbanken Spira</a>`, ranta: sparspiraranta, change: sparspirachange},   
+    { banknamn: 'Arktika Spar', bank: `<a href="https://www.arktikaspar.se/" target="_blank">Arktika Spar</a> &#127905; &#129518;`, ranta: arktikaranta, change: arktikachange},
+    { banknamn: 'Ålandsbanken', bank: `<a href="https://www.alandsbanken.se/banktjanster/konton/fastrantekonto" target="_blank">Ålandsbanken</a>`, ranta: alandranta, change: alandchange},
   ];
   
   bankarr.sort((a,b) => {
@@ -1888,7 +1889,7 @@ test('Sorterat', async () => {
 
   let antalBanker: any;
   antalBanker = (bankarr.length);
-  console.log('Antal:', bankarr.length);
+  console.log('Antal banker:', bankarr.length);
   console.log('Bank:', bankarr[0].bank, 'Ränta %:', bankarr[0].ranta);
   console.log(bankarr[1].ranta);
   console.log(bankarr[2]);
@@ -1901,7 +1902,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<html>\n');
   fs.appendFileSync(outputFile, '<head>\n');
   fs.appendFileSync(outputFile, '<meta name="description" content="Sparguiden Fasträntekonto 3 månader">\n');
-  fs.appendFileSync(outputFile, '<meta name="keywords" content="HTML, Playwright, TypeScript">\n');
+  fs.appendFileSync(outputFile, '<meta name="keywords" content="Sparguiden, Sparguid, Ränta, Räntor, Fasträntekonto, Sparkonto, 3 månader">\n');
   fs.appendFileSync(outputFile, '<meta name="author" content="Matt Clayton">\n');
   fs.appendFileSync(outputFile, '<meta name="viewport" content="width=device-width, initial-scale=1">\n');
   fs.appendFileSync(outputFile, '<style>\n');
@@ -1987,6 +1988,7 @@ test('Sorterat', async () => {
     //let color = 'green';
     const banken: string = bankarr[i].bank;
     const rantan: number = bankarr[i].ranta;
+    const change: string = bankarr[i].change;
     // if (rantan < 3.00){
     //   color = 'black';
     // }
@@ -1999,7 +2001,7 @@ test('Sorterat', async () => {
       position = '&#128542;';
     }
     let bankStr = `    <td style="color:${color}"> <sup>${i+1})</sup> ${banken} ${position} </td>\n`;
-    let rantaStr = `    <td style="color:${color}"> ${rantan} </td>\n`;
+    let rantaStr = `    <td style="color:${color}"> ${rantan} ${change} </td>\n`;
     let kvartal = (rantan * 0.01) * exempelBelopp / 4;
     let kvartal1 = (Math.round(kvartal * 100) / 100).toFixed(2);
     let nettoKvartal = kvartal * 0.7;
