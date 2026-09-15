@@ -16,7 +16,7 @@ Länsförsäkringar Bank: 1.75
 Collector: 2.50
 Marginalen Bank: 2.45
 Qliro: 2.40
-Coeli: 2.95
+Coeli: 2.80
 Svea Bank: 2.80
 Qred Bank: 2.70
 Nstart: 2.90
