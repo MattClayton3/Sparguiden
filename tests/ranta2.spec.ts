@@ -1861,7 +1861,7 @@ test('Sorterat', async () => {
     { banknamn: 'JAK Medlemsbank', bank: `<a href="https://www.jak.se/spara-placera/oppna-konto/" target="_blank">JAK Medlemsbank</a>`, ranta: jakranta, change: jakchange},
     { banknamn: 'Aros Kapital', bank: `<a href="https://aroskapital.se/tjanst/spara-privat/" target="_blank">Aros Kapital</a>`, ranta: arosranta, change: aroschange},
     { banknamn: 'Serafim Finans', bank: `<a href="https://serafimfinans.se/spara" target="_blank">Serafim Finans</a>`, ranta: serafimranta, change: serafimchange},
-    { banknamn: 'Froda', bank: `<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>}`, ranta: frodaranta, change: frodachange},
+    { banknamn: 'Froda', bank: `<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>`, ranta: frodaranta, change: frodachange},
     { banknamn: 'Northmill Bank', bank: `<a href="https://www.northmill.com/se/spara/fastrantekonto/" target="_blank">Northmill Bank</a>`, ranta: northranta, change: northchange},
     //{ banknamn: 'Multitude Bank', bank: `<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>`, ranta: multiranta},
     { banknamn: 'Klarna', bank: `<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a> &#128204;`, ranta: klarnaranta, change: klarnachange},
