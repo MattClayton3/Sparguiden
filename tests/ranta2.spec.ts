@@ -344,11 +344,11 @@ test('Lea Bank', async ({ page }) => {
       console.log('Fast 1 månaders ränta:', learanta, '%');
       if (learanta > old_learanta) {
         console.log('Räntan har höjts!');
-        leachange = `&#9195; (${old_learanta}%)`;
+        leachange = `&#9195; (${old_learanta})`;
       }
       if (learanta < old_learanta) {
         console.log('Räntan har sänkts!');
-        leachange = `&#9196; (${old_learanta}%)`;
+        leachange = `&#9196; (${old_learanta})`;
       }
     }
   }
@@ -374,11 +374,11 @@ test('Moank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', moankranta, '%');
       if (moankranta > old_moankranta) {
         console.log('Räntan har höjts!');
-        moankchange = `&#9195; (${old_moankranta}%)`;
+        moankchange = `&#9195; (${old_moankranta})`;
       }
       if (moankranta < old_moankranta) {
         console.log('Räntan har sänkts!');
-        moankchange = `&#9196; (${old_moankranta}%)`;
+        moankchange = `&#9196; (${old_moankranta})`;
       }
     }
   }
@@ -403,11 +403,11 @@ test('Bluestep Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', blueranta, '%');
       if (blueranta > old_blueranta) {
         console.log('Räntan har höjts!');
-        bluechange = `&#9195; (${old_blueranta}%)`;
+        bluechange = `&#9195; (${old_blueranta})`;
       }
       if (blueranta < old_blueranta) {
         console.log('Räntan har sänkts!');
-        bluechange = `&#9196; (${old_blueranta}%)`;
+        bluechange = `&#9196; (${old_blueranta})`;
       }
     }
   }
@@ -434,11 +434,11 @@ test('EP Bank (Erik Penser)', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', epranta, '%');
         if (epranta > old_epranta) {
         console.log('Räntan har höjts!');
-        epchange = `&#9195; (${old_epranta}%)`;
+        epchange = `&#9195; (${old_epranta})`;
       }
       if (epranta < old_epranta) {
         console.log('Räntan har sänkts!');
-        epchange = `&#9196; (${old_epranta}%)`;
+        epchange = `&#9196; (${old_epranta})`;
       }
     }
   }
@@ -465,11 +465,11 @@ test('Resurs', async ({ page }) => {
       console.log('Sparkonto Flex ränta:', resursranta, '%');
       if (resursranta > old_resursranta) {
         console.log('Räntan har höjts!');
-        resurschange = `&#9195; (${old_resursranta}%)`;
+        resurschange = `&#9195; (${old_resursranta})`;
       }
       if (resursranta < old_resursranta) {
         console.log('Räntan har sänkts!');
-        resurschange = `&#9196; (${old_resursranta}%)`;
+        resurschange = `&#9196; (${old_resursranta})`;
       }
     }
   }
@@ -497,11 +497,11 @@ test('Nordiska Kreditmarknadsbolaget', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', nordiskaranta, '%');
       if (nordiskaranta > old_nordiskaranta) {
         console.log('Räntan har höjts!');
-        nordiskachange = `&#9195; (${old_nordiskaranta}%)`;
+        nordiskachange = `&#9195; (${old_nordiskaranta})`;
       }
       if (nordiskaranta < old_nordiskaranta) {
         console.log('Räntan har sänkts!');
-        nordiskachange = `&#9196; (${old_nordiskaranta}%)`;
+        nordiskachange = `&#9196; (${old_nordiskaranta})`;
       }
     }
   }
@@ -550,11 +550,11 @@ test('MedMera Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', medranta, '%');
       if (medranta > old_medranta) {
         console.log('Räntan har höjts!');
-        medchange = `&#9195; (${old_medranta}%)`;
+        medchange = `&#9195; (${old_medranta})`;
       }
       if (medranta < old_medranta) {
         console.log('Räntan har sänkts!');
-        medchange = `&#9196; (${old_medranta}%)`;
+        medchange = `&#9196; (${old_medranta})`;
       }
     }
   }
@@ -573,11 +573,11 @@ test('SBAB', async ({ page }) => {
   console.log('Fast 3 månaders ränta:', sbabranta, '%');
         if (sbabranta > old_sbabranta) {
         console.log('Räntan har höjts!');
-        sbabchange = `&#9195; (${old_sbabranta}%)`;
+        sbabchange = `&#9195; (${old_sbabranta})`;
       }
       if (sbabranta < old_sbabranta) {
         console.log('Räntan har sänkts!');
-        sbabchange = `&#9196; (${old_sbabranta}%)`;
+        sbabchange = `&#9196; (${old_sbabranta})`;
       }
 });
 
@@ -601,11 +601,11 @@ test('Skandia Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', Skandiaranta, '%');
       if (Skandiaranta > old_Skandiaranta) {
         console.log('Räntan har höjts!');
-        Skandiachange = `&#9195; (${old_Skandiaranta}%)`;
+        Skandiachange = `&#9195; (${old_Skandiaranta})`;
       }
       if (Skandiaranta < old_Skandiaranta) {
         console.log('Räntan har sänkts!');
-        Skandiachange = `&#9196; (${old_Skandiaranta}%)`;
+        Skandiachange = `&#9196; (${old_Skandiaranta})`;
       }
     }
   }
@@ -631,11 +631,11 @@ test('Swedbank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', swedbankranta, '%');
       if (swedbankranta > old_swedbankranta) {
         console.log('Räntan har höjts!');
-        swedbankchange = `&#9195; (${old_swedbankranta}%)`;
+        swedbankchange = `&#9195; (${old_swedbankranta})`;
       }
       if (swedbankranta < old_swedbankranta) {
         console.log('Räntan har sänkts!');
-        swedbankchange = `&#9196; (${old_swedbankranta}%)`;
+        swedbankchange = `&#9196; (${old_swedbankranta})`;
       }
     }
   }
@@ -673,11 +673,11 @@ test('Handelsbanken', async ({ page }) => {
        console.log('Fast 3 månaders ränta:', shbranta, '%');
         if (shbranta > old_shbranta) {
         console.log('Räntan har höjts!');
-        shbchange = `&#9195; (${old_shbranta}%)`;
+        shbchange = `&#9195; (${old_shbranta})`;
       }
       if (shbranta < old_shbranta) {
         console.log('Räntan har sänkts!');
-        shbchange = `&#9196; (${old_shbranta}%)`;
+        shbchange = `&#9196; (${old_shbranta})`;
       }
 });
 
@@ -701,11 +701,11 @@ test('Nordea', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', nordearanta, '%');
       if (nordearanta > old_nordearanta) {
         console.log('Räntan har höjts!');
-        nordeachange = `&#9195; (${old_nordearanta}%)`;
+        nordeachange = `&#9195; (${old_nordearanta})`;
       }
       if (nordearanta < old_nordearanta) {
         console.log('Räntan har sänkts!');
-        nordeachange = `&#9196; (${old_nordearanta}%)`;
+        nordeachange = `&#9196; (${old_nordearanta})`;
       }
     }
   } 
@@ -731,11 +731,11 @@ test('SEB', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', sebranta, '%');
       if (sebranta > old_sebranta) {
         console.log('Räntan har höjts!');
-        sebchange = `&#9195; (${old_sebranta}%)`;
+        sebchange = `&#9195; (${old_sebranta})`;
       }
       if (sebranta < old_sebranta) {
         console.log('Räntan har sänkts!');
-        sebchange = `&#9196; (${old_sebranta}%)`;
+        sebchange = `&#9196; (${old_sebranta})`;
       }
     }
   }  
@@ -764,11 +764,11 @@ test('Lansforsakringar', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', lansfranta, '%');
       if (lansfranta > old_lansfranta) {
         console.log('Räntan har höjts!');
-        lansfchange = `&#9195; (${old_lansfranta}%)`;
+        lansfchange = `&#9195; (${old_lansfranta})`;
       }
       if (lansfranta < old_lansfranta) {
         console.log('Räntan har sänkts!');
-        lansfchange = `&#9196; (${old_lansfranta}%)`;
+        lansfchange = `&#9196; (${old_lansfranta})`;
       }
     }
   }
@@ -798,11 +798,11 @@ test('Collector', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', collectorranta, '%');
       if (collectorranta > old_collectorranta) {
         console.log('Räntan har höjts!');
-        collectorchange = `&#9195; (${old_collectorranta}%)`;
+        collectorchange = `&#9195; (${old_collectorranta})`;
       }
       if (collectorranta < old_collectorranta) {
         console.log('Räntan har sänkts!');
-        collectorchange = `&#9196; (${old_collectorranta}%)`;
+        collectorchange = `&#9196; (${old_collectorranta})`;
       }
     }
   }  
@@ -831,11 +831,11 @@ test('Marginalen Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', marginalranta, '%');
       if (marginalranta > old_marginalranta) {
         console.log('Räntan har höjts!');
-        marginalchange = `&#9195; (${old_marginalranta}%)`;
+        marginalchange = `&#9195; (${old_marginalranta})`;
       }
       if (marginalranta < old_marginalranta) {
         console.log('Räntan har sänkts!');
-        marginalchange = `&#9196; (${old_marginalranta}%)`;
+        marginalchange = `&#9196; (${old_marginalranta})`;
       }
     }
   }
@@ -863,11 +863,11 @@ test('Qliro', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', qlirokranta, '%');
       if (qlirokranta > old_qlirokranta) {
         console.log('Räntan har höjts!');
-        qlirochange = `&#9195; (${old_qlirokranta}%)`;
+        qlirochange = `&#9195; (${old_qlirokranta})`;
       }
       if (qlirokranta < old_qlirokranta) {
         console.log('Räntan har sänkts!');
-        qlirochange = `&#9196; (${old_qlirokranta}%)`;
+        qlirochange = `&#9196; (${old_qlirokranta})`;
       }
     }
   }
@@ -896,11 +896,11 @@ test('Coeli', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', coelikranta, '%');
       if (coelikranta > old_coelikranta) {
         console.log('Räntan har höjts!');
-        coelichange = `&#9195; (${old_coelikranta}%)`;
+        coelichange = `&#9195; (${old_coelikranta})`;
       }
       if (coelikranta < old_coelikranta) {
         console.log('Räntan har sänkts!');
-        coelichange = `&#9196; (${old_coelikranta}%)`;
+        coelichange = `&#9196; (${old_coelikranta})`;
       }
     }
   }
@@ -929,11 +929,11 @@ test('Svea Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', svearanta, '%');
       if (svearanta > old_svearanta) {
         console.log('Räntan har höjts!');
-        sveachange = `&#9195; (${old_svearanta}%)`;
+        sveachange = `&#9195; (${old_svearanta})`;
       }
       if (svearanta < old_svearanta) {
         console.log('Räntan har sänkts!');
-        sveachange = `&#9196; (${old_svearanta}%)`;
+        sveachange = `&#9196; (${old_svearanta})`;
       }
     }
   }
@@ -962,11 +962,11 @@ test('Qred Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', qredranta, '%');
       if (qredranta > old_qredranta) {
         console.log('Räntan har höjts!');
-        qredchange = `&#9195; (${old_qredranta}%)`;
+        qredchange = `&#9195; (${old_qredranta})`;
       }
       if (qredranta < old_qredranta) {
         console.log('Räntan har sänkts!');
-        qredchange = `&#9196; (${old_qredranta}%)`;
+        qredchange = `&#9196; (${old_qredranta})`;
       }
     }
   }
@@ -992,11 +992,11 @@ test('NstartPlus1', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', nstartranta, '%');
       if (nstartranta > old_nstartranta) {
         console.log('Räntan har höjts!');
-        nstartchange = `&#9195; (${old_nstartranta}%)`;
+        nstartchange = `&#9195; (${old_nstartranta})`;
       }
       if (nstartranta < old_nstartranta) {
         console.log('Räntan har sänkts!');
-        nstartchange = `&#9196; (${old_nstartranta}%)`;
+        nstartchange = `&#9196; (${old_nstartranta})`;
       }
     }
   }
@@ -1028,11 +1028,11 @@ test('Sparbanken Syd', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', sparsydranta, '%');
       if (sparsydranta > old_sparsydranta) {
         console.log('Räntan har höjts!');
-        sparsydchange = `&#9195; (${old_sparsydranta}%)`;
+        sparsydchange = `&#9195; (${old_sparsydranta})`;
       }
       if (sparsydranta < old_sparsydranta) {
         console.log('Räntan har sänkts!');
-        sparsydchange = `&#9196; (${old_sparsydranta}%)`;
+        sparsydchange = `&#9196; (${old_sparsydranta})`;
       }
     }
   }
@@ -1057,11 +1057,11 @@ test('Borgo', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', borgoranta, '%');
       if (borgoranta > old_borgoranta) {
         console.log('Räntan har höjts!');
-        borgochange = `&#9195; (${old_borgoranta}%)`;
+        borgochange = `&#9195; (${old_borgoranta})`;
       }
       if (borgoranta < old_borgoranta) {
         console.log('Räntan har sänkts!');
-        borgochange = `&#9196; (${old_borgoranta}%)`;
+        borgochange = `&#9196; (${old_borgoranta})`;
       }
     }
   }
@@ -1113,11 +1113,11 @@ test('JAK Medlemsbank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', jakranta, '%');
       if (jakranta > old_jakranta) {
         console.log('Räntan har höjts!');
-        jakchange = `&#9195; (${old_jakranta}%)`;
+        jakchange = `&#9195; (${old_jakranta})`;
       }
       if (jakranta < old_jakranta) {
         console.log('Räntan har sänkts!');
-        jakchange = `&#9196; (${old_jakranta}%)`;
+        jakchange = `&#9196; (${old_jakranta})`;
       }
     }
   }
@@ -1146,11 +1146,11 @@ test('Aros Kapital', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', arosranta, '%');
       if (arosranta > old_arosranta) {
         console.log('Räntan har höjts!');
-        aroschange = `&#9195; (${old_arosranta}%)`;
+        aroschange = `&#9195; (${old_arosranta})`;
       }
       if (arosranta < old_arosranta) {
         console.log('Räntan har sänkts!');
-        aroschange = `&#9196; (${old_arosranta}%)`;
+        aroschange = `&#9196; (${old_arosranta})`;
       }
     }
   }
@@ -1176,11 +1176,11 @@ test('Serafim Finans', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', serafimranta, '%');
       if (serafimranta > old_serafimranta) {
         console.log('Räntan har höjts!');
-        serafimchange = `&#9195; (${old_serafimranta}%)`;
+        serafimchange = `&#9195; (${old_serafimranta})`;
       }
       if (serafimranta < old_serafimranta) {
         console.log('Räntan har sänkts!');
-        serafimchange = `&#9196; (${old_serafimranta}%)`;
+        serafimchange = `&#9196; (${old_serafimranta})`;
       }
     }
   }
@@ -1207,11 +1207,11 @@ test('Froda', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', frodaranta, '%');
       if (frodaranta > old_frodaranta) {
         console.log('Räntan har höjts!');
-        frodachange = `&#9195; (${old_frodaranta}%)`;
+        frodachange = `&#9195; (${old_frodaranta})`;
       }
       if (frodaranta < old_frodaranta) {
         console.log('Räntan har sänkts!');
-        frodachange = `&#9196; (${old_frodaranta}%)`;
+        frodachange = `&#9196; (${old_frodaranta})`;
       }
     }
   }
@@ -1240,11 +1240,11 @@ test('Northmill Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', northranta, '%');
       if (northranta > old_northranta) {
         console.log('Räntan har höjts!');
-        northchange = `&#9195; (${old_northranta}%)`;
+        northchange = `&#9195; (${old_northranta})`;
       }
       if (northranta < old_northranta) {
         console.log('Räntan har sänkts!');
-        northchange = `&#9196; (${old_northranta}%)`;
+        northchange = `&#9196; (${old_northranta})`;
       }
     }
   }
@@ -1313,11 +1313,11 @@ test('Klarna', async ({ page }) => {
        console.log('Fast 3 månaders ränta:', klarnaranta, '%');
         if (klarnaranta > old_klarnaranta) {
         console.log('Räntan har höjts!');
-        klarnachange = `&#9195; (${old_klarnaranta}%)`;
+        klarnachange = `&#9195; (${old_klarnaranta})`;
       }
       if (klarnaranta < old_klarnaranta) {
         console.log('Räntan har sänkts!');
-        klarnachange = `&#9196; (${old_klarnaranta}%)`;
+        klarnachange = `&#9196; (${old_klarnaranta})`;
       }
 });
 
@@ -1341,11 +1341,11 @@ test('HoistSpar', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', hoistranta, '%');
       if (hoistranta > old_hoistranta) {
         console.log('Räntan har höjts!');
-        hoistchange = `&#9195; (${old_hoistranta}%)`;
+        hoistchange = `&#9195; (${old_hoistranta})`;
       }
       if (hoistranta < old_hoistranta) {
         console.log('Räntan har sänkts!');
-        hoistchange = `&#9196; (${old_hoistranta}%)`;
+        hoistchange = `&#9196; (${old_hoistranta})`;
       }
     }
   }
@@ -1371,11 +1371,11 @@ test('Danske Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', danskranta, '%');
       if (danskranta > old_danskranta) {
         console.log('Räntan har höjts!');
-        danskchange = `&#9195; (${old_danskranta}%)`;
+        danskchange = `&#9195; (${old_danskranta})`;
       }
       if (danskranta < old_danskranta) {
         console.log('Räntan har sänkts!');
-        danskchange = `&#9196; (${old_danskranta}%)`;
+        danskchange = `&#9196; (${old_danskranta})`;
       }
     }
   }
@@ -1401,11 +1401,11 @@ test('Fedelta', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', fedeltaranta, '%');
       if (fedeltaranta > old_fedeltaranta) {
         console.log('Räntan har höjts!');
-        fedeltachange = `&#9195; (${old_fedeltaranta}%)`;
+        fedeltachange = `&#9195; (${old_fedeltaranta})`;
       }
       if (fedeltaranta < old_fedeltaranta) {
         console.log('Räntan har sänkts!');
-        fedeltachange = `&#9196; (${old_fedeltaranta}%)`;
+        fedeltachange = `&#9196; (${old_fedeltaranta})`;
       }
     }
   }
@@ -1431,11 +1431,11 @@ test('Arktika Spar', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', arktikaranta, '%');
       if (arktikaranta > old_arktikaranta) {
         console.log('Räntan har höjts!');
-        arktikachange = `&#9195; (${old_arktikaranta}%)`;
+        arktikachange = `&#9195; (${old_arktikaranta})`;
       }
       if (arktikaranta < old_arktikaranta) {
         console.log('Räntan har sänkts!');
-        arktikachange = `&#9196; (${old_arktikaranta}%)`;
+        arktikachange = `&#9196; (${old_arktikaranta})`;
       }
     }
   }
@@ -1461,11 +1461,11 @@ test('Brixo', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', brixoranta, '%');
       if (brixoranta > old_brixoranta) {
         console.log('Räntan har höjts!');
-        brixochange = `&#9195; (${old_brixoranta}%)`;
+        brixochange = `&#9195; (${old_brixoranta})`;
       }
       if (brixoranta < old_brixoranta) {
         console.log('Räntan har sänkts!');
-        brixochange = `&#9196; (${old_brixoranta}%)`;
+        brixochange = `&#9196; (${old_brixoranta})`;
       }
     }
   }
@@ -1491,11 +1491,11 @@ test('Ekobanken', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', ekoranta, '%');
       if (ekoranta > old_ekoranta) {
         console.log('Räntan har höjts!');
-        ekochange = `&#9195; (${old_ekoranta}%)`;
+        ekochange = `&#9195; (${old_ekoranta})`;
       }
       if (ekoranta < old_ekoranta) {
         console.log('Räntan har sänkts!');
-        ekochange = `&#9196; (${old_ekoranta}%)`;
+        ekochange = `&#9196; (${old_ekoranta})`;
       }
     }
   }
@@ -1521,11 +1521,11 @@ test('Landshypotek', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', landsranta, '%');
       if (landsranta > old_landsranta) {
         console.log('Räntan har höjts!');
-        landschange = `&#9195; (${old_landsranta}%)`;
+        landschange = `&#9195; (${old_landsranta})`;
       }
       if (landsranta < old_landsranta) {
         console.log('Räntan har sänkts!');
-        landschange = `&#9196; (${old_landsranta}%)`;
+        landschange = `&#9196; (${old_landsranta})`;
       }
     }
   }
@@ -1551,11 +1551,11 @@ test('Myntro', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', myntroranta, '%');
       if (myntroranta > old_myntroranta) {
         console.log('Räntan har höjts!');
-        myntrochange = `&#9195; (${old_myntroranta}%)`;
+        myntrochange = `&#9195; (${old_myntroranta})`;
       }
       if (myntroranta < old_myntroranta) {
         console.log('Räntan har sänkts!');
-        myntrochange = `&#9196; (${old_myntroranta}%)`;
+        myntrochange = `&#9196; (${old_myntroranta})`;
       }
     }
   }
@@ -1581,11 +1581,11 @@ test('PRA Spar', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', prasparranta, '%');
       if (prasparranta > old_prasparranta) {
         console.log('Räntan har höjts!');
-        prasparchange = `&#9195; (${old_prasparranta}%)`;
+        prasparchange = `&#9195; (${old_prasparranta})`;
       }
       if (prasparranta < old_prasparranta) {
         console.log('Räntan har sänkts!');
-        prasparchange = `&#9196; (${old_prasparranta}%)`;
+        prasparchange = `&#9196; (${old_prasparranta})`;
       }
     }
   }
@@ -1611,11 +1611,11 @@ test('SevenDay Bank', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', sevendayranta, '%');
       if (sevendayranta > old_sevendayranta) {
         console.log('Räntan har höjts!');
-        sevendaychange = `&#9195; (${old_sevendayranta}%)`;
+        sevendaychange = `&#9195; (${old_sevendayranta})`;
       }
       if (sevendayranta < old_sevendayranta) {
         console.log('Räntan har sänkts!');
-        sevendaychange = `&#9196; (${old_sevendayranta}%)`;
+        sevendaychange = `&#9196; (${old_sevendayranta})`;
       }
     }
   }
@@ -1641,11 +1641,11 @@ test('Sparbanken Spira', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', sparspiraranta, '%');
       if (sparspiraranta > old_sparspiraranta) {
         console.log('Räntan har höjts!');
-        sparspirachange = `&#9195; (${old_sparspiraranta}%)`;
+        sparspirachange = `&#9195; (${old_sparspiraranta})`;
       }
       if (sparspiraranta < old_sparspiraranta) {
         console.log('Räntan har sänkts!');
-        sparspirachange = `&#9196; (${old_sparspiraranta}%)`;
+        sparspirachange = `&#9196; (${old_sparspiraranta})`;
       }
     }
   }
@@ -1671,11 +1671,11 @@ test('Ålandsbanken', async ({ page }) => {
       console.log('Fast 3 månaders ränta:', alandranta, '%');
       if (alandranta > old_alandranta) {
         console.log('Räntan har höjts!');
-        alandchange = `&#9195; (${old_alandranta}%)`;
+        alandchange = `&#9195; (${old_alandranta})`;
       }
       if (alandranta < old_alandranta) {
         console.log('Räntan har sänkts!');
-        alandchange = `&#9196; (${old_alandranta}%)`;
+        alandchange = `&#9196; (${old_alandranta})`;
       }
     }
   }
