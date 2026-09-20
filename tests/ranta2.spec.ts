@@ -146,8 +146,8 @@ let autoForlang = '<a href="" style="text-decoration: none;"><span role="img" ar
 let bonus = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Bonus" title="Bonus vid förlängning.">&#129518;</span></a>'
 let rantaUpp = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte höjning" title="Räntan har höjts seda förra kontrollen. Tidigare värde inom ().">&#9195;</span></a>'
 let rantaNer = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte sänkning" title="Räntan har sänkts seda förra kontrollen. Tidigare värde inom ().">&#9196;</span></a>'
-let badInterest = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Dålig ränta" title="Dåligt.">&#129300;</span></a>'
-let illaInterest = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Riktigt illa" title="Riktigt illa.">&#128542;</span></a>'
+let badInterest = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Dålig ränta" title="Hmm...">&#129300;</span></a>'
+let illaInterest = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Riktigt illa" title="Nja...">&#128542;</span></a>'
 
 const filePath = 'historik.txt';
 const content = fs.readFileSync(filePath, 'utf-8');
