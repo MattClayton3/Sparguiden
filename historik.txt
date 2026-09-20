@@ -1,4 +1,4 @@
-Sparguiden 2026-09-18_19-34-47
+Sparguiden 2026-09-20 12:02:39
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
@@ -26,7 +26,7 @@ JAK: 1.90
 Aros Kapital: 2.70
 Serafim Finans: 2.85
 Froda: 2.75
-Northmill Bank: 2.72
+Northmill Bank: 2.60
 Klarna: 1.61
 HoistSpar: 2.65
 Danske Bank: 1.80

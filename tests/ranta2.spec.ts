@@ -134,6 +134,21 @@ let alandranta:any;
 let old_alandranta:any;
 let alandchange = "";
 
+/* Emojis */
+let guldMedalj = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Guldmedalj" title="Första plats.">&#129351;</span></a>'
+let silverdMedalj = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Silvermedalj" title="Andra plats.">&#129352;</span></a>'
+let bronsMedalj = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Bronsmedalj" title="Tredje plats.">&#129353;</span></a>'
+let varjeManad = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Varje månad" title="Räntan betalas ut varje månad.">&#128198;</span></a>'
+let trettioEn = '<a href="" style="text-decoration: none;"><span role="img" aria-label="31 dagar" title="Utbetalning 31 dagar från begäran.">&#128182;</span></a>'
+let sparKonto = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Sparkonto" title="Vanligt sparkonto.">&#128176;</span></a>'
+let hardKodad = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Hårdkodad ränta" title="OBS! Hårdkodad ränta. Dubbelkolla räntan.">&#128204;</span></a>'
+let autoForlang = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Automatisk förlängning" title="Automatisk förlängning möjlig.">&#127905;</span></a>'
+let bonus = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Bonus" title="Bonus vid förlängning.">&#129518;</span></a>'
+let rantaUpp = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte höjning" title="Räntan har höjts seda förra kontrollen.">&#9195;</span></a>'
+let rantaNer = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte sänkning" title="Räntan har sänkts seda förra kontrollen.">&#9196;</span></a>'
+let badInterest = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Dålig ränta" title="Dåligt.">&#129300;</span></a>'
+let illaInterest = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Riktigt illa" title="Riktigt illa.">&#128542;</span></a>'
+
 const filePath = 'historik.txt';
 const content = fs.readFileSync(filePath, 'utf-8');
 const lines = content.split(/\r?\n/);
@@ -321,7 +336,7 @@ let day = String(date.getDate()).padStart(2, "0");
 let hour = String(date.getHours()).padStart(2, "0");
 let min = String(date.getMinutes()).padStart(2, "0");
 let sec = String(date.getSeconds()).padStart(2, "0");
-let fullDate = `${year}-${month}-${day}_${hour}-${min}-${sec}`;
+let fullDate = `${year}-${month}-${day} ${hour}:${min}:${sec}`;
 
 test('Lea Bank', async ({ page }) => {
   let learesponse = await page.goto('https://leabank.se/spara/sparkonto-plus');
@@ -1833,19 +1848,19 @@ test('Sorterat', async () => {
   }
 
   const bankarr: Banks[] = [
-    { banknamn: 'Lea Bank', bank: `<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank</a> &#128198; &#128182;`, ranta: learanta, change: leachange },
+    { banknamn: 'Lea Bank', bank: `<a href="https://leabank.se/spara/sparkonto-plus" target="_blank">Lea Bank</a> ${varjeManad} ${trettioEn}`, ranta: learanta, change: leachange },
     { banknamn: 'Moank', bank: `<a href="https://www.moank.se/spara-pengar" target="_blank">Moank</a>`, ranta: moankranta, change: moankchange },
     { banknamn: 'Bluestep Bank', bank: `<a href="https://www.bluestep.se/spara/fast-ranta/" target="_blank">Bluestep Bank</a>`, ranta: blueranta, change: bluechange },
     { banknamn: 'EP Bank', bank: `<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>`, ranta: epranta, change: epchange },
-    { banknamn: 'Resurs Bank', bank: `<a href="https://www.resursbank.se/sparkonto/sparkonto-flex" target="_blank">Resurs</a> &#128176; ${resurschange}`, ranta: resursranta,change: resurschange },
+    { banknamn: 'Resurs Bank', bank: `<a href="https://www.resursbank.se/sparkonto/sparkonto-flex" target="_blank">Resurs</a> ${sparKonto}`, ranta: resursranta, change: resurschange },
     { banknamn: 'Nordiska', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>`, ranta: nordiskaranta, change: nordiskachange},
     //{ banknamn: 'Nordiska2', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska 2 månader</a> ${nordiska2change}`, ranta: nordiska2ranta},
     { banknamn: 'MedMera Bank', bank: `<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>`, ranta: medranta, change: medchange},
-    { banknamn: 'SBAB', bank: `<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a> &#127905;`, ranta: sbabranta, change: sbabchange},
+    { banknamn: 'SBAB', bank: `<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a> ${autoForlang}`, ranta: sbabranta, change: sbabchange},
     { banknamn: 'Skandia Bank', bank: `<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia</a>`, ranta: Skandiaranta, change: Skandiachange},
     { banknamn: 'Swedbank', bank: `<a href="https://www.swedbank.se/privat/spara-och-placera/sparkonton/fastrantekonto.html" target="_blank">Swedbank</a>`, ranta: swedbankranta, change: swedbankchange},
     { banknamn: 'Nordea', bank: `<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>`, ranta: nordearanta, change: nordeachange},
-    { banknamn: 'Handelsbanken', bank: `<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a> &#128204; &#127905;`, ranta: shbranta, change: shbchange},
+    { banknamn: 'Handelsbanken', bank: `<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a> ${hardKodad} ${autoForlang}`, ranta: shbranta, change: shbchange},
     { banknamn: 'SEB', bank: `<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>`, ranta: sebranta, change: sebchange},
     { banknamn: 'Länsförsäkringar Bank', bank: `<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar Bank</a>`, ranta: lansfranta, change: lansfchange},
     { banknamn: 'Collector', bank: `<a href="https://www.collector.se/spara-pengar/aktuella-sparrantor/" target="_blank">Collector</a>`, ranta: collectorranta, change: collectorchange},
@@ -1864,7 +1879,7 @@ test('Sorterat', async () => {
     { banknamn: 'Froda', bank: `<a href="https://www.froda.se/sparkonto" target="_blank">Froda</a>`, ranta: frodaranta, change: frodachange},
     { banknamn: 'Northmill Bank', bank: `<a href="https://www.northmill.com/se/spara/fastrantekonto/" target="_blank">Northmill Bank</a>`, ranta: northranta, change: northchange},
     //{ banknamn: 'Multitude Bank', bank: `<a href="https://www.multitudebank.se/priser?sc_lang=sv-se" target="_blank">Multitude Bank</a>`, ranta: multiranta},
-    { banknamn: 'Klarna', bank: `<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a> &#128204;`, ranta: klarnaranta, change: klarnachange},
+    { banknamn: 'Klarna', bank: `<a href="https://www.klarna.com/se/fastkonto/" target="_blank">Klarna</a> ${hardKodad}`, ranta: klarnaranta, change: klarnachange},
     { banknamn: 'HoistSpar', bank: `<a href="https://www.hoistspar.se/borja-spara-hos-oss/jamfor-sparformer/" target="_blank">HoistSpar</a>`, ranta: hoistranta, change: hoistchange},
     { banknamn: 'Danske Bank', bank: `<a href="https://danskebank.se/privat/produkter/spara-och-placera/sparkonton/fastranteplacering" target="_blank">Danske Bank</a>`, ranta: danskranta, change: danskchange},
     { banknamn: 'Fedelta', bank: `<a href="https://fedelta.se/sparkonto" target="_blank">Fedelta</a>`, ranta: fedeltaranta, change: fedeltachange},
@@ -1872,10 +1887,10 @@ test('Sorterat', async () => {
     { banknamn: 'Ekobanken', bank: `<a href="https://www.ekobanken.se/hem/privat/aktuella-rantor" target="_blank">Ekobanken</a>`, ranta: ekoranta, change: ekochange},
     { banknamn: 'Landshypotek', bank: `<a href="https://www.landshypotek.se/spara-privat/fastranteerbjudande/" target="_blank">Landshypotek</a>`, ranta: landsranta, change: landschange},
     { banknamn: 'Myntro', bank: `<a href="https://myntrosavings.se/" target="_blank">Myntro</a>`, ranta: myntroranta, change: myntrochange},
-    { banknamn: 'PRA Spar', bank: `<a href="https://praspar.se/" target="_blank">PRA Spar</a> &#127905;`, ranta: prasparranta, change: prasparchange},
+    { banknamn: 'PRA Spar', bank: `<a href="https://praspar.se/" target="_blank">PRA Spar</a> ${autoForlang}`, ranta: prasparranta, change: prasparchange},
     { banknamn: 'SevenDay Bank', bank: `<a href="https://www.sevenday.se/" target="_blank">SevenDay Bank</a>`, ranta: sevendayranta, change: sevendaychange},
     { banknamn: 'Sparbanken Spira', bank: `<a href="https://www.sparbankenspira.se/privat/spara-och-placera/fastrantekonto.html" target="_blank">Sparbanken Spira</a>`, ranta: sparspiraranta, change: sparspirachange},   
-    { banknamn: 'Arktika Spar', bank: `<a href="https://www.arktikaspar.se/" target="_blank">Arktika Spar</a> &#127905; &#129518;`, ranta: arktikaranta, change: arktikachange},
+    { banknamn: 'Arktika Spar', bank: `<a href="https://www.arktikaspar.se/" target="_blank">Arktika Spar</a> ${autoForlang} ${bonus}`, ranta: arktikaranta, change: arktikachange},
     { banknamn: 'Ålandsbanken', bank: `<a href="https://www.alandsbanken.se/banktjanster/konton/fastrantekonto" target="_blank">Ålandsbanken</a>`, ranta: alandranta, change: alandchange},
   ];
   
@@ -1943,7 +1958,7 @@ test('Sorterat', async () => {
       {
         if(bankarr[i].ranta == bankarr[i-1].ranta)
           {
-            position = '&#129353;';
+            position = bronsMedalj;
             color = 'green';
           }
           else
@@ -1956,13 +1971,13 @@ test('Sorterat', async () => {
         {
           if(bankarr[i].ranta == bankarr[i-1].ranta)
             {
-              position = '&#129352;';
+              position = silverdMedalj;
               color = 'green';
             }
             else
             {
               counter = 3;
-              position = '&#129353;';
+              position = bronsMedalj;
               color = 'green';
             }
         }
@@ -1970,19 +1985,19 @@ test('Sorterat', async () => {
         {
           if(bankarr[i].ranta == bankarr[i-1].ranta)
             {
-              position = '&#129351;';
+              position = guldMedalj;
               color = 'green';
             }
             else
             {
               counter = 2;
-              position = '&#129352;';
+              position = silverdMedalj;
               color = 'green';
             }
         }
         if (i == 0){
           counter = 1;
-          position = '&#129351;';
+          position = guldMedalj;
           color = 'green';
         }
     //let color = 'green';
@@ -1994,11 +2009,11 @@ test('Sorterat', async () => {
     // }
     if (rantan < 2.00){
       color = 'red';
-      position = '&#129300;';
+      position = badInterest; // Dålig ränta
     }
         if (rantan < 1.80){
       color = 'red';
-      position = '&#128542;';
+      position = illaInterest; // Riktigt illa ränta
     }
     let bankStr = `    <td style="color:${color}"> <sup>${i+1})</sup> ${banken} ${position} </td>\n`;
     let rantaStr = `    <td style="color:${color}"> ${rantan} ${change} </td>\n`;
@@ -2030,13 +2045,13 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '  </table>\n');
   fs.appendFileSync(outputFile, '</div>\n');
   fs.appendFileSync(outputFile, '<br>Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">GitHub</a> &#127917; <a href="https://mgc2.webnode.se/sparguiden/" target="_blank">Webnode</a>\n');
-  fs.appendFileSync(outputFile, '<br>&#128198; = Räntan betalas ut varje månad.\n');
-  fs.appendFileSync(outputFile, '<br>&#128182; = Utbetalning 31 dagar från begäran.\n');
-  fs.appendFileSync(outputFile, '<br>&#128176; = Vanligt sparkonto.\n');
-  fs.appendFileSync(outputFile, '<br>&#128204; = OBS! Hårdkodad ränta. Dubbelkolla räntan.\n');
-  fs.appendFileSync(outputFile, '<br>&#127905; = Automatisk förlängning möjlig.\n');
-  fs.appendFileSync(outputFile, '<br>&#129518; = Bonus vid förlängning.\n');
-  fs.appendFileSync(outputFile, '<br>&#9195; &#9196; = Förändring sedan förra kontrollen. Tidigare värde inom ().\n');
+  fs.appendFileSync(outputFile, `<br>${varjeManad} = Räntan betalas ut varje månad.\n`);
+  fs.appendFileSync(outputFile, `<br>${trettioEn} = Utbetalning 31 dagar från begäran.\n`);
+  fs.appendFileSync(outputFile, `<br>${sparKonto} = Vanligt sparkonto.\n`);
+  fs.appendFileSync(outputFile, `<br>${hardKodad} = OBS! Hårdkodad ränta. Dubbelkolla räntan.\n`);
+  fs.appendFileSync(outputFile, `<br>${autoForlang} = Automatisk förlängning möjlig.\n`);
+  fs.appendFileSync(outputFile, `<br>${bonus} = Bonus vid förlängning.\n`);
+  fs.appendFileSync(outputFile, `<br>${rantaUpp} ${rantaNer} = Förändring sedan förra kontrollen. Tidigare värde inom ().\n`);
 
   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
