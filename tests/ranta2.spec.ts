@@ -1916,6 +1916,7 @@ test('Sorterat', async () => {
   fs.writeFileSync(outputFile, '<!DOCTYPE html>\n');
   fs.appendFileSync(outputFile, '<html>\n');
   fs.appendFileSync(outputFile, '<head>\n');
+  fs.appendFileSync(outputFile, '<title>Sparguiden fasträntekonto 3 månader</title>\n');
   fs.appendFileSync(outputFile, '<meta name="description" content="Sparguiden Fasträntekonto 3 månader">\n');
   fs.appendFileSync(outputFile, '<meta name="keywords" content="Sparguiden, Sparguid, Ränta, Räntor, Fasträntekonto, Sparkonto, 3 månader">\n');
   fs.appendFileSync(outputFile, '<meta name="author" content="Matt Clayton">\n');
