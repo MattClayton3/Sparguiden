@@ -1,5 +1,5 @@
-Sparguiden 2026-09-25 09:34:52
-Lea Bank: undefined
+Sparguiden 2026-09-25 23:05:25
+Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
 EP Bank: 2.45
@@ -19,7 +19,7 @@ Qliro: 2.40
 Coeli: 2.95
 Svea Bank: 2.80
 Qred Bank: 2.85
-Nstart: 2.90
+Nstart: 3.00
 Sparbanken Syd: 1.95
 Borgo: 2.40
 JAK: 1.90
@@ -40,3 +40,4 @@ PRA Spar: 2.90
 SevenDay Bank: 1.65
 Sparbanken Spira: 1.75
 Ålandsbanken: 1.75
+Zaver: 2.75
