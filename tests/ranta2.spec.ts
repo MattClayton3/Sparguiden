@@ -147,8 +147,10 @@ let sparKonto = '<a href="" style="text-decoration: none;"><span role="img" aria
 let hardKodad = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Hårdkodad ränta" title="OBS! Hårdkodad ränta. Dubbelkolla räntan.">&#128204;</span></a>'
 let autoForlang = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Automatisk förlängning" title="Automatisk förlängning möjlig.">&#127905;</span></a>'
 let bonus = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Bonus" title="Bonus vid förlängning.">&#129518;</span></a>'
-let rantaUpp = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte höjning" title="Räntan har höjts seda förra kontrollen. Tidigare värde inom ().">&#9195;</span></a>'
-let rantaNer = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte sänkning" title="Räntan har sänkts seda förra kontrollen. Tidigare värde inom ().">&#9196;</span></a>'
+let rantaUppOld = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte höjning" title="Räntan har höjts seda förra kontrollen. Tidigare värde inom ().">&#9195;</span></a>'
+let rantaNerOld = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte sänkning" title="Räntan har sänkts seda förra kontrollen. Tidigare värde inom ().">&#9196;</span></a>'
+let rantaUpp = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte höjning" title="Räntan har höjts seda förra kontrollen. Tidigare värde inom ()." style="color:green; font-size: 24px;" >&#9650;</span></a>'
+let rantaNer = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Ränte sänkning" title="Räntan har sänkts seda förra kontrollen. Tidigare värde inom ()." style="color: red; font-size: 24px;">&#9660;</span></a>'
 let badInterest = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Dålig ränta" title="Hmm...">&#129300;</span></a>'
 let illaInterest = '<a href="" style="text-decoration: none;"><span role="img" aria-label="Riktigt illa" title="Nja...">&#128542;</span></a>'
 
@@ -1940,7 +1942,7 @@ test('Sorterat', async () => {
   console.log(bankarr);
 
   let exempelBelopp = 100000;
-  let outputFile = 'index.html';
+  let outputFile = 'indexOld.html';
   fs.writeFileSync(outputFile, '<!DOCTYPE html>\n');
   fs.appendFileSync(outputFile, '<html>\n');
   fs.appendFileSync(outputFile, '<head>\n');
@@ -1967,16 +1969,196 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<body>\n');
   fs.appendFileSync(outputFile, `<h2><span style='font-size:30px;'>&#128200;</span> Sparguiden ${fullDate}</h2>\n`);
   fs.appendFileSync(outputFile, '<p>Bästa 3 månaders fasträntekontot just nu. Listan tas fram 2 gånger per dag, morgon och kväll, måndag - fredag. (Funkar oftast.) Se det som en kvartalsutdelande aktie.</p>\n');
-  // fs.appendFileSync(outputFile, '<p>Fasträntekonto 1* - 3 mån.</p>\n');
   fs.appendFileSync(outputFile, '<div style="overflow-x:auto;">\n');
   fs.appendFileSync(outputFile, '  <table>\n');
   fs.appendFileSync(outputFile, '    <tr>\n');
-  fs.appendFileSync(outputFile, '      <th>Bank &#127974;<br>Fasträntekonto 3 månader.</th>\n');
+  fs.appendFileSync(outputFile, '      <th>Bank &#127974;<br>Fasträntekonto 3 månader</th>\n');
   fs.appendFileSync(outputFile, '      <th>Ränta %</th>\n');
   fs.appendFileSync(outputFile, `      <th>Kvartal (netto)<br>Ex. ${exempelBelopp} kr</th>\n`);
-  //fs.appendFileSync(outputFile, `      <th>Netto kvartal<br>Ex. ${exempelBelopp} kr</th>\n`);
   fs.appendFileSync(outputFile, `      <th>Dag (netto)<br>Ex. ${exempelBelopp} kr</th>\n`);
   fs.appendFileSync(outputFile, '    </tr>\n');
+
+  let outputFile2 = 'index.html';
+  fs.writeFileSync(outputFile2, '<!DOCTYPE html>\n');
+  fs.appendFileSync(outputFile2, '<html>\n');
+  fs.appendFileSync(outputFile2, '<head>\n');
+  fs.appendFileSync(outputFile2, '<title>Sparguiden fasträntekonto 3 månader</title>\n');
+  fs.appendFileSync(outputFile2, '<meta name="description" content="Sparguiden Fasträntekonto 3 månader">\n');
+  fs.appendFileSync(outputFile2, '<meta name="keywords" content="Sparguiden, Sparguid, Ränta, Räntor, Fasträntekonto, Sparkonto, 3 månader">\n');
+  fs.appendFileSync(outputFile2, '<meta name="author" content="Matt Clayton">\n');
+  fs.appendFileSync(outputFile2, '<meta name="viewport" content="width=device-width, initial-scale=1">\n');
+  fs.appendFileSync(outputFile2, '<style>\n');
+  fs.appendFileSync(outputFile2, ':root {\n');
+  fs.appendFileSync(outputFile2, '--bg-stone: #111416;         /* Deep, cold obsidian stone */\n');
+  fs.appendFileSync(outputFile2, '--pillar-grey: #1c2024;      /* Monolithic granite pillars */\n');
+  fs.appendFileSync(outputFile2, '--iron-ore: #3a4146;         /* Burnished iron trims */\n');
+  fs.appendFileSync(outputFile2, '--braavos-gold: #c5a059;     /* Dim, cold gold accents */\n');
+  fs.appendFileSync(outputFile2, '--text-primary: #e2e8f0;     /* Crisp parchment or silver text */\n');
+  fs.appendFileSync(outputFile2, '--text-muted: #707e8b;       /* Shadowed engraving text */\n');
+  fs.appendFileSync(outputFile2, '--red: #a44a4a;              /* Rödfärg */\n');
+  fs.appendFileSync(outputFile2, '--border-glow: rgba(197, 160, 89, 0.15);\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '* {\n');
+  fs.appendFileSync(outputFile2, 'box-sizing: border-box;\n');
+  fs.appendFileSync(outputFile2, 'margin: 0;\n');
+  fs.appendFileSync(outputFile2, 'padding: 0;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, 'body {\n');
+  fs.appendFileSync(outputFile2, 'background-color: var(--bg-stone);\n');
+  fs.appendFileSync(outputFile2, 'color: var(--text-primary);\n');
+  fs.appendFileSync(outputFile2, 'font-family: "Cinzel", serif;\n');
+  fs.appendFileSync(outputFile2, 'letter-spacing: 0.08em;\n');
+  fs.appendFileSync(outputFile2, 'line-height: 1.6;\n');
+  fs.appendFileSync(outputFile2, 'min-height: 100vh;\n');
+  fs.appendFileSync(outputFile2, 'display: flex;\n');
+  fs.appendFileSync(outputFile2, 'flex-direction: column;\n');
+  fs.appendFileSync(outputFile2, 'align-items: center;\n');
+  fs.appendFileSync(outputFile2, 'justify-content: center;\n');
+  fs.appendFileSync(outputFile2, 'padding: 40px 20px;\n');
+  fs.appendFileSync(outputFile2, 'overflow-x: hidden;\n');
+  fs.appendFileSync(outputFile2, 'background-image:\n');
+  fs.appendFileSync(outputFile2, 'radial-gradient(circle at 50% 30%, rgba(28, 32, 36, 0.6) 0%, transparent 70%),\n');
+  fs.appendFileSync(outputFile2, 'linear-gradient(to bottom, #0f1113, #15191c);\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '/* The Vault Frame container representing massive architecture */\n');
+  fs.appendFileSync(outputFile2, '.vault-container {\n');
+  fs.appendFileSync(outputFile2, 'width: 100%;\n');
+  fs.appendFileSync(outputFile2, 'max-width: 900px;\n');
+  fs.appendFileSync(outputFile2, 'background-color: var(--pillar-grey);\n');
+  fs.appendFileSync(outputFile2, 'border: 2px solid var(--iron-ore);\n');
+  fs.appendFileSync(outputFile2, 'border-top: 6px solid var(--braavos-gold);\n');
+  fs.appendFileSync(outputFile2, 'box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);\n');
+  fs.appendFileSync(outputFile2, 'position: relative;\n');
+  fs.appendFileSync(outputFile2, 'padding: 50px;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '/* Architectural lines mirroring the strict geometry of the bank */\n');
+  fs.appendFileSync(outputFile2, '.vault-container::before {\n');
+  fs.appendFileSync(outputFile2, 'content: "";\n');
+  fs.appendFileSync(outputFile2, 'position: absolute;\n');
+  fs.appendFileSync(outputFile2, 'top: 10px; left: 10px; right: 10px; bottom: 10px;\n');
+  fs.appendFileSync(outputFile2, 'border: 1px solid rgba(112, 126, 139, 0.15);\n');
+  fs.appendFileSync(outputFile2, 'pointer-events: none;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, 'header {\n');
+  fs.appendFileSync(outputFile2, 'text-align: center;\n');
+  fs.appendFileSync(outputFile2, 'margin-bottom: 50px;\n');
+  fs.appendFileSync(outputFile2, 'position: relative;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '/* The Sigil: Crossed Triangles / Hourglass */\n');
+  fs.appendFileSync(outputFile2, '.sigil {\n');
+  fs.appendFileSync(outputFile2, 'width: 60px;\n');
+  fs.appendFileSync(outputFile2, 'height: 60px;\n');
+  fs.appendFileSync(outputFile2, 'margin: 0 auto 20px;\n');
+  fs.appendFileSync(outputFile2, 'position: relative;\n');
+  fs.appendFileSync(outputFile2, 'opacity: 0.85;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.sigil::before, .sigil::after {\n');
+  fs.appendFileSync(outputFile2, 'content: "";\n');
+  fs.appendFileSync(outputFile2, 'position: absolute;\n');
+  fs.appendFileSync(outputFile2, 'left: 50%;\n');
+  fs.appendFileSync(outputFile2, 'transform: translateX(-50%);\n');
+  fs.appendFileSync(outputFile2, 'border-left: 25px solid transparent;\n');
+  fs.appendFileSync(outputFile2, 'border-right: 25px solid transparent;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.sigil::before {\n');
+  fs.appendFileSync(outputFile2, 'top: 0;\n');
+  fs.appendFileSync(outputFile2, 'border-top: 30px solid var(--braavos-gold);\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.sigil::after {\n');
+  fs.appendFileSync(outputFile2, 'bottom: 0;\n');
+  fs.appendFileSync(outputFile2, 'border-bottom: 30px solid var(--braavos-gold);\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, 'h1 {\n');
+  fs.appendFileSync(outputFile2, 'font-size: 2rem;\n');
+  fs.appendFileSync(outputFile2, 'font-weight: 600;\n');
+  fs.appendFileSync(outputFile2, 'color: var(--text-primary);\n');
+  fs.appendFileSync(outputFile2, 'text-transform: uppercase;\n');
+  fs.appendFileSync(outputFile2, 'text-shadow: 0 4px 10px rgba(0,0,0,0.5);\n');
+  fs.appendFileSync(outputFile2, 'margin-bottom: 5px;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.motto {\n');
+  fs.appendFileSync(outputFile2, 'font-size: 0.75rem;\n');
+  fs.appendFileSync(outputFile2, 'olor: var(--braavos-gold);\n');
+  fs.appendFileSync(outputFile2, 'text-transform: uppercase;\n');
+  fs.appendFileSync(outputFile2, 'letter-spacing: 0.3em;\n');
+  fs.appendFileSync(outputFile2, 'margin-top: 10px;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '/* Ledger Table representing calculating precision */\n');
+  fs.appendFileSync(outputFile2, '.ledger-table {\n');
+  fs.appendFileSync(outputFile2, 'width: 100%;\n');
+  fs.appendFileSync(outputFile2, 'border-collapse: collapse;\n');
+  fs.appendFileSync(outputFile2, 'margin-bottom: 40px;\n');
+  fs.appendFileSync(outputFile2, 'font-family: "Cinzel", serif;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.ledger-table th {\n');
+  fs.appendFileSync(outputFile2, 'text-transform: uppercase;\n');
+  fs.appendFileSync(outputFile2, 'font-size: 0.8rem;\n');
+  fs.appendFileSync(outputFile2, 'color: var(--text-muted);\n');
+  fs.appendFileSync(outputFile2, 'text-align: left;\n');
+  fs.appendFileSync(outputFile2, 'padding: 15px 15px;\n');
+  fs.appendFileSync(outputFile2, 'border-bottom: 2px solid var(--iron-ore);\n');
+  fs.appendFileSync(outputFile2, 'letter-spacing: 0.15em;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.ledger-table td {\n');
+  fs.appendFileSync(outputFile2, 'padding: 18px 20px;\n');
+  fs.appendFileSync(outputFile2, 'border-bottom: 1px solid rgba(58, 65, 70, 0.4);\n');
+  fs.appendFileSync(outputFile2, 'font-size: 0.95rem;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.ledger-table tr:hover td {\n');
+  fs.appendFileSync(outputFile2, 'background-color: rgba(255, 255, 255, 0.02);\n');
+  fs.appendFileSync(outputFile2, 'color: #fff;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '/* Numerical values use a cold, rigid monospace font */\n');
+  fs.appendFileSync(outputFile2, '.numeric {\n');
+  fs.appendFileSync(outputFile2, 'font-family: "Share Tech Mono", monospace;\n');
+  fs.appendFileSync(outputFile2, 'color: var(--text-primary);\n');
+  fs.appendFileSync(outputFile2, 'letter-spacing: 0.05em;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.status-debt {\n');
+  fs.appendFileSync(outputFile2, 'color: #a44a4a;\n');
+  fs.appendFileSync(outputFile2, 'font-size: 0.8rem;\n');
+  fs.appendFileSync(outputFile2, 'text-transform: uppercase;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.status-paid {\n');
+  fs.appendFileSync(outputFile2, 'color: var(--braavos-gold);\n');
+  fs.appendFileSync(outputFile2, 'font-size: 0.8rem;\n');
+  fs.appendFileSync(outputFile2, 'text-transform: uppercase;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, 'footer {\n');
+  fs.appendFileSync(outputFile2, 'margin-top: 40px;\n');
+  fs.appendFileSync(outputFile2, 'text-align: center;\n');
+  fs.appendFileSync(outputFile2, 'font-size: 0.85rem;\n');
+  fs.appendFileSync(outputFile2, 'color: var(--text-muted);\n');
+  fs.appendFileSync(outputFile2, 'text-transform: uppercase;\n');
+  fs.appendFileSync(outputFile2, 'letter-spacing: 0.2em;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, 'a {\n');
+  fs.appendFileSync(outputFile2, 'text-decoration: none;\n');
+  fs.appendFileSync(outputFile2, 'color: #e2e8f0;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, 'a:hover {\n');
+  fs.appendFileSync(outputFile2, 'color: #c5a059;\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '</style>\n');
+  fs.appendFileSync(outputFile2, '</head>\n');
+  fs.appendFileSync(outputFile2, '<body>\n');
+  fs.appendFileSync(outputFile2, '<div class="vault-container">\n');
+  fs.appendFileSync(outputFile2, '<header>\n');
+  fs.appendFileSync(outputFile2, '<div class="sigil"></div>\n');
+  fs.appendFileSync(outputFile2, `<h1>Sparguiden ${fullDate}</h1>\n`);
+  fs.appendFileSync(outputFile2, '<div class="motto">Bästa 3 månaders fasträntekontot just nu. Listan tas fram 2 gånger per dag, morgon och kväll, måndag - fredag. (Funkar oftast.) Se det som en kvartalsutdelande aktie.</div>\n');
+  fs.appendFileSync(outputFile2, '</header>\n');
+  fs.appendFileSync(outputFile2, '<main>\n');
+  fs.appendFileSync(outputFile2, '<table class="ledger-table">\n');
+  fs.appendFileSync(outputFile2, '<thead>\n');
+  fs.appendFileSync(outputFile2, '<tr>\n');
+  fs.appendFileSync(outputFile2, '<th>Bank &#127974;<br>Fasträntekonto 3 månader</th>\n');
+  fs.appendFileSync(outputFile2, '<th>Ränta %</th>\n');
+  fs.appendFileSync(outputFile2, `<th>Kvartal (netto)<br> Ex. ${exempelBelopp} kr</th>\n`);
+  fs.appendFileSync(outputFile2, `<th>Dag (netto)<br> Ex. ${exempelBelopp} kr</th>\n`);
+  fs.appendFileSync(outputFile2, '</tr>\n');
+  fs.appendFileSync(outputFile2, '</thead>\n');
+  fs.appendFileSync(outputFile2, '<tbody>\n');
 
   let counter = 0;
   let i = 0;
@@ -2045,12 +2227,15 @@ test('Sorterat', async () => {
       position = illaInterest; // Riktigt illa ränta
     }
     let bankStr = `    <td style="color:${color}"> <sup>${i+1})</sup> ${banken} ${position} </td>\n`;
+    let bankStr2 = `    <td <sup>${i+1})</sup> ${banken} </td>\n`;
     let rantaStr = `    <td style="color:${color}"> ${rantan} ${change} </td>\n`;
+    let rantaStr2 = `    <td class="numeric"> ${rantan} ${change} </td>\n`;
     let kvartal = (rantan * 0.01) * exempelBelopp / 4;
     let kvartal1 = (Math.round(kvartal * 100) / 100).toFixed(2);
     let nettoKvartal = kvartal * 0.7;
     let nettoKvartal1 = (Math.round(nettoKvartal * 100) / 100).toFixed(2);
     let kvartalStr = `    <td style="color:${color}"> ${kvartal1} (${nettoKvartal1}) </td>\n`;
+    let kvartalStr2 = `    <td class="numeric"> ${kvartal1} (${nettoKvartal1}) </td>\n`;
     //let nettoKvartal = kvartal * 0.7;
     //let nettoKvartal1 = (Math.round(nettoKvartal * 100) / 100).toFixed(2);
     //let nettoKvartalStr = `    <td style="color:${color}"> ${nettoKvartal1} </td>\n`;
@@ -2059,19 +2244,27 @@ test('Sorterat', async () => {
     let nettoDag = nettoKvartal / 90;
     let nettoDag1 = (Math.round(nettoDag * 100) / 100).toFixed(2);
     let dagStr = `    <td style="color:${color}"> ${dag1} (${nettoDag1}) </td>\n`;
+    let dagStr2 = `    <td class="numeric"> ${dag1} (${nettoDag1}) </td>\n`;
 
-    fs.appendFileSync(outputFile, '  <tr>\n');
+    fs.appendFileSync(outputFile, '<tr>\n');
     fs.appendFileSync(outputFile, bankStr);
     fs.appendFileSync(outputFile, rantaStr);
     fs.appendFileSync(outputFile, kvartalStr);
-    //fs.appendFileSync(outputFile, nettoKvartalStr);
     fs.appendFileSync(outputFile, dagStr);
-    fs.appendFileSync(outputFile, '  </tr>\n');
+    fs.appendFileSync(outputFile, '</tr>\n');
+
+    fs.appendFileSync(outputFile2, '<tr>\n');
+    fs.appendFileSync(outputFile2, bankStr2);
+    fs.appendFileSync(outputFile2, rantaStr2);
+    fs.appendFileSync(outputFile2, kvartalStr2);
+    fs.appendFileSync(outputFile2, dagStr2);
+    fs.appendFileSync(outputFile2, '</tr>\n');
+
     i++
     position = '';
   } while (i < antalBanker);
 
-  fs.appendFileSync(outputFile, '  </table>\n');
+  fs.appendFileSync(outputFile, '</table>\n');
   fs.appendFileSync(outputFile, '</div>\n');
   fs.appendFileSync(outputFile, '<br>Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">GitHub</a> &#127917; <a href="https://mgc2.webnode.se/sparguiden/" target="_blank">Webnode</a>\n');
   fs.appendFileSync(outputFile, `<br>${varjeManad} = Räntan betalas ut varje månad.\n`);
@@ -2081,10 +2274,20 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, `<br>${autoForlang} = Automatisk förlängning möjlig.\n`);
   fs.appendFileSync(outputFile, `<br>${bonus} = Bonus vid förlängning.\n`);
   fs.appendFileSync(outputFile, `<br>${rantaUpp} ${rantaNer} = Förändring sedan förra kontrollen. Tidigare värde inom ().\n`);
-
   fs.appendFileSync(outputFile, '</body>\n');
   fs.appendFileSync(outputFile, '</html>\n');
   /* index.html klar */
+
+  fs.appendFileSync(outputFile2, '</tbody>\n');
+  fs.appendFileSync(outputFile2, '</table>\n');
+  fs.appendFileSync(outputFile2, '</main>\n');
+  fs.appendFileSync(outputFile2, '</div>\n');
+  fs.appendFileSync(outputFile2, '<footer>\n');
+  fs.appendFileSync(outputFile2, '<br>Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">Hem</a>\n');
+  fs.appendFileSync(outputFile2, '</footer>\n');
+  fs.appendFileSync(outputFile2, '</body>\n');
+  fs.appendFileSync(outputFile2, '</html>\n');
+  /* index.html klar */  
 
   /* Historik fel förändring sedan förra kontrollen. */
   let historikFile = 'historik.txt';
