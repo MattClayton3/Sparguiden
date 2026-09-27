@@ -2078,7 +2078,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile2, '}\n');
   fs.appendFileSync(outputFile2, '.motto {\n');
   fs.appendFileSync(outputFile2, 'font-size: 0.75rem;\n');
-  fs.appendFileSync(outputFile2, 'olor: var(--braavos-gold);\n');
+  fs.appendFileSync(outputFile2, 'color: var(--braavos-gold);\n');
   fs.appendFileSync(outputFile2, 'text-transform: uppercase;\n');
   fs.appendFileSync(outputFile2, 'letter-spacing: 0.3em;\n');
   fs.appendFileSync(outputFile2, 'margin-top: 10px;\n');
