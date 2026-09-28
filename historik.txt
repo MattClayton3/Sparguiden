@@ -1,6 +1,6 @@
-Sparguiden 2026-09-28 10:49:59
+Sparguiden 2026-09-28 22:31:53
 Lea Bank: 2.45
-Moank: 2.95
+Moank: 3.05
 Bluestep Bank: 2.85
 EP Bank: 2.45
 Resurs Bank: 2.00
@@ -40,4 +40,4 @@ PRA Spar: 2.90
 SevenDay Bank: 1.65
 Sparbanken Spira: 1.75
 Ålandsbanken: 1.75
-Zaver: 2.75
+Zaver: 2.85
