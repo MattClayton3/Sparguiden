@@ -1,4 +1,4 @@
-Sparguiden 2026-09-29 21:23:28
+Sparguiden 2026-09-30 10:26:51
 Lea Bank: 2.45
 Moank: 3.05
 Bluestep Bank: 2.85
@@ -30,7 +30,7 @@ Northmill Bank: 2.72
 Klarna: 1.61
 HoistSpar: 2.75
 Danske Bank: 1.80
-Fedelta: 2.80
+Fedelta: 2.55
 Arktika Spar: 2.50
 Brixo: 2.55
 Ekobanken: 0.65
