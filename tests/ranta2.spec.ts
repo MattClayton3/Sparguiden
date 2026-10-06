@@ -563,9 +563,9 @@ test('MedMera Bank', async ({ page }) => {
     let medbody = await medresponse.text();
     //console.log(medbody)
     if (medbody.includes('Fasträntekonto')) {
-      let medord = medbody.indexOf('just nu upp till')
+      let medord = medbody.indexOf('>3 mån (med')
       let medkollen = medbody.substring(medord, medord+20)
-      medranta = medbody.substring(medord+17, medord+21)
+      medranta = medbody.substring(medord+12, medord+16)
       medranta = medranta.replace(',', '.');
       //console.log('Content:', medbody);
       //console.log('Index..:', medord);
