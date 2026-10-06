@@ -2284,7 +2284,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile2, '</main>\n');
   fs.appendFileSync(outputFile2, '</div>\n');
   fs.appendFileSync(outputFile2, '<footer>\n');
-  fs.appendFileSync(outputFile2, '<br>Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">Hem</a>\n');
+  fs.appendFileSync(outputFile2, 'Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">Hem</a>\n');
   fs.appendFileSync(outputFile2, '</footer>\n');
   fs.appendFileSync(outputFile2, '</body>\n');
   fs.appendFileSync(outputFile2, '</html>\n');
