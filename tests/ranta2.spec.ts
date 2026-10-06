@@ -2228,7 +2228,7 @@ test('Sorterat', async () => {
       position = illaInterest; // Riktigt illa ränta
     }
     let bankStr = `    <td style="color:${color}"> <sup>${i+1})</sup> ${banken} ${position} </td>\n`;
-    let bankStr2 = `    <td <sup>${i+1})</sup> ${banken} </td>\n`;
+    let bankStr2 = `    <td> ${i+1}) ${banken} </td>\n`;
     let rantaStr = `    <td style="color:${color}"> ${rantan} ${change} </td>\n`;
     let rantaStr2 = `    <td class="numeric"> ${rantan} ${change} </td>\n`;
     let kvartal = (rantan * 0.01) * exempelBelopp / 4;
