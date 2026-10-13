@@ -2121,7 +2121,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile2, 'justify-content: center;\n');
   fs.appendFileSync(outputFile2, 'gap: 12px;\n');
   fs.appendFileSync(outputFile2, 'margin: 0 0 24px;\n');
-  fs.appendFileSync(outputFile2, 'color: var(--braavos-gold);\n');
+  fs.appendFileSync(outputFile2, 'color: var(--text-primary);\n');
   fs.appendFileSync(outputFile2, '}\n');
   fs.appendFileSync(outputFile2, '.amount-control input {\n');
   fs.appendFileSync(outputFile2, 'width: 160px;\n');
