@@ -2166,7 +2166,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile2, `<h1>Sparguiden ${fullDate}</h1>\n`);
   fs.appendFileSync(outputFile2, '<div class="motto">Bästa 3 månaders fasträntekontot just nu. Listan tas fram 2 gånger per dag, morgon och kväll, måndag - fredag. (Funkar oftast). Se det som en kvartalsutdelande aktie.</div>\n');
   fs.appendFileSync(outputFile2, '</header>\n');
-  fs.appendFileSync(outputFile2, '<div class="amount-control"><label for="savings-amount">BERÄKNA UTDELNING PÅ</label><input id="savings-amount" type="number" min="1" step="1" value="100000"><span>kr</span></div>\n');
+  fs.appendFileSync(outputFile2, '<div class="amount-control"><label for="savings-amount">Beräkna utdelning på</label><input id="savings-amount" type="number" min="1" step="1" value="100000"><span>kr</span></div>\n');
   fs.appendFileSync(outputFile2, '<main>\n');
   fs.appendFileSync(outputFile2, '<table class="ledger-table">\n');
   fs.appendFileSync(outputFile2, '<thead>\n');
