@@ -2115,6 +2115,23 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile2, 'color: var(--text-primary);\n');
   fs.appendFileSync(outputFile2, 'letter-spacing: 0.05em;\n');
   fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.amount-control {\n');
+  fs.appendFileSync(outputFile2, 'display: flex;\n');
+  fs.appendFileSync(outputFile2, 'align-items: center;\n');
+  fs.appendFileSync(outputFile2, 'justify-content: center;\n');
+  fs.appendFileSync(outputFile2, 'gap: 12px;\n');
+  fs.appendFileSync(outputFile2, 'margin: 0 0 24px;\n');
+  fs.appendFileSync(outputFile2, 'color: var(--braavos-gold);\n');
+  fs.appendFileSync(outputFile2, '}\n');
+  fs.appendFileSync(outputFile2, '.amount-control input {\n');
+  fs.appendFileSync(outputFile2, 'width: 160px;\n');
+  fs.appendFileSync(outputFile2, 'padding: 8px 10px;\n');
+  fs.appendFileSync(outputFile2, 'border: 1px solid var(--iron-ore);\n');
+  fs.appendFileSync(outputFile2, 'background: var(--bg-stone);\n');
+  fs.appendFileSync(outputFile2, 'color: var(--text-primary);\n');
+  fs.appendFileSync(outputFile2, 'font: inherit;\n');
+  fs.appendFileSync(outputFile2, 'letter-spacing: 0;\n');
+  fs.appendFileSync(outputFile2, '}\n');
   fs.appendFileSync(outputFile2, '.status-debt {\n');
   fs.appendFileSync(outputFile2, 'color: #a44a4a;\n');
   fs.appendFileSync(outputFile2, 'font-size: 0.8rem;\n');
@@ -2149,14 +2166,15 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile2, `<h1>Sparguiden ${fullDate}</h1>\n`);
   fs.appendFileSync(outputFile2, '<div class="motto">Bästa 3 månaders fasträntekontot just nu. Listan tas fram 2 gånger per dag, morgon och kväll, måndag - fredag. (Funkar oftast). Se det som en kvartalsutdelande aktie.</div>\n');
   fs.appendFileSync(outputFile2, '</header>\n');
+  fs.appendFileSync(outputFile2, '<div class="amount-control"><label for="savings-amount">BERÄKNA UTDELNING PÅ</label><input id="savings-amount" type="number" min="1" step="1" value="100000"><span>kr</span></div>\n');
   fs.appendFileSync(outputFile2, '<main>\n');
   fs.appendFileSync(outputFile2, '<table class="ledger-table">\n');
   fs.appendFileSync(outputFile2, '<thead>\n');
   fs.appendFileSync(outputFile2, '<tr>\n');
   fs.appendFileSync(outputFile2, '<th>Bank &#127974;<br>Fasträntekonto 3 månader</th>\n');
   fs.appendFileSync(outputFile2, '<th>Ränta %</th>\n');
-  fs.appendFileSync(outputFile2, `<th>Kvartal (netto)<br> Ex. ${exempelBelopp} kr</th>\n`);
-  fs.appendFileSync(outputFile2, `<th>Dag (netto)<br> Ex. ${exempelBelopp} kr</th>\n`);
+  fs.appendFileSync(outputFile2, '<th>Kvartal (netto) kr</th>\n');
+  fs.appendFileSync(outputFile2, '<th>Dag (netto) kr</th>\n');
   fs.appendFileSync(outputFile2, '</tr>\n');
   fs.appendFileSync(outputFile2, '</thead>\n');
   fs.appendFileSync(outputFile2, '<tbody>\n');
@@ -2286,6 +2304,30 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile2, '<footer>\n');
   fs.appendFileSync(outputFile2, 'Powered by MATS - <b>M</b>assive <b>A</b>ut&#128521;mation <b>T</b>esting <b>S</b>ervice &#127917; <a href="https://mattclayton3.github.io/Sparguiden/" target="_blank">Hem</a>\n');
   fs.appendFileSync(outputFile2, '</footer>\n');
+  fs.appendFileSync(outputFile2, `<script>
+const amountInput = document.querySelector('#savings-amount');
+const amountFormatter = new Intl.NumberFormat('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+function updatePayouts() {
+  const amount = Number(amountInput.value);
+  if (!Number.isFinite(amount) || amount <= 0) return;
+
+  document.querySelectorAll('.ledger-table tbody tr').forEach((row) => {
+    const cells = row.querySelectorAll('td');
+    const rate = Number.parseFloat(cells[1].textContent.trim());
+    const quarterlyGross = rate * amount / 400;
+    const quarterlyNet = quarterlyGross * 0.7;
+    const dailyGross = quarterlyGross / 90;
+    const dailyNet = quarterlyNet / 90;
+
+    cells[2].textContent = amountFormatter.format(quarterlyGross) + ' (' + amountFormatter.format(quarterlyNet) + ')';
+    cells[3].textContent = amountFormatter.format(dailyGross) + ' (' + amountFormatter.format(dailyNet) + ')';
+  });
+}
+
+amountInput.addEventListener('input', updatePayouts);
+</script>
+`);
   fs.appendFileSync(outputFile2, '</body>\n');
   fs.appendFileSync(outputFile2, '</html>\n');
   /* index.html klar */  
