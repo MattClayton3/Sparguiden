@@ -1947,7 +1947,7 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile, '<html>\n');
   fs.appendFileSync(outputFile, '<head>\n');
   fs.appendFileSync(outputFile, '<title>Sparguiden fasträntekonto 3 månader</title>\n');
-  fs.appendFileSync(outputFile, '<meta name="description" content="Sparguiden Fasträntekonto 3 månader">\n');
+  fs.appendFileSync(outputFile, '<meta name="description" content="Listar bästa räntan för fasträntekonto 3 månader">\n');
   fs.appendFileSync(outputFile, '<meta name="keywords" content="Sparguiden, Sparguid, Ränta, Räntor, Fasträntekonto, Sparkonto, 3 månader">\n');
   fs.appendFileSync(outputFile, '<meta name="author" content="Matt Clayton">\n');
   fs.appendFileSync(outputFile, '<meta name="viewport" content="width=device-width, initial-scale=1">\n');
@@ -1983,8 +1983,9 @@ test('Sorterat', async () => {
   fs.appendFileSync(outputFile2, '<html>\n');
   fs.appendFileSync(outputFile2, '<head>\n');
   fs.appendFileSync(outputFile2, '<title>Sparguiden fasträntekonto 3 månader</title>\n');
+  fs.appendFileSync(outputFile2, '<link rel="icon" type="image/png" href="favicon.png">\n');
   fs.appendFileSync(outputFile2, '<meta charset="UTF-8">\n');
-  fs.appendFileSync(outputFile2, '<meta name="description" content="Sparguiden Fasträntekonto 3 månader">\n');
+  fs.appendFileSync(outputFile2, '<meta name="description" content="Listar bästa räntan för fasträntekonto 3 månader">\n');
   fs.appendFileSync(outputFile2, '<meta name="keywords" content="Sparguiden, Sparguid, Ränta, Räntor, Fasträntekonto, Sparkonto, 3 månader">\n');
   fs.appendFileSync(outputFile2, '<meta name="author" content="Matt Clayton">\n');
   fs.appendFileSync(outputFile2, '<meta name="viewport" content="width=device-width, initial-scale=1">\n');
