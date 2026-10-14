@@ -28,7 +28,9 @@ let shbchange = "";
 let nordiskaranta: any;
 let old_nordiskaranta: any;
 let nordiskachange = "";
-//let nordiska2ranta: any; /* 2026-09-06 Plockar bort denna, inte så rolig längre. */
+let nordiska2ranta: any;
+let old_nordiska2ranta: any;
+let nordiska2change = "";
 let epranta: any;
 let old_epranta: any;
 let epchange = "";
@@ -186,6 +188,10 @@ for (const line of lines.slice(0, -1)) {
       old_nordiskaranta = rate.trim();
       console.log(`Nordiska Rate: ${old_nordiskaranta}`);
     }
+    if (trimmedName === 'Nordiska 2') {
+      old_nordiska2ranta = rate.trim();
+      console.log(`Nordiska 2 Rate: ${old_nordiska2ranta}`);
+    }    
     if (trimmedName === 'MedMera Bank') {
       old_medranta = rate.trim();
       console.log(`MedMera Bank Rate: ${old_medranta}`);
@@ -531,28 +537,39 @@ test('Nordiska Kreditmarknadsbolaget', async ({ page }) => {
   }
 });
 
-// test('Nordiska 2 Kreditmarknadsbolaget', async ({ page }) => {
-//   let nordiska2response = await page.goto('https://www.nordiska.se/spara/');
-//   //await page.getByRole('button', { name: 'Acceptera' }).click();
-//   //await expect(page.locator('[id="_30-11"]')).toContainText('Nordiska FIX');
-//   //await expect(page.locator('[id="_30-40"]')).toContainText('Spara');
-//   //await expect(page.locator('[id="_desktop-header"]')).toContainText('Logotype');
-//   if (nordiska2response) {
-//     let status = nordiska2response.status();
-//     let nordiska2body = await nordiska2response.text();
-//     //console.log('Content:', nordiska2body);
-//     if (nordiska2body.includes('Sparkonto')) {
-//       let nordriska2ord = nordiska2body.indexOf('nordiskaFix2Mnad')
-//       let nordiska2kollen = nordiska2body.substring(nordriska2ord, nordriska2ord+20)
-//       nordiska2ranta = nordiska2body.substring(nordriska2ord+21, nordriska2ord+25)
-//       //console.log('Content:', nordiska2body);
-//       //console.log('Index..:', nordriska2ord);
-//       //console.log('Content:', nordiska2kollen);
-//       console.log('Nordiska 2 Kreditmarknadsbolaget');
-//       console.log('Fast 2 månaders ränta:', nordiska2ranta, '%');
-//     }
-//   }
-// });
+/* 2026-09-06 Inte så rolig ränta längre. Plockar bort denna. */
+/* 2026-10-14 Nordiska 2 Kreditmarknadsbolaget har höjt räntan till 3,00%. Lägger tillbaka denna igen. */
+test('Nordiska 2 Kreditmarknadsbolaget', async ({ page }) => {
+  let nordiska2response = await page.goto('https://www.nordiska.se/spara/');
+  //await page.getByRole('button', { name: 'Acceptera' }).click();
+  //await expect(page.locator('[id="_30-11"]')).toContainText('Nordiska FIX');
+  //await expect(page.locator('[id="_30-40"]')).toContainText('Spara');
+  //await expect(page.locator('[id="_desktop-header"]')).toContainText('Logotype');
+  if (nordiska2response) {
+    let status = nordiska2response.status();
+    let nordiska2body = await nordiska2response.text();
+    //console.log('Content:', nordiska2body);
+    if (nordiska2body.includes('Sparkonto')) {
+      let nordriska2ord = nordiska2body.indexOf('nordiskaFix2Mnad')
+      let nordiska2kollen = nordiska2body.substring(nordriska2ord, nordriska2ord+20)
+      nordiska2ranta = nordiska2body.substring(nordriska2ord+21, nordriska2ord+25)
+      nordiska2ranta = nordiska2ranta.replace(',', '.');
+      //console.log('Content:', nordiska2body);
+      //console.log('Index..:', nordriska2ord);
+      //console.log('Content:', nordiska2kollen);
+      console.log('Nordiska 2 Kreditmarknadsbolaget');
+      console.log('Fast 2 månaders ränta:', nordiska2ranta, '%');
+      if (nordiska2ranta > old_nordiska2ranta) {
+        console.log('Räntan har höjts!');
+        nordiska2change = `${rantaUpp} (${old_nordiska2ranta})`;
+      }
+      if (nordiska2ranta < old_nordiska2ranta) {
+        console.log('Räntan har sänkts!');
+        nordiska2change = `${rantaNer} (${old_nordiska2ranta})`;
+      }      
+    }
+  }
+});
 
 test('MedMera Bank', async ({ page }) => {
   let medresponse = await page.goto('https://medmerabank.se/spara/fastrantekonto');
@@ -1743,10 +1760,9 @@ test('Sammanställning', async () => {
   console.log('Nordiska Kreditmarknadsbolaget');
   console.log('Fast 3 månaders ränta:', nordiskaranta, '%');
   console.log('');
-  /* 2026-09-06 Inte så rolig ränta längre. Plockar bort denna. */
-  // console.log('Nordiska 2 Kreditmarknadsbolaget');
-  // console.log('Fast 2 månaders ränta:', nordiska2ranta, '%');
-  // console.log('');  
+  console.log('Nordiska 2 Kreditmarknadsbolaget');
+  console.log('Fast 2 månaders ränta:', nordiska2ranta, '%');
+  console.log('');  
   console.log('MedMera Bank');
   console.log('Fast 3 månaders ränta:', medranta, '%');
   console.log('');
@@ -1883,7 +1899,7 @@ test('Sorterat', async () => {
     { banknamn: 'EP Bank', bank: `<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>`, ranta: epranta, change: epchange },
     { banknamn: 'Resurs Bank', bank: `<a href="https://www.resursbank.se/sparkonto/sparkonto-flex" target="_blank">Resurs</a> ${sparKonto}`, ranta: resursranta, change: resurschange },
     { banknamn: 'Nordiska', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>`, ranta: nordiskaranta, change: nordiskachange},
-    //{ banknamn: 'Nordiska2', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska 2 månader</a> ${nordiska2change}`, ranta: nordiska2ranta},
+    { banknamn: 'Nordiska2', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska 2 månader</a>`, ranta: nordiska2ranta, change: nordiska2change},
     { banknamn: 'MedMera Bank', bank: `<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>`, ranta: medranta, change: medchange},
     { banknamn: 'SBAB', bank: `<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a> ${autoForlang}`, ranta: sbabranta, change: sbabchange},
     { banknamn: 'Skandia Bank', bank: `<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia</a>`, ranta: Skandiaranta, change: Skandiachange},
@@ -1898,7 +1914,7 @@ test('Sorterat', async () => {
     { banknamn: 'Coeli', bank: `<a href="https://coeli.se/spara/" target="_blank">Coeli</a>`, ranta: coelikranta, change: coelichange},
     { banknamn: 'Svea Bank', bank: `<a href="https://www.svea.com/sv-se/privat/spara/fastr%C3%A4ntekonto" target="_blank">Svea</a>`, ranta: svearanta, change: sveachange},
     { banknamn: 'Qred Bank', bank: `<a href="https://www.qred.se/sparkonto" target="_blank">Qred Bank</a>`, ranta: qredranta, change: qredchange},
-    { banknamn: 'Plus1 (Nstart)', bank: `<a href="https://www.plus1.com/" target="_blank">Plus1</a>`, ranta: nstartranta, change: nstartchange},
+    { banknamn: 'Plus 1 (Nstart)', bank: `<a href="https://www.plus1.com/" target="_blank">Plus 1</a>`, ranta: nstartranta, change: nstartchange},
     { banknamn: 'Sparbanken Syd', bank: `<a href="https://www.sparbankensyd.se/sv/privat/vara-tjanster/spara/sparkonto" target="_blank">Sparbanken Syd</a>`, ranta: sparsydranta, change: sparsydchange},
     { banknamn: 'Borgo', bank: `<a href="https://www.borgohypotek.se/sparkonto#privatpersoner" target="_blank">Borgo</a>`, ranta: borgoranta, change: borgochange},
     //{ banknamn: 'Brocc', bank: `<a href="https://brocc.se/spara" target="_blank">Brocc</a> &#128198;', ranta: broccranta},
@@ -2342,7 +2358,7 @@ amountInput.addEventListener('input', updatePayouts);
   fs.appendFileSync(historikFile, 'EP Bank: ' + epranta + '\n');
   fs.appendFileSync(historikFile, 'Resurs Bank: ' + resursranta + '\n');
   fs.appendFileSync(historikFile, 'Nordiska: ' + nordiskaranta + '\n');
-  //fs.appendFileSync(historikFile, 'Nordiska2: ' + nordiska2ranta + '\n');
+  fs.appendFileSync(historikFile, 'Nordiska2: ' + nordiska2ranta + '\n');
   fs.appendFileSync(historikFile, 'MedMera Bank: ' + medranta + '\n');
   fs.appendFileSync(historikFile, 'SBAB: ' + sbabranta + '\n');
   fs.appendFileSync(historikFile, 'Skandia Bank: ' + Skandiaranta + '\n');

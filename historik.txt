@@ -1,10 +1,11 @@
-Sparguiden 2026-10-14 16:51:15
+Sparguiden 2026-10-14 19:10:29
 Lea Bank: 2.45
 Moank: 3.05
 Bluestep Bank: 2.85
 EP Bank: 2.65
 Resurs Bank: 2.35
 Nordiska: 2.95
+Nordiska2: 3.00
 MedMera Bank: 2.70
 SBAB: 2.25
 Skandia Bank: 2.25
