@@ -1,6 +1,6 @@
-Sparguiden 2026-10-15 09:06:59
+Sparguiden 2026-10-15 20:19:49
 Lea Bank: 2.45
-Moank: 3.05
+Moank: 2.95
 Bluestep Bank: 2.85
 EP Bank: 2.65
 Resurs Bank: 2.35
