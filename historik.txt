@@ -1,4 +1,4 @@
-Sparguiden 2026-10-15 20:19:49
+Sparguiden 2026-10-16 08:59:03
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
@@ -17,10 +17,10 @@ Länsförsäkringar Bank: 1.75
 Collector: 2.50
 Marginalen Bank: 2.45
 Qliro: 2.40
-Coeli: 2.95
+Coeli: 2.85
 Svea Bank: 2.80
 Qred Bank: 2.85
-Nstart: 3.00
+Nstart: 3.10
 Sparbanken Syd: 1.95
 Borgo: 2.40
 JAK: 1.90
