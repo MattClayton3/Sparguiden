@@ -1018,9 +1018,9 @@ test('NstartPlus1', async ({ page }) => {
     let nstartbody = await nstartresponse.text();
     //console.log('Content:', nstartbody);
     if (nstartbody.includes('sparkonton')) {
-      let nstartord = nstartbody.indexOf('<p>Fast 3 mån</p>')
+      let nstartord = nstartbody.indexOf('Sparkonto Fast 3 mån</div>')
       let nstartkollen = nstartbody.substring(nstartord, nstartord+20)
-      nstartranta = nstartbody.substring(nstartord+97, nstartord+101)
+      nstartranta = nstartbody.substring(nstartord+83, nstartord+87)
       nstartranta = nstartranta.replace(',', '.');
       //console.log('Content:', nstartbody);
       //console.log('Index..:', nstartord);
@@ -1330,11 +1330,11 @@ test('Klarna', async ({ page }) => {
   let newWay = await page.locator('table').innerHTML();
 
   if (klarnaresponse) {
-    let status = klarnaresponse.status();
-    //console.log('Content:', newWay);
+    //let status = klarnaresponse.status();
+    console.log('Content:', newWay);
       let klarnaord = newWay.indexOf('<span>3</span>')
       let klarnakollen = newWay.substring(klarnaord, klarnaord+20)
-      klarnaranta = newWay.substring(klarnaord+185, klarnaord+189)
+      klarnaranta = newWay.substring(klarnaord+203, klarnaord+207)
       klarnaranta = klarnaranta.replace(',', '.');
       //console.log('Content:', klarnabody);
       //console.log('Index..:', klarnaord);
@@ -1602,9 +1602,9 @@ test('PRA Spar', async ({ page }) => {
     let prasparbody = await prasparresponse.text();
     //console.log('Content:', prasparbody);
     if (prasparbody.includes('konto')) {
-      let prasparkord = prasparbody.indexOf('"Sparkonto Fast 3 månader"')
+      let prasparkord = prasparbody.indexOf("id: 'fast-3-months'")
       let prasparkollen = prasparbody.substring(prasparkord, prasparkord+20)
-      prasparranta = prasparbody.substring(prasparkord-12, prasparkord-8)
+      prasparranta = prasparbody.substring(prasparkord+36, prasparkord+40)
       prasparranta = prasparranta.replace(',', '.');
       //console.log('Content:', prasparbody);
       //console.log('Index..:', prasparkord);
