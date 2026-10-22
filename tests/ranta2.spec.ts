@@ -1362,9 +1362,9 @@ test('HoistSpar', async ({ page }) => {
     let hoistbody = await hoistresponse.text();
     //console.log('Content:', hoistbody);
     if (hoistbody.includes('Sparkonto Fast')) {
-      let hoisthord = hoistbody.indexOf('Sparkonto Fast 3')
+      let hoisthord = hoistbody.indexOf('<h4>Bindningstid 90 dagar')
       let hoistkollen = hoistbody.substring(hoisthord, hoisthord+20)
-      hoistranta = hoistbody.substring(hoisthord-85, hoisthord-81)
+      hoistranta = hoistbody.substring(hoisthord+91, hoisthord+95)
       hoistranta = hoistranta.replace(',', '.');
       //console.log('Content:', hoistbody);
       //console.log('Index..:', hoisthord);
