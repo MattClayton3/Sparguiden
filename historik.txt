@@ -1,4 +1,4 @@
-Sparguiden 2026-10-20 20:33:44
+Sparguiden 2026-10-22 16:04:36
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
@@ -25,11 +25,11 @@ Sparbanken Syd: 1.95
 Borgo: 2.40
 JAK: 1.90
 Aros Kapital: 2.70
-Serafim Finans: 2.95
+Serafim Finans: 3.05
 Froda: 2.60
 Northmill Bank: 2.85
 Klarna: 1.61
-HoistSpar: 2.95
+HoistSpar:     
 Danske Bank: 1.80
 Fedelta: 2.55
 Arktika Spar: 2.50
@@ -40,5 +40,5 @@ Myntro: 2.85
 PRA Spar: 2.90
 SevenDay Bank: 1.65
 Sparbanken Spira: 1.75
-Ålandsbanken: 1.75
+Ålandsbanken: undefined
 Zaver: 2.85
