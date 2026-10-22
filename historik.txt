@@ -40,5 +40,5 @@ Myntro: 2.85
 PRA Spar: 2.90
 SevenDay Bank: 1.65
 Sparbanken Spira: 1.75
-Ålandsbanken: undefined
+Ålandsbanken: 1.75
 Zaver: 2.85

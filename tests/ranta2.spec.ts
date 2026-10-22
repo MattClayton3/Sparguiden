@@ -1692,9 +1692,9 @@ test('Ålandsbanken', async ({ page }) => {
     let alandbody = await alandresponse.text();
     //console.log('Content:', alandbody);
     if (alandbody.includes('konto')) {
-      let alandkord = alandbody.indexOf('3 mån')
+      let alandkord = alandbody.indexOf('Fasträntekonto 3 mån</td><td>1,75 %')
       let alandkollen = alandbody.substring(alandkord, alandkord+20)
-      alandranta = alandbody.substring(alandkord+14, alandkord+18)
+      alandranta = alandbody.substring(alandkord+29, alandkord+33)
       alandranta = alandranta.replace(',', '.');
       //console.log('Content:', alandbody);
       //console.log('Index..:', alandkord);
