@@ -1,8 +1,8 @@
-Sparguiden 2026-10-28 21:40:25
+Sparguiden 2026-10-29 10:53:06
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
-EP Bank: 2.90
+EP Bank: 3.05
 Resurs Bank: 2.35
 Nordiska: 3.05
 Nordiska2: 3.00
@@ -18,13 +18,13 @@ Collector: 2.50
 Marginalen Bank: 2.45
 Qliro: 2.40
 Coeli: 2.85
-Svea Bank: 2.80
+Svea Bank: 2.95
 Qred Bank: 2.85
 Nstart: 2.90
 Sparbanken Syd: 1.95
 Borgo: 2.40
 JAK: 1.90
-Aros Kapital: 2.55
+Aros Kapital: 2.70
 Serafim Finans: 3.05
 Froda: 2.60
 Northmill Bank: 2.85
