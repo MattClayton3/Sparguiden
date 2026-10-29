@@ -1331,10 +1331,10 @@ test('Klarna', async ({ page }) => {
 
   if (klarnaresponse) {
     //let status = klarnaresponse.status();
-    console.log('Content:', newWay);
+    //console.log('Content:', newWay);
       let klarnaord = newWay.indexOf('<span>3</span>')
       let klarnakollen = newWay.substring(klarnaord, klarnaord+20)
-      klarnaranta = newWay.substring(klarnaord+203, klarnaord+207)
+      klarnaranta = newWay.substring(klarnaord+204, klarnaord+208)
       klarnaranta = klarnaranta.replace(',', '.');
       //console.log('Content:', klarnabody);
       //console.log('Index..:', klarnaord);

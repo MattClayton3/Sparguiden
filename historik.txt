@@ -28,7 +28,7 @@ Aros Kapital: 2.70
 Serafim Finans: 3.05
 Froda: 2.60
 Northmill Bank: 2.85
-Klarna: >1.6
+Klarna: 1.61
 HoistSpar: 2.95
 Danske Bank: 1.80
 Fedelta: 2.55
