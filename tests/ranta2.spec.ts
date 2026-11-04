@@ -355,8 +355,8 @@ let fullDate = `${year}-${month}-${day} ${hour}:${min}:${sec}`;
 
 test('Lea Bank', async ({ page }) => {
   let learesponse = await page.goto('https://leabank.se/spara/sparkonto-plus');
+  await page.getByRole('button', { name: 'Godkänn endast nödvändiga' }).click();
   await expect(page.locator('h1')).toMatchAriaSnapshot(`- heading "Sparkonto Plus" [level=1]`);
-  //await expect(page.locator('#main-content')).toMatchAriaSnapshot(`- paragraph: /Sparkonto Plus är ett sparkonto som passar dig som inte är beroende av att kunna ta ut pengar samma dag\\. I utbyte erbjuder vi dig vår bästa ränta, som för närvarande är \\d+,\\d+ % eff\\. ränta\\./`);
   let newWay = await page.locator('#main-content').innerHTML();
   if (learesponse) {
     let status = learesponse.status();
