@@ -1596,15 +1596,19 @@ test('Myntro', async ({ page }) => {
 test('PRA Spar', async ({ page }) => {
   let prasparresponse = await page.goto('https://praspar.se/');
   //await page.getByRole('button', { name: 'OK till alla' }).click();
-  //await expect(page.locator('#main-content')).toContainText('Fastränteplacering');
+  await page.getByRole('button', { name: 'Visa nästa konto' }).click();
+  await expect(page.locator('#pra-rate-big')).toMatchAriaSnapshot(`- text: /\\d+,\\d+%/`);
+  let newWay = await page.locator('#pra-rate-big').innerHTML();
   if (prasparresponse) {
     let status = prasparresponse.status();
     let prasparbody = await prasparresponse.text();
     //console.log('Content:', prasparbody);
+    console.log('Index..:', newWay);
+    prasparranta = newWay.substring(0, 4);
     if (prasparbody.includes('konto')) {
       let prasparkord = prasparbody.indexOf("id: 'fast-3-months'")
       let prasparkollen = prasparbody.substring(prasparkord, prasparkord+20)
-      prasparranta = prasparbody.substring(prasparkord+36, prasparkord+40)
+      //prasparranta = prasparbody.substring(prasparkord+35, prasparkord+39)
       prasparranta = prasparranta.replace(',', '.');
       //console.log('Content:', prasparbody);
       //console.log('Index..:', prasparkord);
@@ -1692,7 +1696,7 @@ test('Ålandsbanken', async ({ page }) => {
     let alandbody = await alandresponse.text();
     //console.log('Content:', alandbody);
     if (alandbody.includes('konto')) {
-      let alandkord = alandbody.indexOf('Fasträntekonto 3 mån</td><td>1,75 %')
+      let alandkord = alandbody.indexOf('Fasträntekonto 3 mån</td><td>')
       let alandkollen = alandbody.substring(alandkord, alandkord+20)
       alandranta = alandbody.substring(alandkord+29, alandkord+33)
       alandranta = alandranta.replace(',', '.');
