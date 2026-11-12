@@ -1,4 +1,4 @@
-Sparguiden 2026-11-11 23:27:08
+Sparguiden 2026-11-12 12:34:35
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
@@ -11,8 +11,7 @@ SBAB: 2.40
 Skandia Bank: 2.25
 Swedbank: 1.75
 Handelsbanken: 1.80
-Nordea:  
-<b
+Nordea: 1.95
 SEB: 1.95
 Länsförsäkringar Bank: 2.00
 Collector: 2.50
@@ -29,7 +28,7 @@ Aros Kapital: 2.70
 Serafim Finans: 2.85
 Froda: 2.60
 Northmill Bank: 2.85
-Klarna: 1.61
+Klarna: 1.78
 HoistSpar: 3.05
 Danske Bank: 1.80
 Fedelta: 2.85
