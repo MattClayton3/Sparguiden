@@ -1,4 +1,4 @@
-Sparguiden 2026-11-17 00:46:57
+Sparguiden 2026-11-17 13:12:27
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
@@ -19,7 +19,7 @@ Marginalen Bank: 2.45
 Qliro: 2.40
 Coeli: 2.85
 Svea Bank: 3.05
-Qred Bank: 3.00
+Qred Bank: 3.06
 Nstart: 2.90
 Sparbanken Syd: 1.95
 Borgo: 2.40
@@ -28,7 +28,7 @@ Aros Kapital: 2.70
 Serafim Finans: 2.85
 Froda: 2.60
 Northmill Bank: 2.95
-Klarna: orde
+Klarna: 1.78
 HoistSpar: 3.05
 Danske Bank: 2.00
 Fedelta: 2.95
@@ -36,7 +36,7 @@ Arktika Spar: 3.05
 Brixo: 3.00
 Ekobanken: 0.65
 Landshypotek: 2.30
-Myntro: 2.85
+Myntro: 3.00
 PRA Spar: 2.90
 SevenDay Bank: 1.65
 Sparbanken Spira: 1.75
