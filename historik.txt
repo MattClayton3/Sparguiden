@@ -1,4 +1,4 @@
-Sparguiden 2026-11-20 23:04:36
+Sparguiden 2026-11-23 14:41:21
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
@@ -21,7 +21,7 @@ Coeli: 2.85
 Svea Bank: 3.05
 Qred Bank: 3.06
 Nstart: 2.90
-Sparbanken Syd: 1.95
+Sparbanken Syd: 2.15
 Borgo: 3.00
 JAK: 2.05
 Aros Kapital: 2.70
