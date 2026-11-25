@@ -1,4 +1,4 @@
-Sparguiden 2026-11-25 01:24:27
+Sparguiden 2026-11-25 14:12:44
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
@@ -9,7 +9,7 @@ Nordiska2: 2.90
 MedMera Bank: 2.95
 SBAB: 2.40
 Skandia Bank: 2.45
-Swedbank: 1.75
+Swedbank: 1.95
 Handelsbanken: 1.80
 Nordea: 1.95
 SEB: 1.95
@@ -39,6 +39,6 @@ Landshypotek: 2.45
 Myntro: 3.00
 PRA Spar: 2.65
 SevenDay Bank: 1.65
-Sparbanken Spira: 1.75
+Sparbanken Spira: 1.95
 Ålandsbanken: 1.95
 Zaver: 3.05
