@@ -1,8 +1,8 @@
-Sparguiden 2026-11-24 14:46:16
+Sparguiden 2026-11-25 01:24:27
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.85
-EP Bank: 2.91
+EP Bank: 2.85
 Resurs Bank: 2.35
 Nordiska: 3.05
 Nordiska2: 2.90
@@ -37,7 +37,7 @@ Brixo: 3.00
 Ekobanken: 0.65
 Landshypotek: 2.45
 Myntro: 3.00
-PRA Spar: 2.90
+PRA Spar: 2.65
 SevenDay Bank: 1.65
 Sparbanken Spira: 1.75
 Ålandsbanken: 1.95
