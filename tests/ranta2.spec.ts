@@ -603,12 +603,24 @@ test('MedMera Bank', async ({ page }) => {
 
 test('SBAB', async ({ page }) => {
   await page.goto('https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second');
-  //await page.getByRole('button', { name: 'Acceptera rekommenderade' }).click();
-  //await expect(page.locator('#n-side-nav')).toContainText('Fasträntekonto');
-  //await expect(page.locator('#fixedThreeMonthInterest-interestRateSpan')).toMatchAriaSnapshot(`- text: /\\d+,\\d+/`);
-  //await expect(page.getByText('2,80', { exact: true })).toBeVisible();
-  //await expect(page.locator('#fixedThreeMonthInterest-interestRateSpan')).toContainText('2,80');
-  sbabranta = await (page.locator('#fixedThreeMonthInterest-interestRateSpan')).textContent();
+
+  await expect(page.locator('tbody')).toMatchAriaSnapshot(`- cell /\\d+,\\d+ %/`);
+  let newWay = await page.locator('tbody').textContent();
+  let next = 'no';
+  //console.log('Content:', newWay);
+  if (newWay = '3 mån') {
+    console.log('Hello:', newWay);
+    next = 'yes';
+  };
+  if (newWay = '2,40 %') {
+    console.log('Hello:', newWay);
+  };
+  if (next = 'yes') {
+    console.log('next:', newWay);
+    next = 'no';
+    sbabranta = newWay.substring(0, 4);
+  };
+
   sbabranta = sbabranta.replace(',', '.');
   console.log('SBAB');
   console.log('Fast 3 månaders ränta:', sbabranta, '%');
@@ -1596,7 +1608,9 @@ test('Myntro', async ({ page }) => {
 test('PRA Spar', async ({ page }) => {
   let prasparresponse = await page.goto('https://praspar.se/');
   //await page.getByRole('button', { name: 'OK till alla' }).click();
+  await expect(page.locator('#content')).toContainText('Aktuell ränta');
   await page.getByRole('button', { name: 'Visa nästa konto' }).click();
+  await expect(page.locator('#pra-rate-name')).toContainText('Sparkonto Fast 3 månader');
   await expect(page.locator('#pra-rate-big')).toMatchAriaSnapshot(`- text: /\\d+,\\d+%/`);
   let newWay = await page.locator('#pra-rate-big').innerHTML();
   if (prasparresponse) {
@@ -1903,7 +1917,7 @@ test('Sorterat', async () => {
     { banknamn: 'EP Bank', bank: `<a href="https://www.epbank.se/spar/oversikt/" target="_blank">EP Bank</a>`, ranta: epranta, change: epchange },
     { banknamn: 'Resurs Bank', bank: `<a href="https://www.resursbank.se/sparkonto/sparkonto-flex" target="_blank">Resurs</a> ${sparKonto}`, ranta: resursranta, change: resurschange },
     { banknamn: 'Nordiska', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska</a>`, ranta: nordiskaranta, change: nordiskachange},
-    { banknamn: 'Nordiska2', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska 2 månader</a>`, ranta: nordiska2ranta, change: nordiska2change},
+    { banknamn: 'Nordiska2', bank: `<a href="https://www.nordiska.se/spara/" target="_blank">Nordiska (2 mån)</a>`, ranta: nordiska2ranta, change: nordiska2change},
     { banknamn: 'MedMera Bank', bank: `<a href="https://medmerabank.se/spara/fastrantekonto" target="_blank">MedMera Bank</a>`, ranta: medranta, change: medchange},
     { banknamn: 'SBAB', bank: `<a href="https://www.sbab.se/1/privat/spara/sparkonto/fastrantekonto.html?content=second" target="_blank">SBAB</a> ${autoForlang}`, ranta: sbabranta, change: sbabchange},
     { banknamn: 'Skandia Bank', bank: `<a href="https://www.skandia.se/vardagstjanster/konton-kort/fastrantekonto/" target="_blank">Skandia</a>`, ranta: Skandiaranta, change: Skandiachange},
@@ -1911,7 +1925,7 @@ test('Sorterat', async () => {
     { banknamn: 'Nordea', bank: `<a href="https://www.nordea.se/privat/produkter/spara-investera/sparkonton/fastrantekonto.html" target="_blank">Nordea</a>`, ranta: nordearanta, change: nordeachange},
     { banknamn: 'Handelsbanken', bank: `<a href="https://www.handelsbanken.se/sv/privat/spara/sparkonton-och-rantor" target="_blank">Handelsbanken</a> ${autoForlang}`, ranta: shbranta, change: shbchange},
     { banknamn: 'SEB', bank: `<a href="https://seb.se/privat/spara-och-investera/sparkonto-och-depa/placeringskonto?icmp=sebsep_enklaspar_rb_x_placeringskonto#sparkonto" target="_blank">SEB</a>`, ranta: sebranta, change: sebchange},
-    { banknamn: 'Länsförsäkringar Bank', bank: `<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar Bank</a>`, ranta: lansfranta, change: lansfchange},
+    { banknamn: 'Länsförsäkringar', bank: `<a href="https://www.lansforsakringar.se/stockholm/privat/bank/spara/alla-konton-for-sparande/fastrantekonto/" target="_blank">Länsförsäkringar</a>`, ranta: lansfranta, change: lansfchange},
     { banknamn: 'Collector', bank: `<a href="https://www.collector.se/spara-pengar/aktuella-sparrantor/" target="_blank">Collector</a>`, ranta: collectorranta, change: collectorchange},
     { banknamn: 'Marginalen Bank', bank: `<a href="https://www.marginalen.se/privat/banktjanster/spara/fastrantekonto/" target="_blank">Marginalen Bank</a>`, ranta: marginalranta, change: marginalchange},
     { banknamn: 'Qliro', bank: `<a href="https://www.qliro.com/sv-se/spara" target="_blank">Qliro</a>`, ranta: qlirokranta, change: qlirochange},
