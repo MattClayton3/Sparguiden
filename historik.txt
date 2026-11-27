@@ -1,4 +1,4 @@
-Sparguiden 2026-11-26 16:27:55
+Sparguiden 2026-11-27 10:00:20
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.95
@@ -15,7 +15,7 @@ Nordea: 1.95
 SEB: 1.95
 Länsförsäkringar Bank: 2.00
 Collector: 2.70
-Marginalen Bank: 2.60
+Marginalen Bank: 2.75
 Qliro: 2.40
 Coeli: 2.85
 Svea Bank: 3.05
@@ -36,7 +36,7 @@ Arktika Spar: 3.05
 Brixo: 3.00
 Ekobanken: 0.65
 Landshypotek: 2.45
-Myntro: 3.00
+Myntro: undefined
 PRA Spar: 3.00
 SevenDay Bank: 1.65
 Sparbanken Spira: 1.95
