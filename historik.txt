@@ -1,11 +1,11 @@
-Sparguiden 2026-11-27 14:46:15
+Sparguiden 2026-11-28 01:31:24
 Lea Bank: 2.45
 Moank: 2.95
 Bluestep Bank: 2.95
 EP Bank: 2.85
 Resurs Bank: 2.35
-Nordiska: 3.05
-Nordiska2: 2.90
+Nordiska: undefined
+Nordiska2: undefined
 MedMera Bank: 2.95
 SBAB: 2.40
 Skandia Bank: 2.45
@@ -32,7 +32,7 @@ Klarna: 1.78
 HoistSpar: 3.06
 Danske Bank: 2.00
 Fedelta: 2.95
-Arktika Spar: 3.05
+Arktika Spar: 2.98
 Brixo: 3.00
 Ekobanken: 0.65
 Landshypotek: 2.45
